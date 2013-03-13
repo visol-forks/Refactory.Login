@@ -18,7 +18,13 @@
 						<div class="controls">
 							<div class="input-prepend">
 								<span class="add-on"><i class="icon-user"></i></span>
-								<f:form.textfield name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][username]" id="username" class="input-large" value="{username}" placeholder="{f:translate(id: 'authentication.username.placeholder', value: 'Your username')}"  />
+								<f:form.textfield
+									name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][username]"
+									id="username"
+									class="input-large"
+									value="{username}"
+									placeholder="{f:translate(id: 'authentication.username.placeholder', value: 'Your username')}"
+									additionalAttributes="{autofocus: '', tabindex: 1}" />
 							</div>
 						</div>
 					</div>
@@ -29,7 +35,11 @@
 						<div class="controls">
 							<div class="input-prepend">
 								<span class="add-on"><i class="icon-key"></i></span>
-								<f:form.password name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][password]" id="password" class="input-large" additionalAttributes="{placeholder: '{f:translate(id: \'authentication.password.placeholder\', value: \'Your password\')}'}" />
+								<f:form.password
+									name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][password]"
+									id="password"
+									class="input-large"
+									additionalAttributes="{placeholder: '{f:translate(id: \'authentication.password.placeholder\', value: \'Your password\')}', tabindex: 2}" />
 							</div>
 
 						</div>
@@ -38,7 +48,9 @@
 					<div class="control-group">
 						<!-- Button -->
 						<div class="controls">
-							<button class="btn btn-primary btn-large hide"><f:translate id="authentication.login">Login</f:translate></button>
+							<button class="btn btn-primary btn-large hide" additionalAttributes="{tabindex: 3}">
+								<f:translate id="authentication.login">Login</f:translate>
+							</button>
 						</div>
 					</div>
 				</fieldset>
