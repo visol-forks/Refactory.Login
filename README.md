@@ -43,13 +43,13 @@ Login Panel
 
 * Pre-requirements
 - jQuery
+- jQuery Form
 - Bootstrap
-
-Add the following lines of code to your application to get the Login Panel, (pre-requirements are you have jQuery, Bootstrap and jQuery.form loaded).
+You need to add these pre-requirements to your website in order to have a modal login.
 
 The javascript that will handle your Action calls.
 
-	<script src="resource://Flow.Login/Public/JavaScript/Login.js"></script>
+	<script src="{f:uri.resource(path: 'JavaScript/Login.js', package: 'Flow.Login')}"></script>
 
 The link that will trigger the login panel:
 
