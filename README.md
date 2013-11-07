@@ -45,7 +45,7 @@ Login Panel
 
 - jQuery
 - jQuery Form
-- Bootstrap
+- Bootstrap 3
 
 You need to add these pre-requirements to your website in order to have a modal login.
 
