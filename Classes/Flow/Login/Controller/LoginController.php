@@ -107,7 +107,7 @@ class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\Abs
 	public function onAuthenticationSuccess(\TYPO3\Flow\Mvc\ActionRequest $originalRequest = NULL) {
 		$uriBuilder = $this->controllerContext->getUriBuilder();
 		if ($originalRequest !== NULL) {
-			$uri =  $uriBuilder->uriFor($originalRequest->getControllerActionName(), NULL, $originalRequest->getControllerName(), $originalRequest->getControllerPackageKey());
+			$uri =  $uriBuilder->uriFor($originalRequest->getControllerActionName(), $originalRequest->getArguments(), $originalRequest->getControllerName(), $originalRequest->getControllerPackageKey());
 		} else {
 			if(isset($this->settings['Redirect']['signedIn'])) {
 				$packageKey     = $this->settings['Redirect']['signedIn']['packageKey'];
