@@ -36,7 +36,7 @@ $(document).ready(function() {
 				$('.modal-body').append('<p align="center"><i class="icon-spin icon-spinner icon-4x muted"></i></p>');
 			},
 			error: function(data){
-				 $('.modal-body').prepend('<div class="alert alert-error"><a class="close" href="#" data-dismiss="alert">×</a><h4 class="alert-heading">Oh snap! Your server took a nose dive!</h4>Internal Server error</div>');
+				 $('.modal-body').prepend('<div class="alert alert-danger"><a class="close" href="#" data-dismiss="alert">×</a><h4 class="alert-heading">Oh snap! Your server took a nose dive!</h4>Internal Server error</div>');
 				 $('p .icon-spin').remove();
 				 form.show(800, 'swing');
 			},
@@ -46,7 +46,7 @@ $(document).ready(function() {
 				} else if (response.status === 'FAILED') {
 					var error;
 					for (error in response.errors) {
-						$('.modal-body').prepend('<div class="alert alert-error"><a class="close" href="#" data-dismiss="alert">×</a>'+ response.errors[error].message +'</div>');
+						$('.modal-body').prepend('<div class="alert alert-danger"><a class="close" href="#" data-dismiss="alert">×</a>'+ response.errors[error].message +'</div>');
 					}
 					$('.control-group').addClass('error');
 					$('p .icon-spin').remove();
