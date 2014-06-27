@@ -1,31 +1,51 @@
-Flow.Login [![Build Status](https://travis-ci.org/svparijs/Flow.Login.png?branch=master)](https://travis-ci.org/svparijs/Flow.Login)
+Refactory.Login [![Build Status](https://travis-ci.org/svparijs/Flow.Login.png?branch=master)](https://travis-ci.org/svparijs/Flow.Login)
 ==================================================================================================================================================================
 
-A TYPO3 Flow package that manages accounts and login authentication.
+This package is a lightweight authentication wrapper around a given package.
+A TYPO3 Flow package with the following features:
 
-This tool is a lightweight single purpose authentication wrapper around a given package.
+ - Register User
+ - Login and Logout a account
+ - Reset a password for a given account.
+
+These features have their own workflows, based on some research the idea was to make the registration as basic as possible.
 The package is built on the features that are provided in the security framework of TYPO3.Flow and require only a little configuration.
 
 Usage:
 - Security layer for any application
 - Inspiration
 
-Authentication setup
---------------------
-
-The initial view will show a login box.
-
-When authenticated but not configured, the package will redirect to the signedInAction by default.
-The signedIn view will show you with what "account.identifier" you have been authenticated.
-
-Through Settings.yaml you will be able to configure options like redirects to a package, open registration for anonymous users
-and so on.
-
 Quickstart
 ----------
 
-!!Important!! Yes, you will need a tool to create an account for you, i'd refer you to [UserManagement](https://github.com/svparijs/TYPO3.UserManagement) [Work in Progress]
-This section will get you up and running.
+To incluse this package into your TYPO3 Flow application just run:
+
+	composer require refactory/login
+
+Then you need to run migrations to include the tables.
+
+	./flow doctrine:migrate
+
+To Enable routing to package
+
+	-
+	  name: 'Login'
+	  uriPattern: '<LoginSubroutes>'
+	  subRoutes:
+	    LoginSubroutes:
+	      package: Refactory.Login
+
+Start using!
+
+Authentication setup
+--------------------
+
+The initial view will show a login panel.
+
+When authenticated but not configured, the package will redirect to the Signed In page by default.
+The Signed In view will show you with what "account.identifier" you have been authenticated.
+
+Through *Configuration/Settings.yaml* you will be able to configure options like redirects to a package, registration and so on.
 
 #####Routing
 
@@ -36,38 +56,14 @@ To be able to address the login feature you will need to add these routes in the
 	  uriPattern: '<LoginSubroutes>'
 	  subRoutes:
 	    LoginSubroutes:
-	      package: Flow.Login
-
-Login Panel
------------
-
-* Pre-requirements
-
-- jQuery
-- jQuery Form
-- Bootstrap 3
-
-You need to add these pre-requirements to your website in order to have a modal login.
-
-The javascript that will handle your Action calls.
-
-	<script src="{f:uri.resource(path: 'JavaScript/Login.js', package: 'Flow.Login')}"></script>
-
-The link that will trigger the login panel:
-
-	<a class="login-panel" data-toggle="modal" data-target="#modal-login" href="{f:uri.action(controller:'Login', action: 'loginPanel', package: 'Flow.Login')}">Login Action</a>
-
-The modal that will be displayed:
-
-	<div class="modal hide fade" id="modal-login">
-    </div>
+	      package: Refactory.Login
 
 Account ViewHelper
 ------------------
 
 Add the viewhelper to fluid and call the viewhelper function.
 
-	{namespace secure=Flow\Login\ViewHelpers}
+	{namespace secure=Refactory\Login\ViewHelpers}
 
 	<secure:account propertyPath="party.name" />
 
@@ -85,8 +81,8 @@ When the action is unauthorized the TYPO3.Flow framework will redirect the packa
 	            entryPoint: 'WebRedirect'
 	            entryPointOptions:
 	              routeValues:
-                    '@package': 'Flow.Login'
-                    '@controller': 'Login'
-                    '@action': 'index'
+	                '@package': 'Refactory.Login'
+	                '@controller': 'Login'
+	                '@action': 'login'
 
 See for reference: http://flow.typo3.org/documentation/guide/partiii/security.html

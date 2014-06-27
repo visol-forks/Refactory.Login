@@ -1,38 +1,91 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file original="" product-name="TYPO3.Flow" source-language="en" datatype="plaintext">
+<?xml version="1.0"?>
+<xliff version="1.2"
+	   xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file original="" source-language="en" datatype="plaintext" target-language="nl">
 		<body>
-			<trans-unit id="authentication.required" xml:space="preserve">
-				<source>Authentication required</source>
-				<target>Aanmelding verplicht</target>
-			</trans-unit>
-			<trans-unit id="authentication.username" xml:space="preserve">
-				<source>Username</source>
-				<target>Gebruikersnaam</target>
-			</trans-unit>
-			<trans-unit id="authentication.password" xml:space="preserve">
-				<source>Password</source>
-				<target>Wachtwoord</target>
-			</trans-unit>
-			<trans-unit id="authentication.new-password" xml:space="preserve">
-				<source>New password</source>
-				<target>Nieuw wachtwoord</target>
-			</trans-unit>
-			<trans-unit id="authentication.login" xml:space="preserve">
+			<trans-unit id="login">
 				<source>Login</source>
 				<target>Inloggen</target>
 			</trans-unit>
-			<trans-unit id="authentication.logout" xml:space="preserve">
-				<source>Logout</source>
-				<target>Uitloggen</target>
+			<trans-unit id="userName">
+				<source>Username</source>
+				<target>Gebruikersnaam</target>
 			</trans-unit>
-			<trans-unit id="update" xml:space="preserve">
-				<source>Update</source>
-				<target>Bijwerken</target>
+			<trans-unit id="passWord">
+				<source>Password</source>
+				<target>Wachtwoord</target>
 			</trans-unit>
-			<trans-unit id="submit" xml:space="preserve">
-				<source>Submit</source>
-				<target>Verzenden</target>
+			<trans-unit id="rememberMe">
+				<source>Remember me</source>
+				<target>Onthoud mij</target>
+			</trans-unit>
+			<transunit id="loginPanel">
+				<source>Login</source>
+				<target>Inloggen</target>
+			</transunit>
+			<trans-unit id="passwordResetInstructions">
+				<source>Reset password instructions</source>
+				<target>Instructies om uw wachtwoord te resetten</target>
+			</trans-unit>
+			<trans-unit id="resetLink">
+				<source>Use the this link to reset your password.</source>
+				<target>Klik op onderstaande link om uw wachtwoord te wijzigen.</target>
+			</trans-unit>
+			<trans-unit id="resetPasswordRequest">
+				<source>Reset password request</source>
+				<target>Wachtwoord wijzigen</target>
+			</trans-unit>
+			<trans-unit id="userNameEmailForInstructions">
+				<source>Type username / email to get reset instructions</source>
+				<target>Vul uw gebruikersnaam / email in en ontvang per mail instructies voor het wijzigen van uw wachtwoord.</target>
+			</trans-unit>
+			<trans-unit id="usernameEmail">
+				<source>Username/Email</source>
+				<target>Gebruikersnaam/Email</target>
+			</trans-unit>
+			<trans-unit id="requestNewPassword">
+				<source>Request new password</source>
+				<target>Verzoek nieuw wachtwoord ></target>
+			</trans-unit>
+			<trans-unit id="resetMailSend">
+				<source>Reset password mail has been sent</source>
+				<target>De instructies zijn verzonden.</target>
+			</trans-unit>
+			<trans-unit id="back">
+				<source>Back</source>
+				<target>Terug</target>
+			</trans-unit>
+			<trans-unit id="mail.subject.passwordResetRequest">
+				<source>Reset password request</source>
+				<target>Wijzig wachtwoord</target>
+			</trans-unit>
+			<trans-unit id="resetPassword">
+				<source>Reset password</source>
+				<target>Wijzig wachtwoord</target>
+			</trans-unit>
+			<trans-unit id="inputNewPassword">
+				<source>New password</source>
+				<target>Nieuw wachtwoord</target>
+			</trans-unit>
+			<trans-unit id="inputNewPasswordRepeat">
+				<source>Repeat new password</source>
+				<target>Herhaal nieuw wachtwoord</target>
+			</trans-unit>
+			<trans-unit id="tokenNotValid">
+				<source>This token is not valid!</source>
+				<target>Het veiligheidtoken is niet geldig!</target>
+			</trans-unit>
+			<trans-unit id="passwordChanged">
+				<source>Your password has changed</source>
+				<target>Uw wachtwoord is gewijzigd.</target>
+			</trans-unit>
+			<trans-unit id="link.resetPassword">
+				<source>Forgot my password?</source>
+				<target>Wachtwoord vergeten?</target>
+			</trans-unit>
+			<trans-unit id="link.registerAccount">
+				<source>Create user?</source>
+				<target>Registreren?</target>
 			</trans-unit>
 		</body>
 	</file>

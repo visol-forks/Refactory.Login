@@ -1,57 +1,67 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file original="" product-name="Flow.Login" source-language="en" datatype="plaintext">
+<?xml version="1.0"?>
+<xliff version="1.2"
+	   xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file original="" source-language="en" datatype="plaintext" target-language="en">
 		<body>
-			<trans-unit id="authentication.header" xml:space="preserve">
+			<trans-unit id="login">
 				<source>Login</source>
 			</trans-unit>
-			<trans-unit id="authorized.title" xml:space="preserve">
-				<source>Dummy Authenticated View</source>
-			</trans-unit>
-			<trans-unit id="authorized.header" xml:space="preserve">
-				<source>A authenticated page</source>
-			</trans-unit>
-			<trans-unit id="authorized.description" xml:space="preserve">
-				<source>Your are authenticated with user:</source>
-			</trans-unit>
-			<trans-unit id="authentication.required" xml:space="preserve">
-				<source>Authentication required</source>
-			</trans-unit>
-			<trans-unit id="authentication.username" xml:space="preserve">
+			<trans-unit id="userName">
 				<source>Username</source>
 			</trans-unit>
-			<trans-unit id="authentication.username.placeholder" xml:space="preserve">
-				<source>Your username...</source>
-			</trans-unit>
-			<trans-unit id="authentication.password" xml:space="preserve">
+			<trans-unit id="passWord">
 				<source>Password</source>
 			</trans-unit>
-			<trans-unit id="authentication.password.placeholder" xml:space="preserve">
-				<source>Your password...</source>
+			<transunit id="loginPanel">
+				<source>Login</source>
+			</transunit>
+			<trans-unit id="passwordResetInstructions">
+				<source>Reset password instructions</source>
 			</trans-unit>
-			<trans-unit id="authentication.new-password" xml:space="preserve">
+			<trans-unit id="ResetLink">
+				<source>Use the this link to reset your password.</source>
+			</trans-unit>
+			<trans-unit id="resetLink">
+				<source>Use the this link to reset your password.</source>
+			</trans-unit>
+			<trans-unit id="resetPasswordRequest">
+				<source>Reset password request</source>>
+			</trans-unit>
+			<trans-unit id="userNameEmailForInstructions">
+				<source>Type username / email to get reset instructions</source>
+			</trans-unit>
+			<trans-unit id="usernameEmail">
+				<source>Username/Email</source>
+			</trans-unit>
+			<trans-unit id="requestNewPassword">
+				<source>Request new password</source>
+			</trans-unit>
+			<trans-unit id="resetMailSend">
+				<source>Reset password mail has been sent</source>
+			</trans-unit>
+			<trans-unit id="mail.subject.passwordResetRequest">
+				<source>Reset password request</source>
+			</trans-unit>
+			<trans-unit id="resetPassword">
+				<source>Reset password</source>
+			</trans-unit>
+			<trans-unit id="inputNewPassword">
 				<source>New password</source>
 			</trans-unit>
-			<trans-unit id="authentication.login" xml:space="preserve">
-				<source>Login</source>
+			<trans-unit id="inputNewPasswordRepeat">
+				<source>Repeat new password</source>
 			</trans-unit>
-			<trans-unit id="authentication.logout" xml:space="preserve">
-				<source>Logout</source>
+			<trans-unit id="tokenNotValid">
+				<source>This token is not valid!</source>
 			</trans-unit>
-			<trans-unit id="register.account" xml:space="preserve">
-				<source>Register account?</source>
+			<trans-unit id="passwordChanged">
+				<source>Your password has changed</source>
 			</trans-unit>
-			<trans-unit id="account.index" xml:space="preserve">
-				<source>Manage Accounts</source>
+			<trans-unit id="link.resetPassword">
+				<source>Forgot my password?</source>
 			</trans-unit>
-			<trans-unit id="action.save" xml:space="preserve">
-				<source>Save</source>
-			</trans-unit>
-			<trans-unit id="action.submit" xml:space="preserve">
-				<source>Submit</source>
-			</trans-unit>
-			<trans-unit id="action.cancel" xml:space="preserve">
-				<source>Cancel</source>
+			<trans-unit id="link.registerAccount">
+				<source>Create user?</source>
 			</trans-unit>
 		</body>
 	</file>

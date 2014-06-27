@@ -1,0 +1,50 @@
+<f:layout name="Password"/>
+
+<f:section name="Title">
+	<f:translate id="resetPasswordRequest">Reset password request</f:translate>
+</f:section>
+
+<f:section name="Content">
+	<div class="application-logo">
+		<img src="resource://Refactory.Login/Public/Images/ApplicationLogo.png" alt="Application logo" />
+	</div>
+	<div id="reset-box">
+		<div class="process">
+			<div class="process-row">
+				<div class="process-step">
+					<button type="button" class="btn active btn-circle" disabled="disabled"><i class="icon-pencil"></i></button>
+				</div>
+				<div class="process-step">
+					<button type="button" class="btn btn-default btn-circle" disabled="disabled"><i class="icon-exchange"></i></button>
+				</div>
+				<div class="process-step">
+					<button type="button" class="btn btn-success btn-circle" disabled="disabled"><i class="icon-check"></i></button>
+				</div>
+			</div>
+		</div>
+		<div class="reset-body">
+			<f:form id="reset-form" class="form-horizontal" name="password" action="sendResetRequest" controller="Password" format="json">
+				<input type="hidden" name="lastVisitedNode" value="" />
+				<fieldset>
+					<div class="reset-controls">
+						<f:form.textfield name="recipient" id="inputUsernameEmail" type="text" class="form-control" placeholder="Gebruikersnaam / e-mail adres"/>
+					</div>
+					<div class="reset-actions feedback">
+						<f:if condition="{settings.enableRegister}">
+							<p>
+								<f:link.action controller="Register" action="new"><f:translate id="link.registerAccount">Create user?</f:translate></f:link.action>
+							</p>
+						</f:if>
+						<button class="span5 pull-right button button-primary button-warning reset-btn" type="submit" tabindex="2">
+							<f:translate id="requestNewPassword">Request new password ></f:translate>
+						</button>
+					</div>
+				</fieldset>
+			</f:form>
+		</div>
+	</div>
+</f:section>
+
+<f:section name="Script">
+	<script src="{f:uri.resource(path: 'JavaScript/RequestPassword.js')}"></script>
+</f:section>

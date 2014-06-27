@@ -1,0 +1,238 @@
+html,
+body {
+	height: 100%;
+	background-color: #2D3E50;
+}
+
+#wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -75px;
+}
+#push,
+footer {
+	height: 75px;
+}
+
+footer {
+	color: #F4F4F4;
+	padding: 0 40px;
+	font-size: 12px;
+}
+
+.login-logo {
+	margin-bottom: 30px;
+}
+
+#login-box {
+	background: transparent;
+	border: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 320px;
+	margin-top: -125px;
+	margin-left: -160px;
+	z-index: 10;
+	box-shadow: none;
+	border-radius: none;
+}
+
+#login-box .login-body {
+	padding: 0;
+	overflow: visible;
+}
+#login-box form {
+	margin: 0 0 20px;
+}
+
+#login-box .login-controls {
+	height: 40px;
+	margin-bottom: 15px;
+	display: block;
+}
+
+#login-box fieldset {
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+#login-box input[type="text"],
+#login-box input[type="password"] {
+	width: 92%;
+	min-width: 288px;
+	height: 40px;
+	border: 2px solid #34495E;
+	background-color: #34495E;
+	color: white;
+	font-size: 14px;
+	padding: 0 14px;
+	margin: 0;
+	border-radius: 0;
+}
+
+#login-box input[type="text"]:focus,
+#login-box input[type="password"]:focus {
+	background-color: #fff;
+	border: 2px solid #fff;
+	color: #252525;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+#login-box .login-actions button {
+	height: 40px;
+	color: #fff;
+	border: none;
+	background-image: none;
+	font-size: 14px;
+	text-shadow: none;
+	box-shadow: none;
+	box-sizing: border-box;
+	margin-left: 0;
+}
+
+#login-box .login-actions button.login-btn {
+	background-color: #27AE61;
+}
+#login-box .login-actions button.login-btn.promise {
+	background-color: #F1C40F;
+}
+
+#login-box .login-actions button.login-btn:hover,
+#login-box .login-actions button.login-btn:focus {
+	background-color: #2FCC71;
+}
+
+#login-box .login-actions button.login-btn:focus {
+	outline: none;
+}
+
+/**
+ * Tooltip
+ */
+#login-box .neos-tooltip {
+	position: absolute;
+	z-index: 1030;
+	display: block;
+	visibility: visible;
+	font-size: 11px;
+	line-height: 1.4;
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+	opacity: 0;
+}
+#login-box .neos-tooltip.neos-in {
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+	opacity: 0.8;
+}
+#login-box  .neos-tooltip.neos-top {
+	margin-top: -3px;
+	padding: 5px 0;
+}
+#login-box  .neos-tooltip.neos-right {
+	margin-left: 3px;
+	padding: 0 5px;
+}
+#login-box  .neos-tooltip.neos-bottom {
+	margin-top: 3px;
+	padding: 5px 0;
+}
+#login-box .neos-tooltip.neos-left {
+	margin-left: -3px;
+	padding: 0 5px;
+}
+#login-box  .neos-tooltip-inner {
+	max-width: 200px;
+	padding: 8px;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	background-color: black;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+#login-box .neos-tooltip-arrow {
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-color: transparent;
+	border-style: solid;
+}
+#login-box .neos-tooltip.neos-top .neos-tooltip-arrow {
+	bottom: 0;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px 5px 0;
+	border-top-color: black;
+}
+#login-box .neos-tooltip.neos-right .neos-tooltip-arrow {
+	top: 50%;
+	left: 0;
+	margin-top: -5px;
+	border-width: 5px 5px 5px 0;
+	border-right-color: black;
+}
+#login-box .neos-tooltip.neos-left .neos-tooltip-arrow {
+	top: 50%;
+	right: 0;
+	margin-top: -5px;
+	border-width: 5px 0 5px 5px;
+	border-left-color: black;
+}
+#login-box .neos-tooltip.neos-bottom .neos-tooltip-arrow {
+	top: 0;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 0 5px 5px;
+	border-bottom-color: black;
+}
+
+#login-box .neos-tooltip {
+	left: -4px;
+	top: 0;
+	width: 100%;
+	position: relative;
+	clear: both;
+	float: none;
+}
+#login-box .neos-tooltip.neos-bottom {
+	padding: 8px 0 0 0;
+	margin-left: 4px;
+	margin-top: -1px;
+}
+
+#login-box .neos-tooltip.neos-in {
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+	opacity: 1;
+}
+#login-box .neos-tooltip .neos-tooltip-arrow {
+	margin-left: -8px;
+	border-width: 0 8px 8px 8px;
+}
+#login-box .neos-tooltip .neos-tooltip-inner {
+	max-width: 320px;
+	font-size: 13px;
+	color: #fff;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+#login-box .neos-tooltip-error .neos-tooltip-arrow {
+	border-bottom-color: #E84C3D;
+}
+#login-box .neos-tooltip-error .neos-tooltip-inner {
+	background-color: #E84C3D;
+}
+#login-box .neos-tooltip-notice .neos-tooltip-arrow {
+	border-bottom-color: #00a338;
+}
+#login-box .neos-tooltip-notice .neos-tooltip-inner {
+	background-color: #00a338;
+}

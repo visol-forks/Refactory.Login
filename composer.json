@@ -1,13 +1,13 @@
 {
-    "name": "flow/login",
+    "name": "refactory/login",
     "type": "typo3-flow-package",
-    "description": "",
+    "description": "This package is a simple login form with some utilities",
     "require": {
         "typo3/flow": "*"
     },
     "autoload": {
         "psr-0": {
-            "Flow\\Login": "Classes"
+            "Refactory\\Login": "Classes"
         }
     }
 }

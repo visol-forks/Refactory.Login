@@ -1,0 +1,38 @@
+<f:layout name="Password"/>
+
+<f:section name="Title">
+	<f:translate id="resetPassword">Reset password complete</f:translate>
+</f:section>
+
+<f:section name="Content">
+	<div class="application-logo">
+		<img src="resource://Refactory.Login/Public/Images/ApplicationLogo.png" alt="Application logo" />
+	</div>
+	<div id="reset-box" class="notification">
+		<div class="process">
+			<div class="process-row">
+				<div class="process-step">
+					<button type="button" class="btn complete btn-circle" disabled="disabled"><i class="icon-pencil"></i></button>
+				</div>
+				<div class="process-step">
+					<button type="button" class="btn complete btn-circle" disabled="disabled"><i class="icon-exchange"></i></button>
+				</div>
+				<div class="process-step">
+					<button type="button" class="btn complete btn-circle" disabled="disabled"><i class="icon-check"></i></button>
+				</div>
+			</div>
+		</div>
+		<div class="reset-body complete">
+			<p>You've walked through the complete process and:</p>
+			<h1>Your password has been reset!</h1>
+			<p>You can now login the application by using the button below.</p>
+			<f:link.action controller="Login" action="login" class="pull-center btn reset-btn">Login?</f:link.action>
+		</div>
+	</div>
+</f:section>
+
+<f:section name="Script">
+	<script src="{f:uri.resource(path: 'Library/BootstrapValidator/js/bootstrapValidator.min.js')}"></script>
+	<script src="{f:uri.resource(path: 'Library/Pwstrength/pwstrength-bootstrap-1.1.5.min.js')}"></script>
+	<script src="{f:uri.resource(path: 'JavaScript/RequestPassword.js')}"></script>
+</f:section>

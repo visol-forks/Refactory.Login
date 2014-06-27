@@ -1,0 +1,18 @@
+html,
+body {
+	height: 100%;
+	background: $blueDark;
+	margin: 0;
+}
+
+#wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto  ($footerHeight * -1);
+}
+
+#push,
+footer {
+	height: ($footerHeight - 10);
+}

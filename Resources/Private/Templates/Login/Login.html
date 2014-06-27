@@ -1,0 +1,40 @@
+<f:layout name="Login" />
+
+<f:section name="Title">Login Panel</f:section>
+
+<f:section name="Content">
+	<div id="login-box">
+		<div class="login-logo">
+			<img src="resource://Refactory.Login/Public/Images/ApplicationLogo.png" alt="Application logo" />
+		</div>
+		<div class="login-body">
+			<f:form id="login-form" name="login" class="form-horizontal" action="authenticate" format="json">
+
+				<input type="hidden" name="lastVisitedNode" value="" />
+				<fieldset>
+					<div class="login-controls">
+						<f:form.textfield name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][username]" id="username" class="span12" value="{username}" placeholder="{f:translate(id: 'authentication.username.placeholder', value: 'Username')}" additionalAttributes="{autofocus: 'autofocus', tabindex: 1}" />
+					</div>
+					<div class="login-controls">
+						<f:form.password name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][password]" id="password" class="input-large" additionalAttributes="{placeholder: '{f:translate(id: \'authentication.password.placeholder\', value: \'Password\')}', tabindex: 2}" />
+					</div>
+					<div class="login-actions feedback">
+						<p class="utility">
+							<f:link.action controller="Password" action="ResetRequest" class="pull-left"><f:translate id="link.resetPassword">Forgot my password?</f:translate></f:link.action>
+							<f:if condition="{settings.enableRegister}">
+								<f:link.action controller="Register" action="new" class="pull-right"><f:translate id="link.registerAccount">Create user?</f:translate></f:link.action>
+							</f:if>
+						</p>
+						<button class="span5 pull-right button button-primary button-warning login-btn" type="submit" tabindex="3" data-loading="Loading...">
+							Login >
+						</button>
+					</div>
+				</fieldset>
+			</f:form>
+		</div>
+	</div>
+</f:section>
+
+<f:section name="Script">
+	<script src="{f:uri.resource(path: 'JavaScript/Login.js')}"></script>
+</f:section>

@@ -3,22 +3,18 @@
 	<head>
 		<meta charset="utf-8">
 		<title><f:render section="Title" /></title>
-		<f:base />
-
-		<link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'StyleSheets/bootstrap.css')}" />
-		<link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Library/fontawesome/css/font-awesome.css')}" />
-		<link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'StyleSheets/application.css')}" />
+		<link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Styles/Application.css')}" />
+		<f:for each="{settings.styles}" as="style">
+			<link rel="stylesheet" type="text/css" href="{style}" />
+		</f:for>
 	</head>
-	<body>
+	<body class="refactory">
 	<div id="wrap">
-		<div class="container">
 			<f:render section="Content" />
-		</div>
 		<div id="push"></div>
 	</div>
 
 	<f:render partial="Footer" />
-	<f:render partial="Modals" />
 	<f:render section="Script" />
 	</body>
 </html>

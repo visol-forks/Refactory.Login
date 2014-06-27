@@ -1,15 +1,11 @@
 resources:
   methods:
-    Flow_LoginSignedInMethods: 'method(Flow\Login\Controller\LoginController->signedInAction())'
+    Refactory_LoginSignedInMethods: 'method(Refactory\Login\Controller\LoginController->signedInAction())'
 
 roles:
   Administrator: []
-  Editor: []
 
 acls:
   Administrator:
     methods:
-      Flow_LoginSignedInMethods: GRANT
-  Editor:
-    methods:
-      Flow_LoginSignedInMethods: GRANT
+      Refactory_LoginSignedInMethods: GRANT

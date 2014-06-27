@@ -1,0 +1,123 @@
+<f:layout name="Password"/>
+
+<f:section name="Title">
+	<f:translate id="resetPassword">Reset password</f:translate>
+</f:section>
+
+<f:section name="Content">
+	<div class="application-logo">
+		<img src="resource://Refactory.Login/Public/Images/ApplicationLogo.png" alt="Application logo" />
+	</div>
+	<div id="reset-box" <f:if condition="{hasUser}"><f:then>class="notification"</f:then></f:if>>
+		<div class="process">
+			<div class="process-row">
+				<div class="process-step">
+					<button type="button" class="btn complete btn-circle" disabled="disabled"><i class="icon-pencil"></i></button>
+				</div>
+				<div class="process-step">
+					<button type="button" class="btn active btn-circle" disabled="disabled"><i class="icon-exchange"></i></button>
+				</div>
+				<div class="process-step">
+					<button type="button" class="btn btn-success btn-circle" disabled="disabled"><i class="icon-check"></i></button>
+				</div>
+			</div>
+		</div>
+		<div class="reset-body">
+			<f:if condition="{hasUser}">
+				<f:then>
+					<p>We've sent a mail to your e-mail address please:</p>
+					<h1>Check your inbox!</h1>
+					<p>To proceed resetting your password please click on the link inside the email.</p>
+				</f:then>
+				<f:else>
+					<f:if condition="{isTokenActive}">
+						<f:then>
+							<f:if condition="{isPasswordChanged}">
+								<f:else>
+									<f:form id="reset-form" action="reset"  class="form-horizontal form-block" format="json">
+										<f:form.hidden name="token" value="{token}" />
+										<div class="form-group validation">
+											<f:form.textfield id="newPassword" name="newPassword" type="password" placeholder='<f:translate id="inputNewPassword">New Password</f:translate>' />
+										</div>
+										<div class="form-group validation">
+											<f:form.textfield id="newPasswordRepeat" name="newPasswordRepeat" type="password" placeholder='<f:translate id="inputNewPasswordRepeat">Repeat new password</f:translate>' />
+										</div>
+										<div class="reset-actions feedback">
+											<button class="span5 pull-right button button-primary button-warning reset-btn" type="submit" additionalAttributes="{tabindex: 3}">
+												<f:translate id="resetPassword">Reset password ></f:translate>
+											</button>
+											<p>
+												<f:link.action controller="Login" action="login" class="pull-right">Login?</f:link.action>
+												<f:if condition="{settings.enableRegister}">
+													<f:link.action controller="Register" action="new"><f:translate id="link.registerAccount">Create user?</f:translate></f:link.action>
+												</f:if>
+											</p>
+										</div>
+									</f:form>
+								</f:else>
+							</f:if>
+						</f:then>
+						<f:else>
+							<p>You are trying to reset your password, but:</p>
+							<h1><f:translate id="tokenNotValid">This token is not valid!</f:translate></h1>
+							<p>To reset your password click <strong><f:link.action controller="Password" action="ResetRequest">here</f:link.action></strong> this will start the reset procedure.</p>
+						</f:else>
+					</f:if>
+				</f:else>
+			</f:if>
+		</div>
+	</div>
+</f:section>
+
+<f:section name="Script">
+	<script src="{f:uri.resource(path: 'Library/BootstrapValidator/js/bootstrapValidator.min.js')}"></script>
+	<script src="{f:uri.resource(path: 'Library/Pwstrength/pwstrength-bootstrap-1.1.5.min.js')}"></script>
+	<script src="{f:uri.resource(path: 'JavaScript/RequestPassword.js')}"></script>
+	<script>
+		$(document).ready(function() {
+			var options = {};
+			options.ui = {
+				container: ".reset-body",
+				showVerdictsInsideProgressBar: true,
+				viewports: {
+					progress: ".pwstrength_viewport_progress"
+				}
+			};
+			options.common = {
+				debug: true,
+				onLoad: function () {
+					$('#messages').text('Start typing password');
+				}
+			};
+
+			$('#password').pwstrength(options);
+
+			$('#reset-form').bootstrapValidator({
+				message: 'This value is not valid',
+				feedbackIcons: {
+					valid: 'icon-check',
+					invalid: 'icon-remove',
+					validating: 'icon-refresh'
+				},
+				fields: {
+					newPassword: {
+						validators: {
+							identical: {
+								field: 'newPasswordRepeat',
+								message: 'The password and its confirm are not the same'
+							}
+						}
+					},
+					newPasswordRepeat: {
+						validators: {
+							identical: {
+								field: 'newPassword',
+								message: 'The password and its confirm are not the same'
+							}
+						}
+					}
+				}
+			});
+		});
+	</script>
+</f:section>
