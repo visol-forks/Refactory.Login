@@ -37,6 +37,15 @@ To Enable routing to package
 
 Start using!
 
+Overview
+--------
+
+![Login Screen](Documentation/Images/LoginScreen.png)
+
+![Reset Password Screen](Documentation/Images/ResetPassword.png)
+
+![Register User Screen](Documentation/Images/RegisterUser.png)
+
 Authentication setup
 --------------------
 
@@ -57,6 +66,14 @@ To be able to address the login feature you will need to add these routes in the
 	  subRoutes:
 	    LoginSubroutes:
 	      package: Refactory.Login
+
+Register User
+-------------
+
+*Note that when you register a user in the frontend you will NOT create an account! This will need to be done by your application.*
+
+Because in most cases you do not want to directly create an account but want to control what will happen this is the default behaviour.
+Through AOP you can adjust this behaviour to your needs.
 
 Account ViewHelper
 ------------------
