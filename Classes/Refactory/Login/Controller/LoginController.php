@@ -123,7 +123,7 @@ class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\Abs
 		if ($originalRequest !== NULL) {
 			$uri =  $uriBuilder->uriFor($originalRequest->getControllerActionName(), $originalRequest->getArguments(), $originalRequest->getControllerName(), $originalRequest->getControllerPackageKey());
 		} else {
-			if(isset($this->settings['redirect']['authenticated'])) {
+			if(isset($this->settings['authenticatedRedirect'])) {
 				$packageKey     = $this->settings['authenticatedRedirect']['packageKey'];
 				$controllerName = $this->settings['authenticatedRedirect']['controller'];
 				$actionName     = $this->settings['authenticatedRedirect']['actionName'];
