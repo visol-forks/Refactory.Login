@@ -107,7 +107,7 @@ class RegisterController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 			// TODO Fix?! Workaround
 			$this->persistenceManager->persistAll();
 
-			$user->getPrimaryElectronicAddress($electronicAddress);
+			$user->setPrimaryElectronicAddress($electronicAddress);
 
 			$this->userRepository->update($user);
 

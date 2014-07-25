@@ -3,9 +3,9 @@ resources:
     Refactory_LoginSignedInMethods: 'method(Refactory\Login\Controller\LoginController->signedInAction())'
 
 roles:
-  Administrator: []
+  User: []
 
 acls:
-  Administrator:
+  User:
     methods:
       Refactory_LoginSignedInMethods: GRANT

@@ -14,7 +14,7 @@ namespace Refactory\Login\Command;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
- * setup command controller for the Beech.MijnVitaliteit package
+ * Setup command controller
  *
  * @Flow\Scope("singleton")
  */
@@ -62,7 +62,7 @@ class UserCommandController extends \TYPO3\Flow\Cli\CommandController {
 		}
 
 		if (empty($roles)) {
-			$roleIdentifiers = array('Refactory.Login:Administrator');
+			$roleIdentifiers = array('Refactory.Login:User');
 		} else {
 			$roleIdentifiers = \TYPO3\Flow\Utility\Arrays::trimExplode(',', $roles);
 			foreach ($roleIdentifiers as &$role) {

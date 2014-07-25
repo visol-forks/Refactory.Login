@@ -2,7 +2,7 @@
 namespace Flow\Login\Tests\Functional\Controller;
 
 /*                                                                        *
- * This script belongs to the TYPO3 Flow package "Flow.Login".  *
+ * This script belongs to the TYPO3 Flow package "Refactory.Login".       *
  *                                                                        *
  * It is free software; you can redistribute it and/or modify it under    *
  * the terms of the GNU General Public License, either version 3 of the   *
@@ -38,7 +38,7 @@ class LoginControllerTest extends \TYPO3\Flow\Tests\FunctionalTestCase {
 	}
 
 	public function permissionGrantedOnSignedInActionForAuthenticatedUser() {
-		$this->authenticateRoles(array('Administrator'));
+		$this->authenticateRoles(array('Refactory.Login:User'));
 		$response = $this->browser->request('http://localhost/login/signedin.html');
 		$this->assertEquals(200, $response->getStatusCode());
 	}
