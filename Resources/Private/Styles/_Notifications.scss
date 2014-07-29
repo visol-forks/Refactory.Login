@@ -1,0 +1,113 @@
+// Notifications
+#notification-container.notification-top {
+	position: fixed;
+	z-index: 999999;
+	top: 0;
+	left: 50%;
+	width: 325px;
+	padding-top: 8px;
+
+	@include font;
+	@include translate(-50%, 0);
+
+	> .notification {
+		color: white;
+		font-size: 14px;
+		position: relative;
+		width: 325px;
+		margin: 0 auto $tightMargin;
+		word-wrap: break-word;
+		overflow: hidden;
+		@include box-sizing(border-box);
+		@include box-shadow(0 0 14px rgba(0, 0, 0, .15));
+
+		&::before {
+			content: '';
+			display: block;
+			position: absolute;
+			right: 40px;
+			top: 0;
+			bottom: 0;
+			width: 1px;
+			background: rgba(255, 255, 255, .25);
+		}
+
+		.title {
+			padding-left: 10px;
+			margin-top: 5px;
+			font-weight: bold;
+		}
+
+		.message {
+			padding-left: 10px;
+			margin-bottom: 5px;
+		}
+
+		&.toast-error {
+			background-color: $warning;
+
+			.icon-error {
+				@extend .icon-ban-circle;
+			}
+		}
+
+		&.toast-success {
+			background-color: $green;
+
+			.icon-success {
+				@extend .icon-ok;
+			}
+		}
+
+		&.toast-warning {
+			background-color: $orange;
+
+			.icon-warning {
+				@extend .icon-warning-sign;
+			}
+		}
+
+		&.toast-info {
+			background-color: $blue;
+
+			.icon-info-circle {
+				@extend .icon-info-sign;
+			}
+		}
+
+		i {
+			height: $unit;
+			line-height: $unit;
+			width: $unit;
+			text-align: center;
+			font-size: 16px;
+			padding: 0;
+			margin: 0;
+			font-family: FontAwesome;
+			font-weight: normal;
+			font-style: normal;
+			text-decoration: inherit;
+			-webkit-font-smoothing: antialiased;
+			position: absolute;
+			top: 0;
+			left: 0;
+
+			&.toast-close-button {
+				color: white;
+				height: 40px;
+				line-height: 40px;
+				width: 40px;
+				text-align: center;
+				left: auto;
+				right: 0;
+				cursor: pointer;
+				font-size: 18px;
+				@extend .icon-remove-sign;
+
+				&:hover {
+					background-color: rgba(255, 255, 255, .25);
+				}
+			}
+		}
+	}
+}

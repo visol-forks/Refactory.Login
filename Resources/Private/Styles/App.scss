@@ -5,10 +5,13 @@
 @import "Constants";
 @import "Mixins";
 @import url('http://fonts.googleapis.com/css?family=Droid+Sans:400,700');
+@import "../../Public/Library/fontawesome/scss/font-awesome.scss";
+@import "Alerts";
 @import "StickyFooter";
 @import "Footer";
 
 $loginBoxWidth: $unit * 8;
+$notificationBoxWidth: $unit * 10;
 
 .refactory {
 	// CSS Reset
@@ -18,6 +21,9 @@ $loginBoxWidth: $unit * 8;
 	@import "Foundation/grid";
 	@import "Foundation/forms";
 	@import "Foundation/tooltip";
+	@import 'Logo';
+	@import "Process";
+	@import "Notifications";
 
 	@include font;
 
@@ -56,7 +62,9 @@ $loginBoxWidth: $unit * 8;
 		}
 	}
 
-	#login-box {
+	#register-box,
+	#login-box,
+	#reset-box {
 		background: transparent;
 		border: none;
 		position: absolute;
@@ -74,12 +82,14 @@ $loginBoxWidth: $unit * 8;
 			text-align: center;
 		}
 
+		.reset-body,
+		.reset-body,
 		.login-body {
 			padding: 0;
 			overflow: visible;
 		}
 
-		.login-actions {
+		.application-actions {
 			bottom: 0;
 			width: 100%;
 			height: $unit;
@@ -104,6 +114,7 @@ $loginBoxWidth: $unit * 8;
 					outline: none;
 				}
 
+				&.reset-btn,
 				&.login-btn {
 					background-color: $blue;
 					width: 100%;
@@ -123,9 +134,32 @@ $loginBoxWidth: $unit * 8;
 			}
 		}
 
-		.login-controls {
+		.form-controls {
 			height: $unit;
 			margin-bottom: 15px;
+		}
+
+		.form-group {
+			height: $unit;
+			margin-bottom: 15px;
+
+			&.validation {
+				margin-bottom: 25px;
+			}
+
+			&.feedback-large {
+				margin-bottom: 40px;
+			}
+
+			.pwstrength_viewport_progress {
+				position: relative;
+				background-color: $green;
+				color: $textOnGray;
+				top: -40px;
+				right: -327px;
+				padding-top: 12px;
+				padding-bottom: 12px;
+			}
 		}
 
 		.tooltip {
@@ -179,11 +213,73 @@ $loginBoxWidth: $unit * 8;
 				background-color: $green;
 			}
 		}
+
+		&.notification {
+			width: $notificationBoxWidth;
+			color: white;
+			margin-left: -($notificationBoxWidth / 2);
+
+			.reset-body {
+				background-color: $blueMedium;
+				padding: 25px 20px;
+
+				h1 {
+					text-align: center;
+				}
+
+				&.complete {
+					&:before {
+						position: absolute;
+						font-size: 370px;
+						top: 40px;
+						left: 30px;
+						font-family: 'FontAwesome';
+						content: "\f00c";
+						color: $green;
+						opacity: 0.2;
+					}
+				}
+			}
+		}
+	}
+
+	a.btn {
+		height: $unit;
+		color: #fff;
+		border: none;
+		background-image: none;
+		font-size: 15px;
+		@include text-shadow(none);
+		@include box-shadow(none);
+		@include box-sizing(border-box);
+		@include font;
+
+		&:focus {
+			outline: none;
+		}
+
+		&.reset-btn {
+			background-color: $blue;
+			width: 100%;
+			&.promise,
+			&.promise:hover
+			&.promise:focus {
+				background-color: $green;
+			}
+
+			&:hover,
+			&:focus {
+				background-color: darken($blue, 8%);
+				transition: all 300ms ease-in;
+			}
+
+		}
 	}
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
 	.refactory {
+		#reset-box,
 		#login-box {
 			position: static;
 			top: 0;

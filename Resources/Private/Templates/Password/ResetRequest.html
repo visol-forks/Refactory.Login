@@ -26,10 +26,10 @@
 			<f:form id="reset-form" class="form-horizontal" name="password" action="sendResetRequest" controller="Password" format="json">
 				<input type="hidden" name="lastVisitedNode" value="" />
 				<fieldset>
-					<div class="reset-controls">
+					<div class="form-controls">
 						<f:form.textfield name="recipient" id="inputUsernameEmail" type="text" class="form-control" placeholder="Gebruikersnaam / e-mail adres"/>
 					</div>
-					<div class="reset-actions feedback">
+					<div class="application-actions feedback">
 						<f:if condition="{settings.enableRegister}">
 							<p>
 								<f:link.action controller="Register" action="new"><f:translate id="link.registerAccount">Create user?</f:translate></f:link.action>

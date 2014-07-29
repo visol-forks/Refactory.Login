@@ -1,0 +1,40 @@
+/* Color palette */
+$bodyBackground: #fff;
+
+$grayDarker: #141414;
+$grayDark: #222;
+$grayMedium: #323232;
+$grayLight: #ebebeb;
+$grayLighter: #eee;
+$textOnWhite: #252525;
+$textOnGray: #fff;
+$linkColor: #fff;
+$linkColorHover: #00b5ff;
+$textSubtle: #5b5b5b;
+$textSubtleLight: #adadad;
+$blue: #00b5ff;
+$blueMedium: #34495E;
+$blueDark: #2D3E50;
+$green: #27AE61;
+$greenLight: #2FCC71;
+$warning: #F44932;
+$yellow: #F1C40F;
+$legend-color: $greenLight;
+$legend-border-color: $green;
+$footer-text-color: $textSubtleLight;
+
+$state-success-text:             $green;
+$state-success-bg:               #dff0d8 !default;
+$state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%) !default;
+
+$state-info-text:                $blue;
+$state-info-bg:                  #d9edf7 !default;
+$state-info-border:              darken(adjust-hue($state-info-bg, -10), 7%) !default;
+
+$state-warning-text:             $yellow;
+$state-warning-bg:               #fcf8e3 !default;
+$state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 5%) !default;
+
+$state-danger-text:              $warning;
+$state-danger-bg:                #f2dede !default;
+$state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 5%) !default;

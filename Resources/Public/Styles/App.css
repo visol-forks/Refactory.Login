@@ -340,7 +340,7 @@
 .refactory .icon-th-list:before {
   content: "\f00b";
 }
-.refactory .icon-ok:before {
+.refactory .icon-ok:before, .refactory #notification-container.notification-top > .notification.toast-success .icon-success:before {
   content: "\f00c";
 }
 .refactory .icon-remove:before {
@@ -553,7 +553,7 @@
 .refactory .icon-minus-sign:before {
   content: "\f056";
 }
-.refactory .icon-remove-sign:before {
+.refactory .icon-remove-sign:before, .refactory #notification-container.notification-top > .notification i.toast-close-button:before {
   content: "\f057";
 }
 .refactory .icon-ok-sign:before {
@@ -562,7 +562,7 @@
 .refactory .icon-question-sign:before {
   content: "\f059";
 }
-.refactory .icon-info-sign:before {
+.refactory .icon-info-sign:before, .refactory #notification-container.notification-top > .notification.toast-info .icon-info-circle:before {
   content: "\f05a";
 }
 .refactory .icon-screenshot:before {
@@ -574,7 +574,7 @@
 .refactory .icon-ok-circle:before {
   content: "\f05d";
 }
-.refactory .icon-ban-circle:before {
+.refactory .icon-ban-circle:before, .refactory #notification-container.notification-top > .notification.toast-error .icon-error:before {
   content: "\f05e";
 }
 .refactory .icon-arrow-left:before {
@@ -626,7 +626,7 @@
 .refactory .icon-eye-close:before {
   content: "\f070";
 }
-.refactory .icon-warning-sign:before {
+.refactory .icon-warning-sign:before, .refactory #notification-container.notification-top > .notification.toast-warning .icon-warning:before {
   content: "\f071";
 }
 .refactory .icon-plane:before {
@@ -3069,6 +3069,11 @@ footer p {
   border-width: 0 5px 5px;
   border-bottom-color: black;
 }
+.refactory .application-logo {
+  margin: 20px;
+  position: absolute;
+  right: 0;
+}
 .refactory .stepwizard-step p {
   margin-top: 10px;
 }
@@ -3122,10 +3127,97 @@ footer p {
 .refactory .btn-circle.complete {
   color: #27ae61;
 }
-.refactory .application-logo {
-  margin: 20px;
+.refactory #notification-container.notification-top {
+  position: fixed;
+  z-index: 999999;
+  top: 0;
+  left: 50%;
+  width: 325px;
+  padding-top: 8px;
+  font-family: 'Droid Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+}
+.refactory #notification-container.notification-top > .notification {
+  color: white;
+  font-size: 14px;
+  position: relative;
+  width: 325px;
+  margin: 0 auto 4px;
+  word-wrap: break-word;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0 0 14px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 14px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.15);
+}
+.refactory #notification-container.notification-top > .notification::before {
+  content: '';
+  display: block;
   position: absolute;
+  right: 40px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.25);
+}
+.refactory #notification-container.notification-top > .notification .title {
+  padding-left: 10px;
+  margin-top: 5px;
+  font-weight: bold;
+}
+.refactory #notification-container.notification-top > .notification .message {
+  padding-left: 10px;
+  margin-bottom: 5px;
+}
+.refactory #notification-container.notification-top > .notification.toast-error {
+  background-color: #f44932;
+}
+.refactory #notification-container.notification-top > .notification.toast-success {
+  background-color: #27ae61;
+}
+.refactory #notification-container.notification-top > .notification.toast-warning {
+  background-color: #f89406;
+}
+.refactory #notification-container.notification-top > .notification.toast-info {
+  background-color: #00b5ff;
+}
+.refactory #notification-container.notification-top > .notification i {
+  height: 40px;
+  line-height: 40px;
+  width: 40px;
+  text-align: center;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: inherit;
+  -webkit-font-smoothing: antialiased;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.refactory #notification-container.notification-top > .notification i.toast-close-button {
+  color: white;
+  height: 40px;
+  line-height: 40px;
+  width: 40px;
+  text-align: center;
+  left: auto;
   right: 0;
+  cursor: pointer;
+  font-size: 18px;
+}
+.refactory #notification-container.notification-top > .notification i.toast-close-button:hover {
+  background-color: rgba(255, 255, 255, 0.25);
 }
 .refactory input[type="text"],
 .refactory input[type="password"] {
@@ -3173,11 +3265,13 @@ footer p {
   -webkit-box-shadow: 0 0 0 50px #fff inset;
   -webkit-text-fill-color: #252525;
 }
-.refactory #register-box {
+.refactory #register-box,
+.refactory #login-box,
+.refactory #reset-box {
   background: transparent;
   border: none;
   position: absolute;
-  top: 35%;
+  top: 45%;
   left: 50%;
   width: 320px;
   margin-top: -125px;
@@ -3190,29 +3284,40 @@ footer p {
   -moz-border-radius: none;
   border-radius: none;
 }
-.refactory #register-box.notification {
-  width: 400px;
-  color: white;
-  margin-left: -200px;
+.refactory #register-box .login-logo,
+.refactory #login-box .login-logo,
+.refactory #reset-box .login-logo {
+  margin-bottom: 30px;
+  text-align: center;
 }
-.refactory #register-box.notification .register-body {
-  background-color: #34495e;
-  padding: 25px 20px;
-}
-.refactory #register-box .register-body {
+.refactory #register-box .reset-body,
+.refactory #register-box .reset-body,
+.refactory #register-box .login-body,
+.refactory #login-box .reset-body,
+.refactory #login-box .reset-body,
+.refactory #login-box .login-body,
+.refactory #reset-box .reset-body,
+.refactory #reset-box .reset-body,
+.refactory #reset-box .login-body {
   padding: 0;
   overflow: visible;
 }
-.refactory #register-box .register-actions {
+.refactory #register-box .application-actions,
+.refactory #login-box .application-actions,
+.refactory #reset-box .application-actions {
   bottom: 0;
   width: 100%;
   height: 40px;
 }
-.refactory #register-box .register-actions .utility {
+.refactory #register-box .application-actions .utility,
+.refactory #login-box .application-actions .utility,
+.refactory #reset-box .application-actions .utility {
   height: 20px;
   margin-bottom: 10px;
 }
-.refactory #register-box .register-actions button {
+.refactory #register-box .application-actions button,
+.refactory #login-box .application-actions button,
+.refactory #reset-box .application-actions button {
   height: 40px;
   color: #fff;
   border: none;
@@ -3228,29 +3333,73 @@ footer p {
   font-family: 'Droid Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
-.refactory #register-box .register-actions button:focus {
+.refactory #register-box .application-actions button:focus,
+.refactory #login-box .application-actions button:focus,
+.refactory #reset-box .application-actions button:focus {
   outline: none;
 }
-.refactory #register-box .register-actions button.login-btn {
+.refactory #register-box .application-actions button.reset-btn, .refactory #register-box .application-actions button.login-btn,
+.refactory #login-box .application-actions button.reset-btn,
+.refactory #login-box .application-actions button.login-btn,
+.refactory #reset-box .application-actions button.reset-btn,
+.refactory #reset-box .application-actions button.login-btn {
   background-color: #00b5ff;
   width: 100%;
 }
-.refactory #register-box .register-actions button.login-btn.promise, .refactory #register-box .register-actions button.login-btn.promise:hover
-.refactory #register-box .register-actions button.login-btn.promise:focus {
+.refactory #register-box .application-actions button.reset-btn.promise, .refactory #register-box .application-actions button.reset-btn.promise:hover
+.refactory #register-box .application-actions button.reset-btn.promise:focus, .refactory #register-box .application-actions button.login-btn.promise, .refactory #register-box .application-actions button.login-btn.promise:hover
+.refactory #register-box .application-actions button.login-btn.promise:focus,
+.refactory #login-box .application-actions button.reset-btn.promise,
+.refactory #login-box .application-actions button.reset-btn.promise:hover
+.refactory #login-box .application-actions button.reset-btn.promise:focus,
+.refactory #login-box .application-actions button.login-btn.promise,
+.refactory #login-box .application-actions button.login-btn.promise:hover
+.refactory #login-box .application-actions button.login-btn.promise:focus,
+.refactory #reset-box .application-actions button.reset-btn.promise,
+.refactory #reset-box .application-actions button.reset-btn.promise:hover
+.refactory #reset-box .application-actions button.reset-btn.promise:focus,
+.refactory #reset-box .application-actions button.login-btn.promise,
+.refactory #reset-box .application-actions button.login-btn.promise:hover
+.refactory #reset-box .application-actions button.login-btn.promise:focus {
   background-color: #27ae61;
 }
-.refactory #register-box .register-actions button.login-btn:hover, .refactory #register-box .register-actions button.login-btn:focus {
+.refactory #register-box .application-actions button.reset-btn:hover, .refactory #register-box .application-actions button.reset-btn:focus, .refactory #register-box .application-actions button.login-btn:hover, .refactory #register-box .application-actions button.login-btn:focus,
+.refactory #login-box .application-actions button.reset-btn:hover,
+.refactory #login-box .application-actions button.reset-btn:focus,
+.refactory #login-box .application-actions button.login-btn:hover,
+.refactory #login-box .application-actions button.login-btn:focus,
+.refactory #reset-box .application-actions button.reset-btn:hover,
+.refactory #reset-box .application-actions button.reset-btn:focus,
+.refactory #reset-box .application-actions button.login-btn:hover,
+.refactory #reset-box .application-actions button.login-btn:focus {
   background-color: #0098d6;
   transition: all 300ms ease-in;
 }
-.refactory #register-box .form-group {
+.refactory #register-box .form-controls,
+.refactory #login-box .form-controls,
+.refactory #reset-box .form-controls {
   height: 40px;
+  margin-bottom: 15px;
+}
+.refactory #register-box .form-group,
+.refactory #login-box .form-group,
+.refactory #reset-box .form-group {
+  height: 40px;
+  margin-bottom: 15px;
+}
+.refactory #register-box .form-group.validation,
+.refactory #login-box .form-group.validation,
+.refactory #reset-box .form-group.validation {
   margin-bottom: 25px;
 }
-.refactory #register-box .form-group.feedback-large {
+.refactory #register-box .form-group.feedback-large,
+.refactory #login-box .form-group.feedback-large,
+.refactory #reset-box .form-group.feedback-large {
   margin-bottom: 40px;
 }
-.refactory #register-box .form-group .pwstrength_viewport_progress {
+.refactory #register-box .form-group .pwstrength_viewport_progress,
+.refactory #login-box .form-group .pwstrength_viewport_progress,
+.refactory #reset-box .form-group .pwstrength_viewport_progress {
   position: relative;
   background-color: #27ae61;
   color: white;
@@ -3259,7 +3408,9 @@ footer p {
   padding-top: 12px;
   padding-bottom: 12px;
 }
-.refactory #register-box .tooltip {
+.refactory #register-box .tooltip,
+.refactory #login-box .tooltip,
+.refactory #reset-box .tooltip {
   left: -4px;
   top: 0;
   width: 100%;
@@ -3267,20 +3418,28 @@ footer p {
   clear: both;
   float: none;
 }
-.refactory #register-box .tooltip.bottom {
+.refactory #register-box .tooltip.bottom,
+.refactory #login-box .tooltip.bottom,
+.refactory #reset-box .tooltip.bottom {
   padding: 8px 0 0 0;
   margin-left: 4px;
   margin-top: -1px;
 }
-.refactory #register-box .tooltip.in {
+.refactory #register-box .tooltip.in,
+.refactory #login-box .tooltip.in,
+.refactory #reset-box .tooltip.in {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
-.refactory #register-box .tooltip .tooltip-arrow {
+.refactory #register-box .tooltip .tooltip-arrow,
+.refactory #login-box .tooltip .tooltip-arrow,
+.refactory #reset-box .tooltip .tooltip-arrow {
   margin-left: -8px;
   border-width: 0 8px 8px 8px;
 }
-.refactory #register-box .tooltip .tooltip-inner {
+.refactory #register-box .tooltip .tooltip-inner,
+.refactory #login-box .tooltip .tooltip-inner,
+.refactory #reset-box .tooltip .tooltip-inner {
   max-width: 320px;
   font-size: 13px;
   color: #fff;
@@ -3291,20 +3450,90 @@ footer p {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.refactory #register-box .tooltip-error .tooltip-arrow {
+.refactory #register-box .tooltip-error .tooltip-arrow,
+.refactory #login-box .tooltip-error .tooltip-arrow,
+.refactory #reset-box .tooltip-error .tooltip-arrow {
   border-bottom-color: #f44932;
 }
-.refactory #register-box .tooltip-error .tooltip-inner {
+.refactory #register-box .tooltip-error .tooltip-inner,
+.refactory #login-box .tooltip-error .tooltip-inner,
+.refactory #reset-box .tooltip-error .tooltip-inner {
   background-color: #f44932;
 }
-.refactory #register-box .tooltip-notice .tooltip-arrow {
+.refactory #register-box .tooltip-notice .tooltip-arrow,
+.refactory #login-box .tooltip-notice .tooltip-arrow,
+.refactory #reset-box .tooltip-notice .tooltip-arrow {
   border-bottom-color: #27ae61;
 }
-.refactory #register-box .tooltip-notice .tooltip-inner {
+.refactory #register-box .tooltip-notice .tooltip-inner,
+.refactory #login-box .tooltip-notice .tooltip-inner,
+.refactory #reset-box .tooltip-notice .tooltip-inner {
   background-color: #27ae61;
+}
+.refactory #register-box.notification,
+.refactory #login-box.notification,
+.refactory #reset-box.notification {
+  width: 400px;
+  color: white;
+  margin-left: -200px;
+}
+.refactory #register-box.notification .reset-body,
+.refactory #login-box.notification .reset-body,
+.refactory #reset-box.notification .reset-body {
+  background-color: #34495e;
+  padding: 25px 20px;
+}
+.refactory #register-box.notification .reset-body h1,
+.refactory #login-box.notification .reset-body h1,
+.refactory #reset-box.notification .reset-body h1 {
+  text-align: center;
+}
+.refactory #register-box.notification .reset-body.complete:before,
+.refactory #login-box.notification .reset-body.complete:before,
+.refactory #reset-box.notification .reset-body.complete:before {
+  position: absolute;
+  font-size: 370px;
+  top: 40px;
+  left: 30px;
+  font-family: 'FontAwesome';
+  content: "\f00c";
+  color: #27ae61;
+  opacity: 0.2;
+}
+.refactory a.btn {
+  height: 40px;
+  color: #fff;
+  border: none;
+  background-image: none;
+  font-size: 15px;
+  text-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: 'Droid Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.refactory a.btn:focus {
+  outline: none;
+}
+.refactory a.btn.reset-btn {
+  background-color: #00b5ff;
+  width: 100%;
+}
+.refactory a.btn.reset-btn.promise, .refactory a.btn.reset-btn.promise:hover
+.refactory a.btn.reset-btn.promise:focus {
+  background-color: #27ae61;
+}
+.refactory a.btn.reset-btn:hover, .refactory a.btn.reset-btn:focus {
+  background-color: #0098d6;
+  transition: all 300ms ease-in;
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
+  .refactory #reset-box,
   .refactory #login-box {
     position: static;
     top: 0;

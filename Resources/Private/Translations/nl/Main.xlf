@@ -15,6 +15,14 @@
 				<source>Password</source>
 				<target>Wachtwoord</target>
 			</trans-unit>
+			<trans-unit id="authentication.username.placeholder">
+				<source>Username</source>
+				<target>Gebruikersnaam</target>
+			</trans-unit>
+			<trans-unit id="authentication.password.placeholder">
+				<source>Password</source>
+				<target>Wachtwoord</target>
+			</trans-unit>
 			<trans-unit id="rememberMe">
 				<source>Remember me</source>
 				<target>Onthoud mij</target>

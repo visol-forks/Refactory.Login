@@ -1,0 +1,143 @@
+@import "White/Constants";
+
+.refactory.theme {
+	background-color: $bodyBackground;
+
+	a {
+		color: $textSubtleLight;
+	}
+
+	input[type="text"],
+	input[type="password"] {
+		border: 2px solid $grayLight;
+		background-color: $grayLight;
+		color: $textOnWhite;
+
+		&:focus {
+			background-color: #fff;
+			border: 2px solid $grayLight;
+			color: $textOnWhite;
+		}
+
+		&:-webkit-autofill {
+			-webkit-box-shadow: 0 0 0 50px $grayMedium inset;
+			-webkit-text-fill-color: $textOnGray;
+
+			&:focus {
+				-webkit-box-shadow: 0 0 0 50px #fff inset;
+				-webkit-text-fill-color: $textOnWhite;
+			}
+		}
+	}
+
+	#login-box,
+	#reset-box {
+		background: transparent;
+
+		.reset-actions,
+		.login-actions {
+			button {
+				color: #fff;
+
+				&.reset-btn,
+				&.login-btn {
+					background-color: $blue;
+
+					&.promise,
+					&.promise:hover
+					&.promise:focus {
+						background-color: $green;
+					}
+
+					&:hover,
+					&:focus {
+						background-color: darken($blue, 8%);
+					}
+
+				}
+			}
+		}
+
+		.tooltip {
+			.tooltip-inner {
+				color: #fff;
+			}
+		}
+
+		.tooltip-error {
+			.tooltip-arrow {
+				border-bottom-color: $warning;
+			}
+
+			.tooltip-inner {
+				background-color: $warning;
+			}
+		}
+
+		.tooltip-notice {
+			.tooltip-arrow {
+				border-bottom-color: $green;
+			}
+
+			.tooltip-inner {
+				background-color: $green;
+			}
+		}
+
+		&.notification {
+			color: white;
+
+			.reset-body {
+				background-color: $blueMedium;
+
+				&.complete {
+					&:before {
+						color: $green;
+					}
+				}
+			}
+		}
+	}
+
+	a.btn {
+		color: #323232;
+
+		&.reset-btn {
+			background-color: $blue;
+
+			&.promise,
+			&.promise:hover
+			&.promise:focus {
+				background-color: $green;
+			}
+
+			&:hover,
+			&:focus {
+				background-color: darken($blue, 8%);
+			}
+		}
+	}
+
+	.process-row:before {
+		background-color: $grayLight;
+	}
+
+	.btn-circle {
+		background-color: white;
+		color: $textSubtleLight;
+		border: solid 2px $grayLight;
+
+		&.active {
+			color: white;
+			background-color: $blue;
+		}
+
+		&.complete {
+			color: $green;
+		}
+	}
+
+	footer {
+		color: $footer-text-color;
+	}
+}

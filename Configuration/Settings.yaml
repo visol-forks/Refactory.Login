@@ -14,22 +14,10 @@ TYPO3:
               '@action': 'index'
 
 Refactory:
-  Mail:
-    viewHelpers:
-      partialRootPath: 'resource://BeechIt.Mail/Private/Templates/ViewHelpers/Partials/'
-      templates:
-        'BeechIt\Mail\ViewHelpers\MailTemplateViewHelper':
-           default: 'resource://BeechIt.Mail/Private/Templates/ViewHelpers/DefaultMailTemplate.html'
-           passwordResetInstruction: 'resource://BeechIt.Login/Private/Templates/Mail/PasswordResetInstruction.html'
-           passwordChangeConfirmation: 'resource://BeechIt.Login/Private/Templates/Mail/PasswordChangeConfirmation.html'
-           confirmationRegistration: 'resource://BeechIt.Login/Private/Templates/Mail/ConfirmationRegistration.html'
-    mail:
-      from:
-        email: 'info@beech.it'
-        name: 'Info'
   Login:
     tokenExpiration: 14400 # in seconds
     enableRegister: TRUE
+    image: 'resource://Refactory.Login/Public/Images/ApplicationLogo.png'
 #    styles:
 #      - resource://Vendor.MyPackage/Public/Styles/Custom.css'
 #    authenticatedRedirect:

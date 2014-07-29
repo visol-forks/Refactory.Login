@@ -1,0 +1,149 @@
+/* Color palette */
+.refactory.theme {
+  background-color: white;
+}
+.refactory.theme a {
+  color: #adadad;
+}
+.refactory.theme input[type="text"],
+.refactory.theme input[type="password"] {
+  border: 2px solid #ebebeb;
+  background-color: #ebebeb;
+  color: #252525;
+}
+.refactory.theme input[type="text"]:focus,
+.refactory.theme input[type="password"]:focus {
+  background-color: #fff;
+  border: 2px solid #ebebeb;
+  color: #252525;
+}
+.refactory.theme input[type="text"]:-webkit-autofill,
+.refactory.theme input[type="password"]:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 50px #323232 inset;
+  -webkit-text-fill-color: white;
+}
+.refactory.theme input[type="text"]:-webkit-autofill:focus,
+.refactory.theme input[type="password"]:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 50px #fff inset;
+  -webkit-text-fill-color: #252525;
+}
+.refactory.theme #login-box,
+.refactory.theme #reset-box {
+  background: transparent;
+}
+.refactory.theme #login-box .reset-actions button,
+.refactory.theme #login-box .login-actions button,
+.refactory.theme #reset-box .reset-actions button,
+.refactory.theme #reset-box .login-actions button {
+  color: #fff;
+}
+.refactory.theme #login-box .reset-actions button.reset-btn, .refactory.theme #login-box .reset-actions button.login-btn,
+.refactory.theme #login-box .login-actions button.reset-btn,
+.refactory.theme #login-box .login-actions button.login-btn,
+.refactory.theme #reset-box .reset-actions button.reset-btn,
+.refactory.theme #reset-box .reset-actions button.login-btn,
+.refactory.theme #reset-box .login-actions button.reset-btn,
+.refactory.theme #reset-box .login-actions button.login-btn {
+  background-color: #00b5ff;
+}
+.refactory.theme #login-box .reset-actions button.reset-btn.promise, .refactory.theme #login-box .reset-actions button.reset-btn.promise:hover
+.refactory.theme #login-box .reset-actions button.reset-btn.promise:focus, .refactory.theme #login-box .reset-actions button.login-btn.promise, .refactory.theme #login-box .reset-actions button.login-btn.promise:hover
+.refactory.theme #login-box .reset-actions button.login-btn.promise:focus,
+.refactory.theme #login-box .login-actions button.reset-btn.promise,
+.refactory.theme #login-box .login-actions button.reset-btn.promise:hover
+.refactory.theme #login-box .login-actions button.reset-btn.promise:focus,
+.refactory.theme #login-box .login-actions button.login-btn.promise,
+.refactory.theme #login-box .login-actions button.login-btn.promise:hover
+.refactory.theme #login-box .login-actions button.login-btn.promise:focus,
+.refactory.theme #reset-box .reset-actions button.reset-btn.promise,
+.refactory.theme #reset-box .reset-actions button.reset-btn.promise:hover
+.refactory.theme #reset-box .reset-actions button.reset-btn.promise:focus,
+.refactory.theme #reset-box .reset-actions button.login-btn.promise,
+.refactory.theme #reset-box .reset-actions button.login-btn.promise:hover
+.refactory.theme #reset-box .reset-actions button.login-btn.promise:focus,
+.refactory.theme #reset-box .login-actions button.reset-btn.promise,
+.refactory.theme #reset-box .login-actions button.reset-btn.promise:hover
+.refactory.theme #reset-box .login-actions button.reset-btn.promise:focus,
+.refactory.theme #reset-box .login-actions button.login-btn.promise,
+.refactory.theme #reset-box .login-actions button.login-btn.promise:hover
+.refactory.theme #reset-box .login-actions button.login-btn.promise:focus {
+  background-color: #27ae61;
+}
+.refactory.theme #login-box .reset-actions button.reset-btn:hover, .refactory.theme #login-box .reset-actions button.reset-btn:focus, .refactory.theme #login-box .reset-actions button.login-btn:hover, .refactory.theme #login-box .reset-actions button.login-btn:focus,
+.refactory.theme #login-box .login-actions button.reset-btn:hover,
+.refactory.theme #login-box .login-actions button.reset-btn:focus,
+.refactory.theme #login-box .login-actions button.login-btn:hover,
+.refactory.theme #login-box .login-actions button.login-btn:focus,
+.refactory.theme #reset-box .reset-actions button.reset-btn:hover,
+.refactory.theme #reset-box .reset-actions button.reset-btn:focus,
+.refactory.theme #reset-box .reset-actions button.login-btn:hover,
+.refactory.theme #reset-box .reset-actions button.login-btn:focus,
+.refactory.theme #reset-box .login-actions button.reset-btn:hover,
+.refactory.theme #reset-box .login-actions button.reset-btn:focus,
+.refactory.theme #reset-box .login-actions button.login-btn:hover,
+.refactory.theme #reset-box .login-actions button.login-btn:focus {
+  background-color: #0098d6;
+}
+.refactory.theme #login-box .tooltip .tooltip-inner,
+.refactory.theme #reset-box .tooltip .tooltip-inner {
+  color: #fff;
+}
+.refactory.theme #login-box .tooltip-error .tooltip-arrow,
+.refactory.theme #reset-box .tooltip-error .tooltip-arrow {
+  border-bottom-color: #f44932;
+}
+.refactory.theme #login-box .tooltip-error .tooltip-inner,
+.refactory.theme #reset-box .tooltip-error .tooltip-inner {
+  background-color: #f44932;
+}
+.refactory.theme #login-box .tooltip-notice .tooltip-arrow,
+.refactory.theme #reset-box .tooltip-notice .tooltip-arrow {
+  border-bottom-color: #27ae61;
+}
+.refactory.theme #login-box .tooltip-notice .tooltip-inner,
+.refactory.theme #reset-box .tooltip-notice .tooltip-inner {
+  background-color: #27ae61;
+}
+.refactory.theme #login-box.notification,
+.refactory.theme #reset-box.notification {
+  color: white;
+}
+.refactory.theme #login-box.notification .reset-body,
+.refactory.theme #reset-box.notification .reset-body {
+  background-color: #34495e;
+}
+.refactory.theme #login-box.notification .reset-body.complete:before,
+.refactory.theme #reset-box.notification .reset-body.complete:before {
+  color: #27ae61;
+}
+.refactory.theme a.btn {
+  color: #323232;
+}
+.refactory.theme a.btn.reset-btn {
+  background-color: #00b5ff;
+}
+.refactory.theme a.btn.reset-btn.promise, .refactory.theme a.btn.reset-btn.promise:hover
+.refactory.theme a.btn.reset-btn.promise:focus {
+  background-color: #27ae61;
+}
+.refactory.theme a.btn.reset-btn:hover, .refactory.theme a.btn.reset-btn:focus {
+  background-color: #0098d6;
+}
+.refactory.theme .process-row:before {
+  background-color: #ebebeb;
+}
+.refactory.theme .btn-circle {
+  background-color: white;
+  color: #adadad;
+  border: solid 2px #ebebeb;
+}
+.refactory.theme .btn-circle.active {
+  color: white;
+  background-color: #00b5ff;
+}
+.refactory.theme .btn-circle.complete {
+  color: #27ae61;
+}
+.refactory.theme footer {
+  color: #adadad;
+}

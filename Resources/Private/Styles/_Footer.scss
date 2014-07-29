@@ -1,7 +1,7 @@
 footer {
 	@include font;
 	text-align: center;
-	color: #F4F4F4;
+	color: $footer-text-color;
 	font-size: 13px;
 	p {
 		margin: 10px 15px;

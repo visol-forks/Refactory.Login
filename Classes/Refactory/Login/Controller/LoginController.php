@@ -12,6 +12,7 @@ namespace Refactory\Login\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Error\Message;
 
 /**
  * A controller which allows for loggin into a application
@@ -97,7 +98,7 @@ class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\Abs
 
 		switch ($this->request->getFormat()) {
 			default:
-				$this->flashMessageContainer->addMessage(new \TYPO3\Flow\Error\Message('Successfully logged out.', 1318421560));
+				$this->addFlashMessage('Successfully signed out.', 'Logged Out', Message::SEVERITY_NOTICE);
 				$this->redirect('login');
 				break;
 		}

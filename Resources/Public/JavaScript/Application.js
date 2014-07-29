@@ -38,3 +38,27 @@
 		});
 	 };
  })(jQuery);
+
+var notificationOptions = {
+	tapToDismiss: false,
+	toastClass: 'notification',
+	containerId: 'notification-container',
+	iconClasses: {
+		error: 'notification-error',
+		info: 'notification-info',
+		success: 'notification-success',
+		warning: 'notification-warning'
+	},
+	titleClass: 'title',
+	messageClass: 'message',
+	closeHtml: '<i class="icon-remove"></i>',
+	positionClass: 'notification-top',
+	showMethod: 'slideDown',
+	hideMethod: 'slideUp',
+	hideDuration: 500,
+	showEasing: 'easeOutBounce',
+	hideEasing: 'easeInCubic',
+	timeOut: 0,
+	extendedTimeOut: 0,
+	closeButton: true
+};

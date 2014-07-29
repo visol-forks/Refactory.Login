@@ -6,10 +6,10 @@
 		<link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Styles/Register.css')}" />
 		<link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Library/BootstrapValidator/css/bootstrapValidator.min.css')}" />
 		<f:for each="{settings.styles}" as="style">
-			<link rel="stylesheet" type="text/css" href="{style}" />
+			<link rel="stylesheet" type="text/css" href="{f:uri.resource(path: style)}" />
 		</f:for>
 	</head>
-	<body class="refactory">
+	<body class="refactory theme">
 	<div id="wrap">
 			<f:render section="Content" />
 		<div id="push"></div>

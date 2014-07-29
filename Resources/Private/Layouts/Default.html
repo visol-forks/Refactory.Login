@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="utf-8">
 		<title><f:render section="Title" /></title>
-		<link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Styles/Application.css')}" />
+		<link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Styles/SignedIn.css')}" />
 		<f:for each="{settings.styles}" as="style">
-			<link rel="stylesheet" type="text/css" href="{style}" />
+			<link rel="stylesheet" type="text/css" href="{f:uri.resource(path: style)}" />
 		</f:for>
 	</head>
 	<body class="refactory">

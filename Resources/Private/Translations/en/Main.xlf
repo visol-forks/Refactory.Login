@@ -9,7 +9,13 @@
 			<trans-unit id="userName">
 				<source>Username</source>
 			</trans-unit>
+			<trans-unit id="authentication.username.placeholder">
+				<source>Username</source>
+			</trans-unit>
 			<trans-unit id="passWord">
+				<source>Password</source>
+			</trans-unit>
+			<trans-unit id="authentication.password.placeholder">
 				<source>Password</source>
 			</trans-unit>
 			<transunit id="loginPanel">
