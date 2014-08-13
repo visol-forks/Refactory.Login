@@ -6,7 +6,14 @@
 
 <f:section name="Content">
 	<div class="application-logo">
-		<img src="resource://Refactory.Login/Public/Images/ApplicationLogo.png" alt="Application logo" />
+		<f:if condition="{settings.image}">
+			<f:then>
+				<img src="{f:uri.resource(path: settings.image)}" alt="Application logo" />
+			</f:then>
+			<f:else>
+				<img src="resource://Refactory.Login/Public/Images/ApplicationLogo.png" alt="Application logo" />
+			</f:else>
+		</f:if>
 	</div>
 	<div id="reset-box" <f:if condition="{hasUser}"><f:then>class="notification"</f:then></f:if>>
 		<div class="process">
@@ -43,7 +50,7 @@
 											<f:form.textfield id="newPasswordRepeat" name="newPasswordRepeat" type="password" placeholder='<f:translate id="inputNewPasswordRepeat">Repeat new password</f:translate>' />
 										</div>
 										<div class="application-actions feedback">
-											<button class="span5 pull-right button button-primary button-warning reset-btn" type="submit" additionalAttributes="{tabindex: 3}">
+											<button class="span5 pull-right button button-primary button-warning reset-btn" data-loading-text="Loading..." type="submit" additionalAttributes="{tabindex: 3}">
 												<f:translate id="resetPassword">Reset password ></f:translate>
 											</button>
 											<p>

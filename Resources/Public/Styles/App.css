@@ -3074,6 +3074,9 @@ footer p {
   position: absolute;
   right: 0;
 }
+.refactory .application-logo img {
+  width: 150px;
+}
 .refactory .stepwizard-step p {
   margin-top: 10px;
 }
@@ -3346,23 +3349,6 @@ footer p {
   background-color: #00b5ff;
   width: 100%;
 }
-.refactory #register-box .application-actions button.reset-btn.promise, .refactory #register-box .application-actions button.reset-btn.promise:hover
-.refactory #register-box .application-actions button.reset-btn.promise:focus, .refactory #register-box .application-actions button.login-btn.promise, .refactory #register-box .application-actions button.login-btn.promise:hover
-.refactory #register-box .application-actions button.login-btn.promise:focus,
-.refactory #login-box .application-actions button.reset-btn.promise,
-.refactory #login-box .application-actions button.reset-btn.promise:hover
-.refactory #login-box .application-actions button.reset-btn.promise:focus,
-.refactory #login-box .application-actions button.login-btn.promise,
-.refactory #login-box .application-actions button.login-btn.promise:hover
-.refactory #login-box .application-actions button.login-btn.promise:focus,
-.refactory #reset-box .application-actions button.reset-btn.promise,
-.refactory #reset-box .application-actions button.reset-btn.promise:hover
-.refactory #reset-box .application-actions button.reset-btn.promise:focus,
-.refactory #reset-box .application-actions button.login-btn.promise,
-.refactory #reset-box .application-actions button.login-btn.promise:hover
-.refactory #reset-box .application-actions button.login-btn.promise:focus {
-  background-color: #27ae61;
-}
 .refactory #register-box .application-actions button.reset-btn:hover, .refactory #register-box .application-actions button.reset-btn:focus, .refactory #register-box .application-actions button.login-btn:hover, .refactory #register-box .application-actions button.login-btn:focus,
 .refactory #login-box .application-actions button.reset-btn:hover,
 .refactory #login-box .application-actions button.reset-btn:focus,
@@ -3374,6 +3360,21 @@ footer p {
 .refactory #reset-box .application-actions button.login-btn:focus {
   background-color: #0098d6;
   transition: all 300ms ease-in;
+}
+.refactory #register-box .application-actions button.reset-btn.disabled, .refactory #register-box .application-actions button.reset-btn.disabled:hover, .refactory #register-box .application-actions button.reset-btn.disabled:focus, .refactory #register-box .application-actions button.login-btn.disabled, .refactory #register-box .application-actions button.login-btn.disabled:hover, .refactory #register-box .application-actions button.login-btn.disabled:focus,
+.refactory #login-box .application-actions button.reset-btn.disabled,
+.refactory #login-box .application-actions button.reset-btn.disabled:hover,
+.refactory #login-box .application-actions button.reset-btn.disabled:focus,
+.refactory #login-box .application-actions button.login-btn.disabled,
+.refactory #login-box .application-actions button.login-btn.disabled:hover,
+.refactory #login-box .application-actions button.login-btn.disabled:focus,
+.refactory #reset-box .application-actions button.reset-btn.disabled,
+.refactory #reset-box .application-actions button.reset-btn.disabled:hover,
+.refactory #reset-box .application-actions button.reset-btn.disabled:focus,
+.refactory #reset-box .application-actions button.login-btn.disabled,
+.refactory #reset-box .application-actions button.login-btn.disabled:hover,
+.refactory #reset-box .application-actions button.login-btn.disabled:focus {
+  background-color: #27ae61;
 }
 .refactory #register-box .form-controls,
 .refactory #login-box .form-controls,

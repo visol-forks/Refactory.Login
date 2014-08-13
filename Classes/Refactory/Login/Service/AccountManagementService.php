@@ -95,14 +95,9 @@ class AccountManagementService {
 	 * @throws \TYPO3\Flow\Exception
 	 */
 	public function generateResetPasswordTokenForParty(AbstractParty $party, \TYPO3\Flow\Mvc\ActionRequest $request = NULL) {
-		try {
-			$account = $this->getAccountByParty($party);
-			$request->getHttpRequest()->getClientIpAddress();
-			return $this->generateResetPasswordToken($account, $request);
-		} catch (\TYPO3\Flow\Exception $exception) {
-			$this->addFlashMessage('Account doesn\'t exists');
-			throw $exception;
-		}
+		$account = $this->getAccountByParty($party);
+		$request->getHttpRequest()->getClientIpAddress();
+		return $this->generateResetPasswordToken($account, $request);
 	}
 
 	/**

@@ -20,16 +20,15 @@
 		}
 
 		&:-webkit-autofill {
-			-webkit-box-shadow: 0 0 0 50px $grayMedium inset;
-			-webkit-text-fill-color: $textOnGray;
+			-webkit-box-shadow: 0 0 0 50px $grayLight inset;
+			-webkit-text-fill-color: $textOnWhite;
 
 			&:focus {
 				-webkit-box-shadow: 0 0 0 50px #fff inset;
-				-webkit-text-fill-color: $textOnWhite;
+				-webkit-text-fill-color: $grayLight;
 			}
 		}
 	}
-
 	#login-box,
 	#reset-box {
 		background: transparent;
@@ -88,7 +87,7 @@
 			color: white;
 
 			.reset-body {
-				background-color: $blueMedium;
+				background-color: $blue;
 
 				&.complete {
 					&:before {

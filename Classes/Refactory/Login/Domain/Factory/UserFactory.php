@@ -51,7 +51,7 @@ class UserFactory {
 		$electronicAddress->setIdentifier($email);
 
 		$user->addElectronicAddress($electronicAddress);
-		$user->getPrimaryElectronicAddress($electronicAddress);
+		$user->setPrimaryElectronicAddress($electronicAddress);
 
 		$account = $this->accountFactory->createAccountWithPassword($username, $password, $roleIdentifiers, 'DefaultProvider');
 		$user->addAccount($account);

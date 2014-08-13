@@ -118,11 +118,6 @@ $notificationBoxWidth: $unit * 10;
 				&.login-btn {
 					background-color: $blue;
 					width: 100%;
-					&.promise,
-					&.promise:hover
-					&.promise:focus {
-						background-color: $green;
-					}
 
 					&:hover,
 					&:focus {
@@ -130,6 +125,11 @@ $notificationBoxWidth: $unit * 10;
 						transition: all 300ms ease-in;
 					}
 
+					&.disabled,
+					&.disabled:hover,
+					&.disabled:focus {
+						background-color: $green;
+					}
 				}
 			}
 		}

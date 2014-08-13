@@ -19,13 +19,13 @@
 }
 .refactory.theme input[type="text"]:-webkit-autofill,
 .refactory.theme input[type="password"]:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 50px #323232 inset;
-  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0 50px #ebebeb inset;
+  -webkit-text-fill-color: #252525;
 }
 .refactory.theme input[type="text"]:-webkit-autofill:focus,
 .refactory.theme input[type="password"]:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0 50px #fff inset;
-  -webkit-text-fill-color: #252525;
+  -webkit-text-fill-color: #ebebeb;
 }
 .refactory.theme #login-box,
 .refactory.theme #reset-box {
@@ -110,7 +110,7 @@
 }
 .refactory.theme #login-box.notification .reset-body,
 .refactory.theme #reset-box.notification .reset-body {
-  background-color: #34495e;
+  background-color: #00b5ff;
 }
 .refactory.theme #login-box.notification .reset-body.complete:before,
 .refactory.theme #reset-box.notification .reset-body.complete:before {

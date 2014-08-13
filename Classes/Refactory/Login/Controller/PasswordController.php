@@ -13,6 +13,7 @@ namespace Refactory\Login\Controller;
 
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Security\Authentication\Token\PasswordToken;
+use TYPO3\Party\Domain\Model\AbstractParty;
 
 /**
  * Password controller for the Refactory.Login package
@@ -57,39 +58,42 @@ class PasswordController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	}
 
 	/**
-	 * @param string $recipient
+	 * @return void
+	 * @Flow\Signal
 	 */
-	public function sendResetRequestAction($recipient) {
-		$response = array();
+	protected function emitSendResetRequest() {}
 
-		if (empty($recipient)) {
+	/**
+	 * @param string $identifier
+	 */
+	public function sendResetRequestAction($identifier) {
+		$response = array();
+		$person = NULL;
+		$resetPasswordToken = NULL;
+
+		if (empty($identifier)) {
 			$response['status'] = 'OK';
 			$response['message']['type'] = 'error';
+			// TODO: Translate
 			$response['message']['label'] = 'No username or e-mail address was given!';
 		} else {
-			$account = $this->accountRepository->findByAccountIdentifierAndAuthenticationProviderName($recipient, 'DefaultProvider');
-			if ($account != NULL && $account->getParty() instanceof \TYPO3\Party\Domain\Model\Person) {
-				$user = $account->getParty();
-				$resetPasswordToken = $this->accountManagementService->generateResetPasswordTokenForParty($user, $this->request);
+			$account = $this->accountRepository->findByAccountIdentifierAndAuthenticationProviderName($identifier, 'DefaultProvider');
+			if ($account !== NULL) {
+				$person = $account->getParty();
+				$resetPasswordToken = $this->accountManagementService->generateResetPasswordTokenForParty($person, $this->request);
 			} else {
-				// TODO this is obviously WRONG!
-				$user = '';
-//				$user = $this->userRepository->findAll()->getFirst();
-//				$resetPasswordToken = $this->accountManagementService->generateResetPasswordTokenForParty($user, $this->request);
+				$person = $this->userRepository->findByPrimaryElectronicAddress($identifier)->getFirst();
+				if (is_subclass_of($person, '\TYPO3\Party\Domain\Model\AbstractParty')) {
+					$resetPasswordToken = $this->accountManagementService->generateResetPasswordTokenForParty($person, $this->request);
+				}
 			}
 
-			if ($user instanceof \TYPO3\Party\Domain\Model\Person) {
-				// TODO Trigger mail
+			$this->emitSendResetRequest();
 
-				$uriBuilder = $this->controllerContext->getUriBuilder();
-				$uri =  $uriBuilder->uriFor('reset',array('user' => $user), NULL, NULL);
-				$response['status'] = 'OK';
-				$response['redirect'] = $uri;
-			} else {
-				$response['status'] = 'OK';
-				$response['message']['type'] = 'error';
-				$response['message']['label'] = 'No username or e-mail address found!';
-			}
+//			$uriBuilder = $this->controllerContext->getUriBuilder();
+//			$uri =  $uriBuilder->uriFor('reset', array('identifier' => $identifier), NULL, NULL);
+//			$response['status'] = 'OK';
+//			$response['redirect'] = $uri;
 		}
 
 		$this->view->assign('value', $response);
@@ -133,7 +137,7 @@ class PasswordController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 				$this->view->assign('value', $response);
 			}
 			$this->view->assign('isPasswordChanged', $isPasswordChanged);
-		} elseif ($this->request->hasArgument('user')) {
+		} elseif ($this->request->hasArgument('identifier')) {
 			$this->view->assign('hasUser', TRUE);
 		}
 	}
@@ -141,8 +145,7 @@ class PasswordController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	/**
 	 *
 	 */
-	public function completeAction() {
-	}
+	public function completeAction() {}
 }
 
 ?>

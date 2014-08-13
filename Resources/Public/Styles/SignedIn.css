@@ -2112,6 +2112,9 @@ footer p {
   position: absolute;
   right: 0;
 }
+.refactory .application-logo img {
+  width: 150px;
+}
 .refactory #signedIn-box {
   color: white;
   background: #27ae61;

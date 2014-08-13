@@ -3127,6 +3127,9 @@ footer p {
   position: absolute;
   right: 0;
 }
+.refactory .application-logo img {
+  width: 150px;
+}
 .refactory input[type="text"],
 .refactory input[type="password"] {
   width: 100%;

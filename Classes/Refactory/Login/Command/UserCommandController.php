@@ -51,7 +51,7 @@ class UserCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 * @param string $password Password
 	 * @param string $email Email
 	 * @Flow\Validate(argumentName="email", type="\TYPO3\Flow\Validation\Validator\EmailAddressValidator")
-	 * @param string $roles Comma separated list of roles
+	 * @param string $roles A comma separated list of roles to assign
 	 * @return void
 	 */
 	public function createCommand($username, $password, $email, $roles = NULL) {

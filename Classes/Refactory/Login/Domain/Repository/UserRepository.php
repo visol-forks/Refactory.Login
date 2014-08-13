@@ -23,10 +23,11 @@ class UserRepository extends Repository {
 
 	const ENTITY_CLASSNAME = '\TYPO3\Party\Domain\Model\Person';
 
-	public function findByElectronicAddress($electronicAddress) {
+	public function findByPrimaryElectronicAddress($electronicAddress) {
 		$query = $this->createQuery();
-//		$query->matching('electrinic')
-
+		return $query->matching(
+			$query->equals('primaryElectronicAddress.identifier', $electronicAddress)
+		)->execute();
 	}
 
 }

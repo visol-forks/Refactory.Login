@@ -98,7 +98,7 @@ class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\Abs
 
 		switch ($this->request->getFormat()) {
 			default:
-				$this->addFlashMessage('Successfully signed out.', 'Logged Out', Message::SEVERITY_NOTICE);
+				$this->addFlashMessage('Successfully signed out.', 'Logged Out', Message::SEVERITY_WARNING);
 				$this->redirect('login');
 				break;
 		}

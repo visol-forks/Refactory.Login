@@ -62,3 +62,11 @@ var notificationOptions = {
 	extendedTimeOut: 0,
 	closeButton: true
 };
+
+$('[data-loading-text]').each(function(i, el) {
+	var $this = $(el);
+	$this.on('click', function(ev) {
+		$this.button('loading');
+		setTimeout(function(){ $this.button('reset'); }, 1000);
+	});
+});
