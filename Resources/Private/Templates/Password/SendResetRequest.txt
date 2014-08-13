@@ -1,17 +1,9 @@
-<f:layout name="email"/>
+Refactory Account - Password Reset
 
-<f:section name="Content">
-	<div class="row">
-		<div class="col-4 col-sm-4 col-lg-4 col-lg-offset-4">
-			<f:if condition="{user}">
-				<f:then>
-						<m:mailTemplate subject="{f:translate(id: 'mail.subject.passwordResetRequest', value: 'Reset password request')}" recipients="{recipients}" templateName="passwordResetInstruction" arguments="{_all}"></m:mailTemplate>
-						<f:translate id="resetMailSend">Reset password mail is sent</f:translate>
-				</f:then>
-				<f:else>
-					<f:link.action action="resetRequest" controller="Password" package="BeechIt.Login"><br/><f:translate id="back">Go back</f:translate></f:link.action>
-				</f:else>
-			</f:if>
-		</div>
-	</div>
-</f:section>
+You have reset the password for your account associated with this email address. To choose a new password, click this link and follow the instructions:
+
+<f:uri.action action="reset" controller="Password" arguments="{token: resetPasswordToken}" absolute="TRUE" />
+
+If you did not request this password reset, it is possible that this account has been accessed by someone not authorized to do so. If you notice issues with the account after logging in with your new password, please submit a ticket.
+
+Account compromises can occur if a user shares login information with an unauthorized third party or uses on a computer that has a virus, Trojan, or keylogger. If you believe your account has been accessed by an unauthorized party get in contact with us.

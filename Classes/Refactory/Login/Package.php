@@ -21,6 +21,11 @@ class Package extends BasePackage {
 			'Refactory\Login\Controller\PasswordController', 'sendResetRequest',
 			'Refactory\Notifications\Service\SlotService', 'dispatchNotifications'
 		);
+
+		$dispatcher->connect(
+			'Refactory\Login\Controller\RegisterController', 'sendResetRequest',
+			'Refactory\Notifications\Service\SlotService', 'dispatchNotifications'
+		);
 	}
 
 }
