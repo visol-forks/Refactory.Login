@@ -58,10 +58,11 @@ class PasswordController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	}
 
 	/**
+	 * @param $arguments
 	 * @return void
 	 * @Flow\Signal
 	 */
-	protected function emitSendResetRequest() {}
+	protected function emitSendResetRequest($arguments) {}
 
 	/**
 	 * @param string $identifier
@@ -88,7 +89,7 @@ class PasswordController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 				}
 			}
 
-			$this->emitSendResetRequest();
+			$this->emitSendResetRequest(array('controllerContext' => $this->controllerContext, 'resetPasswordToken' => $resetPasswordToken, 'to' => $person));
 
 //			$uriBuilder = $this->controllerContext->getUriBuilder();
 //			$uri =  $uriBuilder->uriFor('reset', array('identifier' => $identifier), NULL, NULL);

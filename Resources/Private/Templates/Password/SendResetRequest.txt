@@ -1,0 +1,17 @@
+<f:layout name="email"/>
+
+<f:section name="Content">
+	<div class="row">
+		<div class="col-4 col-sm-4 col-lg-4 col-lg-offset-4">
+			<f:if condition="{user}">
+				<f:then>
+						<m:mailTemplate subject="{f:translate(id: 'mail.subject.passwordResetRequest', value: 'Reset password request')}" recipients="{recipients}" templateName="passwordResetInstruction" arguments="{_all}"></m:mailTemplate>
+						<f:translate id="resetMailSend">Reset password mail is sent</f:translate>
+				</f:then>
+				<f:else>
+					<f:link.action action="resetRequest" controller="Password" package="BeechIt.Login"><br/><f:translate id="back">Go back</f:translate></f:link.action>
+				</f:else>
+			</f:if>
+		</div>
+	</div>
+</f:section>
