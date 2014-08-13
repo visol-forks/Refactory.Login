@@ -99,6 +99,7 @@ $notificationBoxWidth: $unit * 10;
 				margin-bottom: 10px;
 			}
 
+			.button,
 			button {
 				height: $unit;
 				color: #fff;
@@ -225,19 +226,6 @@ $notificationBoxWidth: $unit * 10;
 
 				h1 {
 					text-align: center;
-				}
-
-				&.complete {
-					&:before {
-						position: absolute;
-						font-size: 370px;
-						top: 40px;
-						left: 30px;
-						font-family: 'FontAwesome';
-						content: "\f00c";
-						color: $green;
-						opacity: 0.2;
-					}
 				}
 			}
 		}

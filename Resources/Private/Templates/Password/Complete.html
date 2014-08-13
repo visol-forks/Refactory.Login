@@ -33,13 +33,11 @@
 			<p>You've walked through the complete process and:</p>
 			<h1>Your password has been reset!</h1>
 			<p>You can now login the application by using the button below.</p>
-			<f:link.action controller="Login" action="login" class="pull-center btn reset-btn">Login?</f:link.action>
+			<p class="application-actions">
+				<f:link.action controller="Login" action="login" class="button button-primary button-warning reset-btn">Login?</f:link.action>
+			</p>
 		</div>
 	</div>
 </f:section>
 
-<f:section name="Script">
-	<script src="{f:uri.resource(path: 'Library/BootstrapValidator/js/bootstrapValidator.min.js')}"></script>
-	<script src="{f:uri.resource(path: 'Library/Pwstrength/pwstrength-bootstrap-1.1.5.min.js')}"></script>
-	<script src="{f:uri.resource(path: 'JavaScript/RequestPassword.js')}"></script>
-</f:section>
+<f:section name="Script"></f:section>
