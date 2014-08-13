@@ -89,12 +89,12 @@ class PasswordController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 				}
 			}
 
-			$this->emitSendResetRequest(array('controllerContext' => $this->controllerContext, 'resetPasswordToken' => $resetPasswordToken, 'to' => $person));
+			$this->emitSendResetRequest(array('controllerContext' => $this->controllerContext, 'resetPasswordToken' => $resetPasswordToken->getToken(), 'to' => $person));
 
-//			$uriBuilder = $this->controllerContext->getUriBuilder();
-//			$uri =  $uriBuilder->uriFor('reset', array('identifier' => $identifier), NULL, NULL);
-//			$response['status'] = 'OK';
-//			$response['redirect'] = $uri;
+			$uriBuilder = $this->controllerContext->getUriBuilder();
+			$uri =  $uriBuilder->uriFor('reset', array('identifier' => $identifier), NULL, NULL);
+			$response['status'] = 'OK';
+			$response['redirect'] = $uri;
 		}
 
 		$this->view->assign('value', $response);
