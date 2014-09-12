@@ -1,8 +1,6 @@
 <?php
 namespace Refactory\Login;
 
-use TYPO3\Flow\Core\Booting\Step;
-use TYPO3\Flow\Core\Bootstrap;
 use TYPO3\Flow\Package\Package as BasePackage;
 
 /**

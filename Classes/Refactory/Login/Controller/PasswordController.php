@@ -11,6 +11,7 @@ namespace Refactory\Login\Controller;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
+use Refactory\Login\Http\Response;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Security\Authentication\Token\PasswordToken;
 use TYPO3\Party\Domain\Model\AbstractParty;
@@ -68,15 +69,14 @@ class PasswordController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 * @param string $identifier
 	 */
 	public function sendResetRequestAction($identifier) {
-		$response = array();
 		$person = NULL;
 		$resetPasswordToken = NULL;
 
 		if (empty($identifier)) {
-			$response['status'] = 'OK';
-			$response['message']['type'] = 'error';
-			// TODO: Translate
-			$response['message']['label'] = 'No username or e-mail address was given!';
+			$response = new Response();
+			$response->setType('error');
+			$response->setMessage('No username or e-mail address was given!');
+			$this->view->assign('value', $response);
 		} else {
 			$account = $this->accountRepository->findByAccountIdentifierAndAuthenticationProviderName($identifier, 'DefaultProvider');
 			if ($account !== NULL) {
@@ -90,14 +90,8 @@ class PasswordController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 			}
 
 			$this->emitSendResetRequest(array('controllerContext' => $this->controllerContext, 'resetPasswordToken' => $resetPasswordToken->getToken(), 'to' => $person));
-
-			$uriBuilder = $this->controllerContext->getUriBuilder();
-			$uri =  $uriBuilder->uriFor('reset', array('identifier' => $identifier), NULL, NULL);
-			$response['status'] = 'OK';
-			$response['redirect'] = $uri;
+			$this->redirect('reset', NULL, NULL, array('identifier' => $identifier));
 		}
-
-		$this->view->assign('value', $response);
 	}
 
 	/**
@@ -105,7 +99,6 @@ class PasswordController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 */
 	public function resetAction() {
 		if ($this->request->hasArgument('token')) {
-			$response = array();
 			$isTokenActive = $this->accountManagementService->isTokenActive($this->request->getArgument('token'));
 			$isPasswordChanged = FALSE;
 			$this->view->assign('isTokenActive', $isTokenActive);
@@ -118,24 +111,22 @@ class PasswordController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 
 					if ($isPasswordChanged) {
 						$this->accountManagementService->deactivateToken($this->request->getArgument('token'));
-						$uriBuilder = $this->controllerContext->getUriBuilder();
-						$uri =  $uriBuilder->uriFor('complete',array('user' => $account->getParty()), NULL, NULL);
-
-						$response['status'] = 'OK';
-						$response['redirect'] = $uri;
+						$this->redirect('complete', NULL, NULL, array('user' => $account->getParty()));
 					} else {
-						$response['status'] = 'OK';
-						$response['message']['type'] = 'error';
-						$response['message']['label'] = 'Wijzigen wachtwoord is mislukt';
+						$response = new Response();
+						$response->setType('error');
+						$response->setMessage('Attempt to change password failed!');
+						$this->view->assign('value', $response);
 					}
 				}
 				else {
-					$response['status'] = 'OK';
-					$response['message']['type'] = 'error';
-					$response['message']['label'] = 'De wachtwoorden zijn niet gelijk';
+					$response = new Response();
+					$response->setType('error');
+					$response->setMessage('Password and repeat are not the same!');
+
+					$this->view->assign('value', $response);
 				}
 
-				$this->view->assign('value', $response);
 			}
 			$this->view->assign('isPasswordChanged', $isPasswordChanged);
 		} elseif ($this->request->hasArgument('identifier')) {
@@ -144,9 +135,7 @@ class PasswordController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	}
 
 	/**
-	 *
+	 * Password reset workflow completed
 	 */
 	public function completeAction() {}
 }
-
-?>

@@ -141,4 +141,3 @@ class UserRegistry {
 		$this->credentialsSource = $credentialsSource;
 	}
 }
-?>

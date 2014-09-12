@@ -44,4 +44,3 @@ class AccountExistsValidator extends \TYPO3\Flow\Validation\Validator\AbstractVa
 	}
 
 }
-?>

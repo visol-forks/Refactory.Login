@@ -20,4 +20,3 @@ use TYPO3\Flow\Persistence\Repository;
 class ResetPasswordTokenRepository extends Repository {
 
 }
-?>

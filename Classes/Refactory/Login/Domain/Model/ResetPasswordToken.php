@@ -151,4 +151,3 @@ class ResetPasswordToken {
 		return $isActive;
 	}
 }
-?>

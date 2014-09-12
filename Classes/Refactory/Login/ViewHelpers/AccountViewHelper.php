@@ -41,5 +41,3 @@ class AccountViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper 
 	}
 
 }
-
-?>

@@ -58,5 +58,4 @@ class UserFactory {
 
 		return $user;
 	}
-
 }

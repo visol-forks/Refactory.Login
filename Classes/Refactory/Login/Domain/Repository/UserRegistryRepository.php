@@ -11,6 +11,7 @@ namespace Refactory\Login\Domain\Repository;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
+use Refactory\Login\Domain\Model\UserRegistry;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Persistence\Repository;
 
@@ -20,4 +21,21 @@ use TYPO3\Flow\Persistence\Repository;
  * @Flow\Scope("singleton")
  */
 class UserRegistryRepository extends Repository {
+
+	/**
+	 * @param $token
+	 * @return boolean
+	 */
+	public function isActiveToken($token) {
+		$query = $this->createQuery();
+
+		$userRegistry = $query->matching(
+			$query->equals('token', $token)
+		)->execute()->getFirst();
+
+		if ($userRegistry instanceof UserRegistry) {
+			return TRUE;
+		}
+		return FALSE;
+	}
 }

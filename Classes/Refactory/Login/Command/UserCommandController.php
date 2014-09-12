@@ -73,7 +73,7 @@ class UserCommandController extends \TYPO3\Flow\Cli\CommandController {
 		}
 
 		try {
-			$user = $this->userFactory->create($username, $password, $firstName = 'Undefined', $lastName = 'Undefined', $email, $roleIdentifiers);
+			$user = $this->userFactory->create($username, $password, $firstName = 'John', $lastName = 'Doe', $email, $roleIdentifiers);
 			$this->partyRepository->add($user);
 			$accounts = $user->getAccounts();
 			foreach ($accounts as $account) {
@@ -105,5 +105,3 @@ class UserCommandController extends \TYPO3\Flow\Cli\CommandController {
 		$this->outputLine('');
 	}
 }
-
-?>

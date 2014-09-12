@@ -1,0 +1,9 @@
+Refactory Account Registered
+
+You have an your account associated with this email address. To choose verify your email address, click this link and follow the instructions:
+
+<f:uri.action action="reset" controller="Register" arguments="{token: authenticationToken}" absolute="TRUE" />
+
+If you did not request this password reset, it is possible that this account has been accessed by someone not authorized to do so. If you notice issues with the account after logging in with your new password, please submit a ticket.
+
+Account compromises can occur if a user shares login information with an unauthorized third party or uses on a computer that has a virus, Trojan, or keylogger. If you believe your account has been accessed by an unauthorized party get in contact with us.

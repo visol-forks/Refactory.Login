@@ -12,6 +12,7 @@ namespace Refactory\Login\Controller;
  *                                                                        */
 
 use foo\bar\Exception;
+use Refactory\Login\Http\Response;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Security\Authentication\Token\PasswordToken;
 use TYPO3\Party\Domain\Model\PersonName;
@@ -35,12 +36,6 @@ class RegisterController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	protected $viewFormatToObjectNameMap = array(
 		'html'  => 'TYPO3\Fluid\View\TemplateView',
 		'json'  => 'TYPO3\Flow\Mvc\View\JsonView');
-
-	/**
-	 * @var \TYPO3\Flow\I18n\Translator
-	 * @Flow\Inject
-	 */
-	protected $translator;
 
 	/**
 	 * @Flow\Inject
@@ -89,8 +84,6 @@ class RegisterController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 * @return void
 	 */
 	public function createAction($identifier, $email) {
-		$response = array();
-
 		if ($this->request->getArgument('password') === $this->request->getArgument('confirmPassword')) {
 			$user = new Person();
 			$name = new PersonName('', 'Undefined', '', 'Undefined', '', $identifier);
@@ -101,38 +94,39 @@ class RegisterController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 			$electronicAddress->setType('Email');
 
 			$user->addElectronicAddress($electronicAddress);
-
-			$this->userRepository->add($user);
-
-			// TODO Fix?! Workaround
-			$this->persistenceManager->persistAll();
-
 			$user->setPrimaryElectronicAddress($electronicAddress);
-
-			$this->userRepository->update($user);
+			$this->userRepository->add($user);
 
 			try {
 				$userRegistry = $this->userRegistryFactory->createUserRegistryEntry($user, $this->request);
 
 				$this->userRegistryRepository->add($userRegistry);
 
-				// TODO Send notification
-				$uriBuilder = $this->controllerContext->getUriBuilder();
-				$uri =  $uriBuilder->uriFor('verifyUser', array('user' => $user), NULL, NULL);
-				$response = array('status' => 'OK', 'redirect' => $uri);
+				$this->emitVerifyAccount(array('to' => $user, 'authenticationToken' => $userRegistry->getToken(), 'controllerContext' => $this->controllerContext));
+
+				$this->redirect('verifyUser', NULL, NULL, array('user' => $user));
 			} catch (Exception $exception) {
-				$response['status'] = 'OK';
-				$response['message']['type'] = 'error';
-				$response['message']['label'] = 'The registration service catch an unexpected error!';
+				$response = new Response();
+				$response->setType('error');
+				$response->setMessage('The registration service catch an unexpected error!');
+				$this->view->assign('value', $response);
 			}
 		} else {
-			$response['status'] = 'OK';
-			$response['message']['type'] = 'error';
-			$response['message']['label'] = 'The given passwords should be the same!';
+			$response = new Response();
+			$response->setType('error');
+			$response->setMessage('The given passwords should be the same!');
+			$this->view->assign('value', $response);
 		}
-
-		$this->view->assign('value', $response);
 	}
+
+	/**
+	 * Trigger Signal
+	 *
+	 * @param $arguments
+	 * @return void
+	 * @Flow\Signal
+	 */
+	public function emitVerifyAccount($arguments) {}
 
 	/**
 	 * Checks if username is already in use then returns a json response
@@ -155,6 +149,7 @@ class RegisterController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	}
 
 	/**
+	 * @return void
 	 */
 	public function verifyUserAction() {
 		if ($this->request->hasArgument('user')) {
@@ -165,13 +160,14 @@ class RegisterController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	}
 
 	/**
-	 * @param \TYPO3\Party\Domain\Model\Person $user
-	 * @Flow\IgnoreValidation("$user")
-	 * @param $authenticationToken
+	 * @return void
 	 */
-	public function verifiedUserAction($user, $authenticationToken) {
-		// TODO
+	public function verifiedUserAction() {
+		if ($this->request->hasArgument('token')) {
+			$isActiveToken = $this->userRegistryRepository->isActiveToken($this->request->getArgument('token'));
+			$this->view->assign('isActiveToken', $isActiveToken);
+		} else {
+			$this->view->assign('hasUser', TRUE);
+		}
 	}
 }
-
-?>

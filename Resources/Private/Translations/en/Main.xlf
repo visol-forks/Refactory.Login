@@ -6,17 +6,20 @@
 			<trans-unit id="login">
 				<source>Login</source>
 			</trans-unit>
-			<trans-unit id="userName">
+			<trans-unit id="username">
 				<source>Username</source>
+			</trans-unit>
+			<trans-unit id="password">
+				<source>Password</source>
 			</trans-unit>
 			<trans-unit id="authentication.username.placeholder">
 				<source>Username</source>
 			</trans-unit>
-			<trans-unit id="passWord">
-				<source>Password</source>
-			</trans-unit>
 			<trans-unit id="authentication.password.placeholder">
 				<source>Password</source>
+			</trans-unit>
+			<trans-unit id="authentication.failed">
+				<source>The entered username or password was wrong!</source>
 			</trans-unit>
 			<transunit id="loginPanel">
 				<source>Login</source>

@@ -11,15 +11,17 @@ namespace Refactory\Login\Controller;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
+use Refactory\Login\Http\Response;
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Security\Authentication\Controller\AbstractAuthenticationController;
 use TYPO3\Flow\Error\Message;
 
 /**
- * A controller which allows for loggin into a application
+ * A controller which allows for logging into an application
  *
  * @Flow\Scope("singleton")
  */
-class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\AbstractAuthenticationController {
+class LoginController extends AbstractAuthenticationController {
 
 	/**
 	 * @var array
@@ -45,9 +47,9 @@ class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\Abs
 	 */
 	public function loginAction() {
 		if ($this->authenticationManager->isAuthenticated()) {
-			if(isset($this->settings['authenticatedRedirect'])) {
+			if (isset($this->settings['authenticatedRedirect'])) {
 				$redirect = $this->settings['authenticatedRedirect'];
-				$this->redirect($redirect['actionName'], $redirect['controller'], $redirect['packageKey']);
+				$this->redirect($redirect['actionName'], $redirect['controller'], $redirect['package']);
 			}
 			$this->redirect('signedIn');
 		}
@@ -69,11 +71,9 @@ class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\Abs
 		} catch (\TYPO3\Flow\Security\Exception\AuthenticationRequiredException $exception) {
 			$authenticationException = $exception;
 
-			$response = array();
-			$response['status'] = 'OK';
-			$response['message']['type'] = 'error';
-			$response['message']['label'] = 'The entered username or password was wrong!';
-
+			$response = new Response();
+			$response->setType('error');
+			$response->setMessage('The entered username or password was wrong!');
 			$this->view->assign('value', $response);
 		}
 
@@ -110,7 +110,7 @@ class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\Abs
 	 *
 	 * @return void
 	 */
-	public function signedInAction(){
+	public function signedInAction() {
 	}
 
 	/**
@@ -120,26 +120,29 @@ class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\Abs
 	 * @return string
 	 */
 	public function onAuthenticationSuccess(\TYPO3\Flow\Mvc\ActionRequest $originalRequest = NULL) {
-		$uriBuilder = $this->controllerContext->getUriBuilder();
 		if ($originalRequest !== NULL) {
-			$uri =  $uriBuilder->uriFor($originalRequest->getControllerActionName(), $originalRequest->getArguments(), $originalRequest->getControllerName(), $originalRequest->getControllerPackageKey());
+			if ($this->request->getFormat() === 'json') {
+				return $this->controllerContext->getUriBuilder()->setCreateAbsoluteUri(FALSE)->uriFor($originalRequest->getControllerActionName(), $originalRequest->getArguments(), $originalRequest->getControllerName(), $originalRequest->getControllerPackageKey());
+			} else {
+				$this->redirect($originalRequest->getControllerActionName(), $originalRequest->getControllerName(), $originalRequest->getControllerPackageKey(), $originalRequest->getArguments());
+			}
 		} else {
 			if(isset($this->settings['authenticatedRedirect'])) {
-				$packageKey     = $this->settings['authenticatedRedirect']['packageKey'];
+				$packageKey     = $this->settings['authenticatedRedirect']['package'];
 				$controllerName = $this->settings['authenticatedRedirect']['controller'];
 				$actionName     = $this->settings['authenticatedRedirect']['actionName'];
-				$uri = $uriBuilder->uriFor($actionName, NULL, $controllerName, $packageKey);
+				if ($this->request->getFormat() === 'json') {
+					$this->view->assign('value', $this->controllerContext->getUriBuilder()->setCreateAbsoluteUri(TRUE)->uriFor($actionName, array(), $controllerName, $packageKey));
+				} else {
+					$this->redirect($actionName, $controllerName, $packageKey);
+				}
 			} else {
-				$uri = $uriBuilder->uriFor('signedIn', NULL, 'Login', 'Refactory.Login');
+				if ($this->request->getFormat() === 'json') {
+					$this->response->setHeader('Location:', $this->controllerContext->getUriBuilder()->setCreateAbsoluteUri(FALSE)->uriFor('signedIn'));
+				} else {
+					$this->redirect('signedIn');
+				}
 			}
 		}
-
-		$response = array();
-		$response['status'] = 'OK';
-		$response['redirect'] = $uri;
-
-		$this->view->assign('value', $response);
 	}
 }
-
-?>

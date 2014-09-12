@@ -1,0 +1,15 @@
+<f:layout name="Email"/>
+
+<f:section name="Content">
+	<p>Refactory Account - Password Reset</p>
+
+	<p>You have have reset the password for your account associated with this email address. To choose a new password, click this link and follow the instructions:</p>
+	<br/>
+	<p>
+		<f:link.action action="reset" controller="Password" arguments="{resetPasswordToken: resetPasswordToken}" absolute="TRUE">Reset Password</f:link.action>
+	</p>
+	<br/>
+	<p>If you did not request this password reset, it is possible that this account has been accessed by someone not authorized to do so. If you notice issues with the account after logging in with your new password, please submit a ticket.</p>
+	<br/>
+	<p>Account compromises can occur if a user shares login information with an unauthorized third party or uses on a computer that has a virus, Trojan, or keylogger. If you believe your account has been accessed by an unauthorized party get in contact with us.</p>
+</f:section>

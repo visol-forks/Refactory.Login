@@ -7,11 +7,11 @@
 				<source>Login</source>
 				<target>Inloggen</target>
 			</trans-unit>
-			<trans-unit id="userName">
+			<trans-unit id="username">
 				<source>Username</source>
 				<target>Gebruikersnaam</target>
 			</trans-unit>
-			<trans-unit id="passWord">
+			<trans-unit id="password">
 				<source>Password</source>
 				<target>Wachtwoord</target>
 			</trans-unit>
@@ -22,6 +22,10 @@
 			<trans-unit id="authentication.password.placeholder">
 				<source>Password</source>
 				<target>Wachtwoord</target>
+			</trans-unit>
+			<trans-unit id="authentication.failed">
+				<source>The entered username or password was wrong!</source>
+				<target>Het ingevulde gebruikersnaam of wachtwoord was fout!</target>
 			</trans-unit>
 			<trans-unit id="rememberMe">
 				<source>Remember me</source>

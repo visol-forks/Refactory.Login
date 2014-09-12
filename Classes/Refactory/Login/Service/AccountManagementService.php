@@ -141,5 +141,3 @@ class AccountManagementService {
 		return $this->resetPasswordTokenRepository->findOneByToken($token)->getAccount();
 	}
 }
-
-?>

@@ -9,30 +9,21 @@
 				$('input[type=submit]').attr('disabled', 'disabled');
 				$('input[type=submit]').addClass('promise');
 			},
-			error: function(callback) {
+			error: function(jqXHR, status, error) {
 				$('input[type=submit]').removeAttr('disabled');
 				$('.feedback').append('<div class="tooltip bottom in tooltip-warning"><div class="tooltip-arrow"></div><div class="tooltip-inner">This service is unavailable due to an error.</div></div>');
-				$('fieldset').effect('shake', {times: 1}, 400);
-
-				console.log(callback);
 			},
-			success: function(callback) {
+			success: function(callback, status, jqXHR) {
 				$('input[type=submit]').removeAttr("disabled");
 				$('input[type=submit]').removeClass('promise');
 
-				if (callback.status === 'OK') {
-					if (undefined !== callback.redirect) {
-						window.location = callback.redirect;
-					}
-					if (undefined !== callback.message) {
+				if (null !== callback) {
+					if (jqXHR.status === 200 && typeof callback === 'object') {
 						$('fieldset').effect('shake', {times: 1}, 400);
-
-						$('.feedback').append('<div class="tooltip bottom in tooltip-'+ callback.message.type +'"><div class="tooltip-arrow"></div><div class="tooltip-inner">' + callback.message.label + '</div></div>');
-						$('field').after('<h1>hello word!</h1>');
+						$('.feedback').append('<div class="tooltip bottom in tooltip-'+ callback.type +'"><div class="tooltip-arrow"></div><div class="tooltip-inner">' + callback.message + '</div></div>');
+					} else {
+						document.location = callback;
 					}
-				} else {
-					$('fieldset').effect('shake', {times: 1}, 400);
-					$('.feedback').append('<div class="tooltip bottom in tooltip-warning"><div class="tooltip-arrow"></div><div class="tooltip-inner">This service is unavailable due to an error.</div></div>');
 				}
 			}
 		});
