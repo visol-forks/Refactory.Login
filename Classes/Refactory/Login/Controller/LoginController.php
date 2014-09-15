@@ -122,7 +122,7 @@ class LoginController extends AbstractAuthenticationController {
 	public function onAuthenticationSuccess(\TYPO3\Flow\Mvc\ActionRequest $originalRequest = NULL) {
 		if ($originalRequest !== NULL) {
 			if ($this->request->getFormat() === 'json') {
-				return $this->controllerContext->getUriBuilder()->setCreateAbsoluteUri(FALSE)->uriFor($originalRequest->getControllerActionName(), $originalRequest->getArguments(), $originalRequest->getControllerName(), $originalRequest->getControllerPackageKey());
+				$this->view->assign('value', $this->controllerContext->getUriBuilder()->setCreateAbsoluteUri(TRUE)->uriFor($originalRequest->getControllerActionName(), $originalRequest->getArguments(), $originalRequest->getControllerName(), $originalRequest->getControllerPackageKey()));
 			} else {
 				$this->redirect($originalRequest->getControllerActionName(), $originalRequest->getControllerName(), $originalRequest->getControllerPackageKey(), $originalRequest->getArguments());
 			}
@@ -138,7 +138,7 @@ class LoginController extends AbstractAuthenticationController {
 				}
 			} else {
 				if ($this->request->getFormat() === 'json') {
-					$this->response->setHeader('Location:', $this->controllerContext->getUriBuilder()->setCreateAbsoluteUri(FALSE)->uriFor('signedIn'));
+					$this->view->assign('value', $this->controllerContext->getUriBuilder()->setCreateAbsoluteUri(FALSE)->uriFor('signedIn'));
 				} else {
 					$this->redirect('signedIn');
 				}
