@@ -18,11 +18,11 @@
 				$('input[type=submit]').removeClass('promise');
 
 				if (null !== callback) {
-					if (jqXHR.status === 200 && typeof callback === 'object') {
+					if (jqXHR.status === 200 && callback.redirect) {
+						window.location.replace(callback.redirect);
+					} else if (jqXHR.status === 200 && typeof callback === 'object') {
 						$('fieldset').effect('shake', {times: 1}, 400);
 						$('.feedback').append('<div class="tooltip bottom in tooltip-'+ callback.type +'"><div class="tooltip-arrow"></div><div class="tooltip-inner">' + callback.message + '</div></div>');
-					} else {
-						document.location = callback;
 					}
 				}
 			}

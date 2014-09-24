@@ -121,27 +121,15 @@ class LoginController extends AbstractAuthenticationController {
 	 */
 	public function onAuthenticationSuccess(\TYPO3\Flow\Mvc\ActionRequest $originalRequest = NULL) {
 		if ($originalRequest !== NULL) {
-			if ($this->request->getFormat() === 'json') {
-				$this->view->assign('value', $this->controllerContext->getUriBuilder()->setCreateAbsoluteUri(TRUE)->uriFor($originalRequest->getControllerActionName(), $originalRequest->getArguments(), $originalRequest->getControllerName(), $originalRequest->getControllerPackageKey()));
-			} else {
-				$this->redirect($originalRequest->getControllerActionName(), $originalRequest->getControllerName(), $originalRequest->getControllerPackageKey(), $originalRequest->getArguments());
-			}
+			$this->redirectToRequest($originalRequest);
 		} else {
 			if(isset($this->settings['authenticatedRedirect'])) {
 				$packageKey     = $this->settings['authenticatedRedirect']['package'];
 				$controllerName = $this->settings['authenticatedRedirect']['controller'];
 				$actionName     = $this->settings['authenticatedRedirect']['actionName'];
-				if ($this->request->getFormat() === 'json') {
-					$this->view->assign('value', $this->controllerContext->getUriBuilder()->setCreateAbsoluteUri(TRUE)->uriFor($actionName, array(), $controllerName, $packageKey));
-				} else {
-					$this->redirect($actionName, $controllerName, $packageKey);
-				}
+				$this->redirect($actionName, $controllerName, $packageKey);
 			} else {
-				if ($this->request->getFormat() === 'json') {
-					$this->view->assign('value', $this->controllerContext->getUriBuilder()->setCreateAbsoluteUri(FALSE)->uriFor('signedIn'));
-				} else {
-					$this->redirect('signedIn');
-				}
+				$this->redirect('signedIn');
 			}
 		}
 	}
