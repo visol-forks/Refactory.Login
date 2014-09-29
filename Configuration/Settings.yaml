@@ -16,7 +16,7 @@ TYPO3:
 Refactory:
   Login:
     tokenExpiration: 14400 # in seconds
-    enableRegister: TRUE
+#    enableRegister: TRUE
 #    image: 'resource://Refactory.Login/Public/Images/ApplicationLogo.png'
 #    styles:
 #      - resource://Vendor.MyPackage/Public/Styles/Custom.css'
