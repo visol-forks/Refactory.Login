@@ -1,0 +1,67 @@
+input[type="text"],
+input[type="password"] {
+	width: 100%;
+	min-width: $inspectorWidth - $defaultMargin * 2;
+	height: $unit;
+	border: 2px solid $blueMedium;
+	background-color: $blueMedium;
+	color: $textOnGray;
+	font-size: 14px;
+	padding: 0 ($defaultMargin - 2px);
+	margin: 0;
+	@include border-radius(0);
+	@include box-sizing(border-box);
+	@include box-shadow(none);
+	@include transition(none);
+	@include font;
+
+	&:focus {
+		background-color: #fff;
+		border: 2px solid #fff;
+		color: $textOnWhite;
+		@include box-shadow(none);
+	}
+
+	&:-webkit-autofill {
+		-webkit-box-shadow: 0 0 0 50px $grayMedium inset;
+		-webkit-text-fill-color: $textOnGray;
+
+		&:focus {
+			-webkit-box-shadow: 0 0 0 50px #fff inset;
+			-webkit-text-fill-color: $textOnWhite;
+		}
+	}
+}
+
+#reset-box {
+	input[type="password"] {
+		&:focus {
+			background-color: transparent;
+		}
+	}
+}
+
+#login-box,
+#reset-box {
+	.form-controls {
+		height: $unit;
+		margin-bottom: 15px;
+	}
+
+	.form-group {
+		height: $unit;
+		margin-bottom: 15px;
+
+		&.validation {
+			margin-bottom: 25px;
+		}
+
+		&.password-strength.tooltipActive {
+			margin-bottom: 67px;
+		}
+
+		&.feedback-large {
+			margin-bottom: 40px;
+		}
+	}
+}

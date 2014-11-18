@@ -116,7 +116,7 @@ class PasswordController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 
 					if ($isPasswordChanged) {
 						$this->accountManagementService->deactivateToken($this->request->getArgument('token'));
-						$this->redirect('complete', NULL, NULL, array('user' => $account->getParty()));
+						$this->redirect('login', 'Login', NULL, array('user' => $account->getParty()));
 					} else {
 						$response = new Response();
 						$response->setType('error');
@@ -138,9 +138,4 @@ class PasswordController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 			$this->view->assign('hasUser', TRUE);
 		}
 	}
-
-	/**
-	 * Password reset workflow completed
-	 */
-	public function completeAction() {}
 }

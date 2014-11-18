@@ -133,4 +133,17 @@ class LoginController extends AbstractAuthenticationController {
 			}
 		}
 	}
+
+	/**
+	 * Is called if authentication failed.
+	 *
+	 * Override this method in your login controller to take any
+	 * custom action for this event. Most likely you would want
+	 * to redirect to some action showing the login form again.
+	 *
+	 * @param \TYPO3\Flow\Security\Exception\AuthenticationRequiredException $exception The exception thrown while the authentication process
+	 * @return void
+	 */
+	protected function onAuthenticationFailure(\TYPO3\Flow\Security\Exception\AuthenticationRequiredException $exception = NULL) {
+	}
 }

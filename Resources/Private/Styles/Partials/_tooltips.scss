@@ -1,0 +1,52 @@
+.tooltip {
+	left: -4px;
+	top: 0;
+	width: 100%;
+	position: relative;
+	clear: both;
+	float: none;
+
+	&.bottom {
+		padding: $relatedMargin 0 0 0;
+		margin-left: $tightMargin;
+		margin-top: -1px;
+	}
+
+	&.in {
+		@include opacity(1);
+	}
+
+	.tooltip-inner {
+		max-width: $loginBoxWidth;
+		font-size: 13px;
+		color: #fff;
+		@include border-radius(0);
+		@include box-sizing(border-box);
+	}
+}
+
+.tooltip-error {
+	.tooltip-arrow {
+		border-bottom-color: $warning;
+	}
+
+	.tooltip-inner {
+		background-color: $warning;
+	}
+}
+
+.tooltip-notice {
+	.tooltip-arrow {
+		border-bottom-color: $green;
+	}
+
+	.tooltip-inner {
+		background-color: $green;
+	}
+}
+
+.password-strength {
+	.tooltip.strength {
+		display: none;
+	}
+}

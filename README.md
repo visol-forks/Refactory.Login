@@ -1,10 +1,9 @@
-Refactory.Login [![Build Status](https://travis-ci.org/svparijs/Flow.Login.png?branch=master)](https://travis-ci.org/svparijs/Flow.Login)
+Refactory.Login [![Build Status](https://travis-ci.org/refactoryit/Flow.Login.png?branch=master)](https://travis-ci.org/refactoryit/Flow.Login)
 ==================================================================================================================================================================
 
 This package is a lightweight authentication wrapper around a given package.
 A TYPO3 Flow package with the following features:
 
- - Register User
  - Login and Logout a account
  - Reset a password for a given account.
 
@@ -35,16 +34,20 @@ To Enable routing to package
 	    LoginSubroutes:
 	      package: Refactory.Login
 
-Start using!
+Profit!
 
 Overview
 --------
 
+#Login screen:
 ![Login Screen](Documentation/Images/LoginScreen.png)
+
+#Reset steps:
+
+##Step 1:
 
 ![Reset Password Screen](Documentation/Images/ResetPassword.png)
 
-![Register User Screen](Documentation/Images/RegisterUser.png)
 
 Authentication setup
 --------------------
@@ -66,14 +69,6 @@ To be able to address the login feature you will need to add these routes in the
 	  subRoutes:
 	    LoginSubroutes:
 	      package: Refactory.Login
-
-Register User
--------------
-
-*Note that when you register a user in the frontend you will NOT create an account! This will need to be done by your application.*
-
-Because in most cases you do not want to directly create an account but want to control what will happen this is the default behaviour.
-Through AOP you can adjust this behaviour to your needs.
 
 Account ViewHelper
 ------------------
@@ -103,3 +98,8 @@ When the action is unauthorized the TYPO3.Flow framework will redirect the packa
 	                '@action': 'login'
 
 See for reference: http://flow.typo3.org/documentation/guide/partiii/security.html
+
+
+# Authors:
+
+Author: Sebastiaan van Parijs (<svparijs@refactory.it>) 

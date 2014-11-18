@@ -64,7 +64,7 @@
     top: 0;
     left: 50%;
     margin-left: -$tooltipArrowWidth;
-    border-width: 0 $tooltipArrowWidth $tooltipArrowWidth;
+    border-width: 0 $tooltipArrowWidth $tooltipArrowWidth+1;
     border-bottom-color: $tooltipArrowColor;
   }
 }

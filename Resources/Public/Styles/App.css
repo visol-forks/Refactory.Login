@@ -1405,6 +1405,42 @@
   content: "\f18b";
 }
 
+/* CSS Document */
+.strength_meter {
+  position: absolute;
+  left: 0px;
+  top: 2px;
+  width: 100%;
+  height: 33px;
+  z-index: -1;
+  border-radius: 5px;
+}
+
+.strength_meter div {
+  height: 36px;
+  width: 100%;
+  text-align: center;
+  color: #adadad;
+  font-weight: bold;
+  line-height: 36px;
+}
+
+.veryweak {
+  background-color: #FFA0A0;
+}
+
+.weak {
+  background-color: #FFB78C;
+}
+
+.medium {
+  background-color: #FFEC8B;
+}
+
+.strong {
+  background-color: #6bdd9b;
+}
+
 .alert {
   position: relative;
   color: white;
@@ -3044,30 +3080,144 @@ footer p {
 .refactory .tooltip.top .tooltip-arrow {
   bottom: 0;
   left: 50%;
-  margin-left: -5px;
-  border-width: 5px 5px 0;
+  margin-left: -8px;
+  border-width: 8px 8px 0;
   border-top-color: black;
 }
 .refactory .tooltip.right .tooltip-arrow {
   top: 50%;
   left: 0;
-  margin-top: -5px;
-  border-width: 5px 5px 5px 0;
+  margin-top: -8px;
+  border-width: 8px 8px 8px 0;
   border-right-color: black;
 }
 .refactory .tooltip.left .tooltip-arrow {
   top: 50%;
   right: 0;
-  margin-top: -5px;
-  border-width: 5px 0 5px 5px;
+  margin-top: -8px;
+  border-width: 8px 0 8px 8px;
   border-left-color: black;
 }
 .refactory .tooltip.bottom .tooltip-arrow {
   top: 0;
   left: 50%;
-  margin-left: -5px;
-  border-width: 0 5px 5px;
+  margin-left: -8px;
+  border-width: 0 8px 9px;
   border-bottom-color: black;
+}
+.refactory button,
+.refactory .button {
+  display: inline-block;
+  padding: 0 16px;
+  margin: 0;
+  font-family: 'Droid Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  width: auto;
+  height: 40px;
+  line-height: 40px;
+  background-color: #3f3f3f;
+  background-image: none;
+  border: none;
+  text-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0 ease 0;
+  -moz-transition: all 0 ease 0;
+  -o-transition: all 0 ease 0;
+  transition: all 0 ease 0;
+}
+.refactory button.button-small,
+.refactory .button.button-small {
+  height: 24px;
+  line-height: 24px;
+  font-size: 12px;
+  padding: 0 8px;
+}
+.refactory button:not([disabled]):hover, .refactory button:not([disabled]):active, .refactory button:not([disabled]).active, .refactory button:not([disabled]).pressed, .refactory button:not(.disabled):hover, .refactory button:not(.disabled):active, .refactory button:not(.disabled).active, .refactory button:not(.disabled).pressed,
+.refactory .button:not([disabled]):hover,
+.refactory .button:not([disabled]):active,
+.refactory .button:not([disabled]).active,
+.refactory .button:not([disabled]).pressed,
+.refactory .button:not(.disabled):hover,
+.refactory .button:not(.disabled):active,
+.refactory .button:not(.disabled).active,
+.refactory .button:not(.disabled).pressed {
+  color: #fff;
+  background-color: #00b5ff;
+  text-decoration: none;
+  outline: none;
+}
+.refactory button:focus,
+.refactory .button:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+  outline: none;
+}
+.refactory button.disabled, .refactory button[disabled],
+.refactory .button.disabled,
+.refactory .button[disabled] {
+  cursor: not-allowed;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=65);
+  opacity: 0.65;
+}
+.refactory button[class^="icon-"], .refactory button[class*=" icon-"],
+.refactory .button[class^="icon-"],
+.refactory .button[class*=" icon-"] {
+  font-family: FontAwesome;
+}
+.refactory button.button-primary,
+.refactory .button.button-primary {
+  background-color: #00b5ff;
+}
+.refactory button.button-success,
+.refactory .button.button-success {
+  background-color: #27ae61;
+}
+.refactory button.button-success:hover, .refactory button.button-success:active,
+.refactory .button.button-success:hover,
+.refactory .button.button-success:active {
+  background-color: #27ae61;
+}
+.refactory button.button-warning,
+.refactory .button.button-warning {
+  background-color: #f89406;
+}
+.refactory button.button-warning:hover, .refactory button.button-warning:active,
+.refactory .button.button-warning:hover,
+.refactory .button.button-warning:active {
+  background-color: #f89406;
+}
+.refactory button.button-danger,
+.refactory .button.button-danger {
+  background-color: #f44932;
+}
+.refactory button.button-danger:hover, .refactory button.button-danger:active,
+.refactory .button.button-danger:hover,
+.refactory .button.button-danger:active {
+  background-color: #f44932;
+}
+.refactory button i,
+.refactory .button i {
+  margin-top: 3px;
+}
+.refactory a.button {
+  color: #fff;
+}
+.refactory a.button:hover {
+  color: #fff;
+}
+.refactory a.button i {
+  display: inline-block !important;
 }
 .refactory .application-logo {
   margin: 20px;
@@ -3222,6 +3372,54 @@ footer p {
 .refactory #notification-container.notification-top > .notification i.toast-close-button:hover {
   background-color: rgba(255, 255, 255, 0.25);
 }
+.refactory #login-box,
+.refactory #reset-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: transparent;
+  border: none;
+  width: 320px;
+  z-index: 10;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-border-radius: none;
+  -moz-border-radius: none;
+  border-radius: none;
+}
+.refactory #login-box .login-logo,
+.refactory #reset-box .login-logo {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.refactory #login-box.notification,
+.refactory #reset-box.notification {
+  width: 400px;
+  color: white;
+}
+.refactory #login-box.notification .reset-body,
+.refactory #reset-box.notification .reset-body {
+  background-color: #34495e;
+  padding: 25px 20px;
+  text-align: center;
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  .refactory #reset-box,
+  .refactory #login-box {
+    margin-top: 40px;
+    margin-left: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    width: 100%;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
 .refactory input[type="text"],
 .refactory input[type="password"] {
   width: 100%;
@@ -3268,62 +3466,86 @@ footer p {
   -webkit-box-shadow: 0 0 0 50px #fff inset;
   -webkit-text-fill-color: #252525;
 }
-.refactory #register-box,
-.refactory #login-box,
-.refactory #reset-box {
-  background: transparent;
-  border: none;
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  width: 320px;
-  margin-top: -125px;
-  margin-left: -160px;
-  z-index: 10;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  -webkit-border-radius: none;
-  -moz-border-radius: none;
-  border-radius: none;
+.refactory #reset-box input[type="password"]:focus {
+  background-color: transparent;
 }
-.refactory #register-box .login-logo,
-.refactory #login-box .login-logo,
-.refactory #reset-box .login-logo {
-  margin-bottom: 30px;
-  text-align: center;
+.refactory #login-box .form-controls,
+.refactory #reset-box .form-controls {
+  height: 40px;
+  margin-bottom: 15px;
 }
-.refactory #register-box .reset-body,
-.refactory #register-box .reset-body,
-.refactory #register-box .login-body,
-.refactory #login-box .reset-body,
-.refactory #login-box .reset-body,
-.refactory #login-box .login-body,
-.refactory #reset-box .reset-body,
-.refactory #reset-box .reset-body,
-.refactory #reset-box .login-body {
-  padding: 0;
-  overflow: visible;
+.refactory #login-box .form-group,
+.refactory #reset-box .form-group {
+  height: 40px;
+  margin-bottom: 15px;
 }
-.refactory #register-box .application-actions,
-.refactory #login-box .application-actions,
-.refactory #reset-box .application-actions {
+.refactory #login-box .form-group.validation,
+.refactory #reset-box .form-group.validation {
+  margin-bottom: 25px;
+}
+.refactory #login-box .form-group.password-strength.tooltipActive,
+.refactory #reset-box .form-group.password-strength.tooltipActive {
+  margin-bottom: 67px;
+}
+.refactory #login-box .form-group.feedback-large,
+.refactory #reset-box .form-group.feedback-large {
+  margin-bottom: 40px;
+}
+.refactory .tooltip {
+  left: -4px;
+  top: 0;
+  width: 100%;
+  position: relative;
+  clear: both;
+  float: none;
+}
+.refactory .tooltip.bottom {
+  padding: 8px 0 0 0;
+  margin-left: 4px;
+  margin-top: -1px;
+}
+.refactory .tooltip.in {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+.refactory .tooltip .tooltip-inner {
+  max-width: 320px;
+  font-size: 13px;
+  color: #fff;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.refactory .tooltip-error .tooltip-arrow {
+  border-bottom-color: #f44932;
+}
+.refactory .tooltip-error .tooltip-inner {
+  background-color: #f44932;
+}
+.refactory .tooltip-notice .tooltip-arrow {
+  border-bottom-color: #27ae61;
+}
+.refactory .tooltip-notice .tooltip-inner {
+  background-color: #27ae61;
+}
+.refactory .password-strength .tooltip.strength {
+  display: none;
+}
+.refactory .application-actions {
   bottom: 0;
   width: 100%;
   height: 40px;
 }
-.refactory #register-box .application-actions .utility,
-.refactory #login-box .application-actions .utility,
-.refactory #reset-box .application-actions .utility {
+.refactory .utility {
   height: 20px;
-  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 14px;
 }
-.refactory #register-box .application-actions .button,
-.refactory #register-box .application-actions button,
-.refactory #login-box .application-actions .button,
-.refactory #login-box .application-actions button,
-.refactory #reset-box .application-actions .button,
-.refactory #reset-box .application-actions button {
+.refactory .button,
+.refactory button {
   height: 40px;
   color: #fff;
   border: none;
@@ -3339,197 +3561,32 @@ footer p {
   font-family: 'Droid Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
-.refactory #register-box .application-actions .button:focus,
-.refactory #register-box .application-actions button:focus,
-.refactory #login-box .application-actions .button:focus,
-.refactory #login-box .application-actions button:focus,
-.refactory #reset-box .application-actions .button:focus,
-.refactory #reset-box .application-actions button:focus {
+.refactory .button:focus,
+.refactory button:focus {
   outline: none;
 }
-.refactory #register-box .application-actions .button.reset-btn, .refactory #register-box .application-actions .button.login-btn,
-.refactory #register-box .application-actions button.reset-btn,
-.refactory #register-box .application-actions button.login-btn,
-.refactory #login-box .application-actions .button.reset-btn,
-.refactory #login-box .application-actions .button.login-btn,
-.refactory #login-box .application-actions button.reset-btn,
-.refactory #login-box .application-actions button.login-btn,
-.refactory #reset-box .application-actions .button.reset-btn,
-.refactory #reset-box .application-actions .button.login-btn,
-.refactory #reset-box .application-actions button.reset-btn,
-.refactory #reset-box .application-actions button.login-btn {
+.refactory .button.reset-btn, .refactory .button.login-btn,
+.refactory button.reset-btn,
+.refactory button.login-btn {
   background-color: #00b5ff;
   width: 100%;
 }
-.refactory #register-box .application-actions .button.reset-btn:hover, .refactory #register-box .application-actions .button.reset-btn:focus, .refactory #register-box .application-actions .button.login-btn:hover, .refactory #register-box .application-actions .button.login-btn:focus,
-.refactory #register-box .application-actions button.reset-btn:hover,
-.refactory #register-box .application-actions button.reset-btn:focus,
-.refactory #register-box .application-actions button.login-btn:hover,
-.refactory #register-box .application-actions button.login-btn:focus,
-.refactory #login-box .application-actions .button.reset-btn:hover,
-.refactory #login-box .application-actions .button.reset-btn:focus,
-.refactory #login-box .application-actions .button.login-btn:hover,
-.refactory #login-box .application-actions .button.login-btn:focus,
-.refactory #login-box .application-actions button.reset-btn:hover,
-.refactory #login-box .application-actions button.reset-btn:focus,
-.refactory #login-box .application-actions button.login-btn:hover,
-.refactory #login-box .application-actions button.login-btn:focus,
-.refactory #reset-box .application-actions .button.reset-btn:hover,
-.refactory #reset-box .application-actions .button.reset-btn:focus,
-.refactory #reset-box .application-actions .button.login-btn:hover,
-.refactory #reset-box .application-actions .button.login-btn:focus,
-.refactory #reset-box .application-actions button.reset-btn:hover,
-.refactory #reset-box .application-actions button.reset-btn:focus,
-.refactory #reset-box .application-actions button.login-btn:hover,
-.refactory #reset-box .application-actions button.login-btn:focus {
+.refactory .button.reset-btn:hover, .refactory .button.reset-btn:focus, .refactory .button.login-btn:hover, .refactory .button.login-btn:focus,
+.refactory button.reset-btn:hover,
+.refactory button.reset-btn:focus,
+.refactory button.login-btn:hover,
+.refactory button.login-btn:focus {
   background-color: #0098d6;
   transition: all 300ms ease-in;
 }
-.refactory #register-box .application-actions .button.reset-btn.disabled, .refactory #register-box .application-actions .button.reset-btn.disabled:hover, .refactory #register-box .application-actions .button.reset-btn.disabled:focus, .refactory #register-box .application-actions .button.login-btn.disabled, .refactory #register-box .application-actions .button.login-btn.disabled:hover, .refactory #register-box .application-actions .button.login-btn.disabled:focus,
-.refactory #register-box .application-actions button.reset-btn.disabled,
-.refactory #register-box .application-actions button.reset-btn.disabled:hover,
-.refactory #register-box .application-actions button.reset-btn.disabled:focus,
-.refactory #register-box .application-actions button.login-btn.disabled,
-.refactory #register-box .application-actions button.login-btn.disabled:hover,
-.refactory #register-box .application-actions button.login-btn.disabled:focus,
-.refactory #login-box .application-actions .button.reset-btn.disabled,
-.refactory #login-box .application-actions .button.reset-btn.disabled:hover,
-.refactory #login-box .application-actions .button.reset-btn.disabled:focus,
-.refactory #login-box .application-actions .button.login-btn.disabled,
-.refactory #login-box .application-actions .button.login-btn.disabled:hover,
-.refactory #login-box .application-actions .button.login-btn.disabled:focus,
-.refactory #login-box .application-actions button.reset-btn.disabled,
-.refactory #login-box .application-actions button.reset-btn.disabled:hover,
-.refactory #login-box .application-actions button.reset-btn.disabled:focus,
-.refactory #login-box .application-actions button.login-btn.disabled,
-.refactory #login-box .application-actions button.login-btn.disabled:hover,
-.refactory #login-box .application-actions button.login-btn.disabled:focus,
-.refactory #reset-box .application-actions .button.reset-btn.disabled,
-.refactory #reset-box .application-actions .button.reset-btn.disabled:hover,
-.refactory #reset-box .application-actions .button.reset-btn.disabled:focus,
-.refactory #reset-box .application-actions .button.login-btn.disabled,
-.refactory #reset-box .application-actions .button.login-btn.disabled:hover,
-.refactory #reset-box .application-actions .button.login-btn.disabled:focus,
-.refactory #reset-box .application-actions button.reset-btn.disabled,
-.refactory #reset-box .application-actions button.reset-btn.disabled:hover,
-.refactory #reset-box .application-actions button.reset-btn.disabled:focus,
-.refactory #reset-box .application-actions button.login-btn.disabled,
-.refactory #reset-box .application-actions button.login-btn.disabled:hover,
-.refactory #reset-box .application-actions button.login-btn.disabled:focus {
+.refactory .button.reset-btn.disabled, .refactory .button.reset-btn.disabled:hover, .refactory .button.reset-btn.disabled:focus, .refactory .button.login-btn.disabled, .refactory .button.login-btn.disabled:hover, .refactory .button.login-btn.disabled:focus,
+.refactory button.reset-btn.disabled,
+.refactory button.reset-btn.disabled:hover,
+.refactory button.reset-btn.disabled:focus,
+.refactory button.login-btn.disabled,
+.refactory button.login-btn.disabled:hover,
+.refactory button.login-btn.disabled:focus {
   background-color: #27ae61;
-}
-.refactory #register-box .form-controls,
-.refactory #login-box .form-controls,
-.refactory #reset-box .form-controls {
-  height: 40px;
-  margin-bottom: 15px;
-}
-.refactory #register-box .form-group,
-.refactory #login-box .form-group,
-.refactory #reset-box .form-group {
-  height: 40px;
-  margin-bottom: 15px;
-}
-.refactory #register-box .form-group.validation,
-.refactory #login-box .form-group.validation,
-.refactory #reset-box .form-group.validation {
-  margin-bottom: 25px;
-}
-.refactory #register-box .form-group.feedback-large,
-.refactory #login-box .form-group.feedback-large,
-.refactory #reset-box .form-group.feedback-large {
-  margin-bottom: 40px;
-}
-.refactory #register-box .form-group .pwstrength_viewport_progress,
-.refactory #login-box .form-group .pwstrength_viewport_progress,
-.refactory #reset-box .form-group .pwstrength_viewport_progress {
-  position: relative;
-  background-color: #27ae61;
-  color: white;
-  top: -40px;
-  right: -327px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-}
-.refactory #register-box .tooltip,
-.refactory #login-box .tooltip,
-.refactory #reset-box .tooltip {
-  left: -4px;
-  top: 0;
-  width: 100%;
-  position: relative;
-  clear: both;
-  float: none;
-}
-.refactory #register-box .tooltip.bottom,
-.refactory #login-box .tooltip.bottom,
-.refactory #reset-box .tooltip.bottom {
-  padding: 8px 0 0 0;
-  margin-left: 4px;
-  margin-top: -1px;
-}
-.refactory #register-box .tooltip.in,
-.refactory #login-box .tooltip.in,
-.refactory #reset-box .tooltip.in {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-  opacity: 1;
-}
-.refactory #register-box .tooltip .tooltip-arrow,
-.refactory #login-box .tooltip .tooltip-arrow,
-.refactory #reset-box .tooltip .tooltip-arrow {
-  margin-left: -8px;
-  border-width: 0 8px 8px 8px;
-}
-.refactory #register-box .tooltip .tooltip-inner,
-.refactory #login-box .tooltip .tooltip-inner,
-.refactory #reset-box .tooltip .tooltip-inner {
-  max-width: 320px;
-  font-size: 13px;
-  color: #fff;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.refactory #register-box .tooltip-error .tooltip-arrow,
-.refactory #login-box .tooltip-error .tooltip-arrow,
-.refactory #reset-box .tooltip-error .tooltip-arrow {
-  border-bottom-color: #f44932;
-}
-.refactory #register-box .tooltip-error .tooltip-inner,
-.refactory #login-box .tooltip-error .tooltip-inner,
-.refactory #reset-box .tooltip-error .tooltip-inner {
-  background-color: #f44932;
-}
-.refactory #register-box .tooltip-notice .tooltip-arrow,
-.refactory #login-box .tooltip-notice .tooltip-arrow,
-.refactory #reset-box .tooltip-notice .tooltip-arrow {
-  border-bottom-color: #27ae61;
-}
-.refactory #register-box .tooltip-notice .tooltip-inner,
-.refactory #login-box .tooltip-notice .tooltip-inner,
-.refactory #reset-box .tooltip-notice .tooltip-inner {
-  background-color: #27ae61;
-}
-.refactory #register-box.notification,
-.refactory #login-box.notification,
-.refactory #reset-box.notification {
-  width: 400px;
-  color: white;
-  margin-left: -200px;
-}
-.refactory #register-box.notification .reset-body,
-.refactory #login-box.notification .reset-body,
-.refactory #reset-box.notification .reset-body {
-  background-color: #34495e;
-  padding: 25px 20px;
-}
-.refactory #register-box.notification .reset-body h1,
-.refactory #login-box.notification .reset-body h1,
-.refactory #reset-box.notification .reset-body h1 {
-  text-align: center;
 }
 .refactory a.btn {
   height: 40px;
@@ -3561,21 +3618,4 @@ footer p {
 .refactory a.btn.reset-btn:hover, .refactory a.btn.reset-btn:focus {
   background-color: #0098d6;
   transition: all 300ms ease-in;
-}
-
-@media (min-width: 320px) and (max-width: 480px) {
-  .refactory #reset-box,
-  .refactory #login-box {
-    position: static;
-    top: 0;
-    margin-top: 40px;
-    margin-left: 0;
-    padding-left: 40px;
-    padding-right: 40px;
-    width: 100%;
-    height: auto;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  }
 }

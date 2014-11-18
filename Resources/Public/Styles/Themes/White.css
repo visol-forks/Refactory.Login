@@ -5,6 +5,9 @@
 .refactory.theme a {
   color: #adadad;
 }
+.refactory.theme .notification a {
+  color: #323232;
+}
 .refactory.theme input[type="text"],
 .refactory.theme input[type="password"] {
   border: 2px solid #ebebeb;
@@ -26,6 +29,14 @@
 .refactory.theme input[type="password"]:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0 50px #fff inset;
   -webkit-text-fill-color: #ebebeb;
+}
+.refactory.theme .notification a.button {
+  background-color: #0098d6;
+  color: #fff;
+}
+.refactory.theme .notification a.button:hover, .refactory.theme .notification a.button:focus {
+  background-color: #0074a3;
+  color: #fff;
 }
 .refactory.theme #login-box,
 .refactory.theme #reset-box {

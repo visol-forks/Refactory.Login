@@ -25,7 +25,7 @@
 			</trans-unit>
 			<trans-unit id="authentication.failed">
 				<source>The entered username or password was wrong!</source>
-				<target>Het ingevulde gebruikersnaam of wachtwoord was fout!</target>
+				<target>Het ingevulde gebruikersnaam of wachtwoord was niet correct!</target>
 			</trans-unit>
 			<trans-unit id="rememberMe">
 				<source>Remember me</source>
@@ -35,10 +35,6 @@
 				<source>Login</source>
 				<target>Inloggen</target>
 			</transunit>
-			<trans-unit id="passwordResetInstructions">
-				<source>Reset password instructions</source>
-				<target>Instructies om uw wachtwoord te resetten</target>
-			</trans-unit>
 			<trans-unit id="resetLink">
 				<source>Use the this link to reset your password.</source>
 				<target>Klik op onderstaande link om uw wachtwoord te wijzigen.</target>
@@ -95,9 +91,9 @@
 				<source>Forgot my password?</source>
 				<target>Wachtwoord vergeten?</target>
 			</trans-unit>
-			<trans-unit id="link.registerAccount">
-				<source>Create user?</source>
-				<target>Registreren?</target>
+			<trans-unit id="link.login">
+				<source>Back to login?</source>
+				<target>Terug naar login?</target>
 			</trans-unit>
 		</body>
 	</file>

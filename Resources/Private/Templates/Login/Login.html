@@ -1,4 +1,4 @@
-<f:layout name="Login" />
+<f:layout name="Default" />
 
 <f:section name="Title">Login Panel</f:section>
 
@@ -25,16 +25,13 @@
 						<f:form.password name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][password]" id="password" class="input-large" additionalAttributes="{placeholder: '{f:translate(id: \'authentication.password.placeholder\', value: \'Password\')}', tabindex: 2}" />
 					</div>
 					<div class="application-actions feedback">
-						<p class="utility">
-							<f:link.action controller="Password" action="ResetRequest" class="pull-left"><f:translate id="link.resetPassword">Forgot my password?</f:translate></f:link.action>
-							<f:if condition="{settings.enableRegister}">
-								<f:link.action controller="Register" action="new" class="pull-right"><f:translate id="link.registerAccount">Create user?</f:translate></f:link.action>
-							</f:if>
-						</p>
 						<button class="span5 pull-right button button-primary button-warning login-btn" type="submit" tabindex="3" data-loading-text="Loading...">
 							Login >
 						</button>
 					</div>
+					<p class="utility">
+						<f:link.action controller="Password" action="ResetRequest" class="pull-left"><f:translate id="link.resetPassword">Forgot my password?</f:translate></f:link.action>
+					</p>
 				</fieldset>
 			</f:form>
 		</div>

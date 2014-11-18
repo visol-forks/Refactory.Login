@@ -1,4 +1,4 @@
-<f:layout name="Password"/>
+<f:layout name="Default"/>
 
 <f:section name="Title">
 	<f:translate id="resetPasswordRequest">Reset password request</f:translate>
@@ -36,15 +36,13 @@
 						<f:form.textfield name="identifier" id="inputUsernameEmail" type="text" class="form-control" placeholder="Gebruikersnaam / e-mail adres" additionalAttributes="{autofocus: 'autofocus', tabindex: 1}"/>
 					</div>
 					<div class="application-actions feedback">
-						<f:if condition="{settings.enableRegister}">
-							<p>
-								<f:link.action controller="Register" action="new"><f:translate id="link.registerAccount">Create user?</f:translate></f:link.action>
-							</p>
-						</f:if>
 						<button class="span5 pull-right button button-primary button-warning reset-btn" data-loading-text="Loading..." type="submit" tabindex="2">
 							<f:translate id="requestNewPassword">Request new password ></f:translate>
 						</button>
 					</div>
+					<p class="utility">
+						<f:link.action controller="Login" action="login" class="pull-left"><f:translate id="link.login">Login?</f:translate></f:link.action>
+					</p>
 				</fieldset>
 			</f:form>
 		</div>

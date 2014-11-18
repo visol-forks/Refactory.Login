@@ -1,0 +1,44 @@
+#login-box,
+#reset-box {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+
+	background: transparent;
+	border: none;
+	width: $loginBoxWidth;
+	z-index: 10;
+	@include box-shadow(none);
+	@include border-radius(none);
+
+	.login-logo {
+		margin-bottom: 30px;
+		text-align: center;
+	}
+
+	&.notification {
+		width: $notificationBoxWidth;
+		color: white;
+
+		.reset-body {
+			background-color: $blueMedium;
+			padding: 25px 20px;
+			text-align: center;
+		}
+	}
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+	#reset-box,
+	#login-box {
+		margin-top: $unit;
+		margin-left: 0;
+		padding-left: $unit;
+		padding-right: $unit;
+		width: 100%;
+		height: auto;
+		@include box-sizing(border-box);
+	}
+}

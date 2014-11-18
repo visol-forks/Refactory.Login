@@ -69,8 +69,8 @@
 			<trans-unit id="link.resetPassword">
 				<source>Forgot my password?</source>
 			</trans-unit>
-			<trans-unit id="link.registerAccount">
-				<source>Create user?</source>
+				<trans-unit id="link.login">
+				<source>Back to login?</source>
 			</trans-unit>
 		</body>
 	</file>

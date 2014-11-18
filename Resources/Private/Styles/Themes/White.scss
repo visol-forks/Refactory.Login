@@ -7,6 +7,10 @@
 		color: $textSubtleLight;
 	}
 
+	.notification a {
+		color: $grayMedium;
+	}
+
 	input[type="text"],
 	input[type="password"] {
 		border: 2px solid $grayLight;
@@ -29,6 +33,19 @@
 			}
 		}
 	}
+
+	.notification a.button {
+		background-color: darken($blue, 8%);
+		color: #fff;
+
+		&:hover,
+		&:focus {
+			background-color: darken($blue, 18%);
+			color: #fff;
+		}
+	}
+
+
 	#login-box,
 	#reset-box {
 		background: transparent;

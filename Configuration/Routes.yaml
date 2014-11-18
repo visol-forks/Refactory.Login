@@ -61,59 +61,6 @@
     '@format':     'html'
 
 #
-# Register account routes
-#
--
-  name: 'Register User'
-  uriPattern: 'register/new'
-  appendExceedingArguments: true
-  defaults:
-    '@package':    'Refactory.Login'
-    '@controller': 'Register'
-    '@action':     'new'
-    '@format':     'html'
-
--
-  name: 'Cretae User'
-  uriPattern: 'register/create'
-  appendExceedingArguments: true
-  defaults:
-    '@package':    'Refactory.Login'
-    '@controller': 'Register'
-    '@action':     'create'
-    '@format':     'json'
-
--
-  name: 'Account Exists'
-  uriPattern: 'register/verifyaccountexists'
-  appendExceedingArguments: true
-  defaults:
-    '@package':    'Refactory.Login'
-    '@controller': 'Register'
-    '@action':     'verifyAccountExists'
-    '@format':     'json'
-
--
-  name: 'Verify user'
-  uriPattern: 'user/verify'
-  appendExceedingArguments: true
-  defaults:
-    '@package':    'Refactory.Login'
-    '@controller': 'Register'
-    '@action':     'verifyUser'
-    '@format':     'html'
-
--
-  name: 'User Verified'
-  uriPattern: 'user/verified'
-  appendExceedingArguments: true
-  defaults:
-    '@package':    'Refactory.Login'
-    '@controller': 'Register'
-    '@action':     'userVerified'
-    '@format':     'html'
-
-#
 # Logout route
 #
 -

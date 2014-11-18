@@ -15,15 +15,10 @@ class Package extends BasePackage {
 	public function boot(\TYPO3\Flow\Core\Bootstrap $bootstrap) {
 		$dispatcher = $bootstrap->getSignalSlotDispatcher();
 
-		$dispatcher->connect(
-			'Refactory\Login\Controller\PasswordController', 'sendResetRequest',
-			'Refactory\Notifications\Service\SlotService', 'dispatchNotifications'
-		);
-
-		$dispatcher->connect(
-			'Refactory\Login\Controller\RegisterController', 'sendResetRequest',
-			'Refactory\Notifications\Service\SlotService', 'dispatchNotifications'
-		);
+//		$dispatcher->connect(
+//			'Refactory\Login\Controller\PasswordController', 'sendResetRequest',
+//			'Refactory\Notifications\Service\SlotService', 'dispatchNotifications'
+//		);
 	}
 
 }

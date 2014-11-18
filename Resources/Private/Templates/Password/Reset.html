@@ -1,4 +1,4 @@
-<f:layout name="Password"/>
+<f:layout name="Default"/>
 
 <f:section name="Title">
 	<f:translate id="resetPassword">Reset password</f:translate>
@@ -15,7 +15,7 @@
 			</f:else>
 		</f:if>
 	</div>
-	<div id="reset-box" <f:if condition="{hasUser}"><f:then>class="notification"</f:then></f:if>>
+	<div id="reset-box" <f:if condition="{hasUser}"><f:then>class="notification"</f:then></f:if><f:if condition="{isTokenActive}"><f:else>class="notification"</f:else></f:if>>
 		<div class="process">
 			<div class="process-row">
 				<div class="process-step">
@@ -43,8 +43,9 @@
 								<f:else>
 									<f:form id="reset-form" action="reset"  class="form-horizontal form-block" format="json">
 										<f:form.hidden name="token" value="{token}" />
-										<div class="form-group validation">
+										<div class="form-group password-strength">
 											<f:form.textfield id="newPassword" name="newPassword" type="password" placeholder='<f:translate id="inputNewPassword">New Password</f:translate>' />
+											<div class="strength tooltip bottom in tooltip-warning"><div class="tooltip-arrow"></div><div class="tooltip-inner">Password strength: <br/> <span class="label-strength"></span></div></div>
 										</div>
 										<div class="form-group validation">
 											<f:form.textfield id="newPasswordRepeat" name="newPasswordRepeat" type="password" placeholder='<f:translate id="inputNewPasswordRepeat">Repeat new password</f:translate>' />
@@ -54,14 +55,19 @@
 												<f:translate id="resetPassword">Reset password ></f:translate>
 											</button>
 										</div>
+										<p class="utility">
+											<f:link.action controller="Login" action="login" class="pull-left"><f:translate id="link.login">Login?</f:translate></f:link.action>
+										</p>
 									</f:form>
 								</f:else>
 							</f:if>
 						</f:then>
 						<f:else>
-							<p>You are trying to reset your password, but:</p>
+							<p><f:translate id="tokenExpiredBefore">You are trying to reset your password, but:</f:translate></p>
 							<h1><f:translate id="tokenNotValid">This token is not valid!</f:translate></h1>
-							<p>To reset your password click <strong><f:link.action controller="Password" action="ResetRequest">here</f:link.action></strong> this will start the reset procedure.</p>
+							<p class="application-actions">
+								<f:link.action controller="Password" action="ResetRequest" class="button button-primary button-warning reset-btn">Reset procedure</f:link.action>
+							</p>
 						</f:else>
 					</f:if>
 				</f:else>
@@ -72,26 +78,11 @@
 
 <f:section name="Script">
 	<script src="{f:uri.resource(path: 'Library/BootstrapValidator/js/bootstrapValidator.min.js')}"></script>
-	<script src="{f:uri.resource(path: 'Library/Pwstrength/pwstrength-bootstrap-1.1.5.min.js')}"></script>
+	<script src="{f:uri.resource(path: 'Library/strength/jquery.strength.js')}"></script>
 	<script src="{f:uri.resource(path: 'JavaScript/RequestPassword.js')}"></script>
 	<script>
 		$(document).ready(function() {
-			var options = {};
-			options.ui = {
-				container: ".reset-body",
-				showVerdictsInsideProgressBar: true,
-				viewports: {
-					progress: ".pwstrength_viewport_progress"
-				}
-			};
-			options.common = {
-				debug: true,
-				onLoad: function () {
-					$('#messages').text('Start typing password');
-				}
-			};
-
-			$('#password').pwstrength(options);
+			$('#newPassword').strength();
 
 			$('#reset-form').bootstrapValidator({
 				message: 'This value is not valid',
@@ -105,7 +96,7 @@
 						validators: {
 							identical: {
 								field: 'newPasswordRepeat',
-								message: 'The password and its confirm are not the same'
+								message: ' '
 							}
 						}
 					},

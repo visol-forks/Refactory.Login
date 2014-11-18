@@ -64,7 +64,6 @@ class AccountManagementService {
 	 * @return boolean
 	 */
 	public function resetPassword(Account $account, $password, $passwordHashingStrategy = 'default') {
-
 		$account->setCredentialsSource($this->hashService->hashPassword($password, $passwordHashingStrategy));
 		$this->accountRepository->update($account);
 		return TRUE;

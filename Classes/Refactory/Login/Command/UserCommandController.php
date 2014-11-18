@@ -39,10 +39,10 @@ class UserCommandController extends \TYPO3\Flow\Cli\CommandController {
 	protected $userFactory;
 
 	/**
-	 * @var \Refactory\Login\Domain\Repository\UserRegistryRepository
+	 * @var \Refactory\Login\Service\AccountManagementService
 	 * @Flow\Inject
 	 */
-	protected $userRegistryRepository;
+	protected $accountManagementService;
 
 	/**
 	 * Create a user
@@ -88,20 +88,22 @@ class UserCommandController extends \TYPO3\Flow\Cli\CommandController {
 	}
 
 	/**
-	 * Lists all registered users
+	 * Set a new password for the given account
+	 *
+	 * This allows for setting a new password for an existing user account.
+	 *
+	 * @param string $username Username of the account to modify
+	 * @param string $password The new password
+	 * @param string $authenticationProvider The name of the authentication provider to use
+	 * @return void
 	 */
-	public function registeredCommand() {
-		$registeredUsers = $this->userRegistryRepository->findAll();
-
-		$this->outputLine('');
-		$this->outputLine(' <b>User</b>         <b>Email</b>          <b>Registration Date</b>         <b>Ip-address</b>');
-		$this->outputLine('-----------------------------------------------------------------');
-		foreach ($registeredUsers as $registeredUser) {
-			/**
-			 * @param \Refactory\Login\Domain\Model\UserRegistry $registeredUser
-			 */
-			$this->outputLine('%s         Email    %s        %s', array($registeredUser->getPerson()->getName()->getAlias(), $registeredUser->getDate()->format('Y-m-d H:i:s'), $registeredUser->getIp()));
+	public function setPasswordCommand($username, $password, $authenticationProvider = 'DefaultProvider') {
+		$account = $this->accountManagementService->getAccount($username, $authenticationProvider);
+		if (!$account instanceof \TYPO3\Flow\Security\Account) {
+			$this->outputLine('User "%s" does not exists.', array($username));
+			$this->quit(1);
 		}
-		$this->outputLine('');
+		$this->accountManagementService->resetPassword($account, $password);
+		$this->outputLine('The new password for user "%s" was set.', array($username));
 	}
 }
