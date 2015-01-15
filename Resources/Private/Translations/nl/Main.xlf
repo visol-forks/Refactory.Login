@@ -53,7 +53,7 @@
 			</trans-unit>
 			<trans-unit id="requestNewPassword">
 				<source>Request new password</source>
-				<target>Verzoek nieuw wachtwoord ></target>
+				<target>Verzoek wachtwoord reset</target>
 			</trans-unit>
 			<trans-unit id="resetMailSend">
 				<source>Reset password mail has been sent</source>
