@@ -72,6 +72,15 @@
 				<trans-unit id="link.login">
 				<source>Back to login?</source>
 			</trans-unit>
+			<trans-unit id="sentence.reset1">
+				<source>We've sent a mail to your e-mail address please:</source>
+			</trans-unit>
+			<trans-unit id="sentence.reset2">
+				<source>Check your inbox!</source>
+			</trans-unit>
+			<trans-unit id="sentence.reset3">
+				<source>To proceed resetting your password please click on the link inside the email.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
