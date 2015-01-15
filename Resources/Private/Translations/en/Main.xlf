@@ -60,6 +60,12 @@
 			<trans-unit id="inputNewPasswordRepeat">
 				<source>Repeat new password</source>
 			</trans-unit>
+			<trans-unit id="tokenExpiredBefore">
+				<source>You are trying to reset your password, but:</source>
+			</trans-unit>
+			<trans-unit id="resetProcedure">
+				<source>Reset procedure</source>
+			</trans-unit>
 			<trans-unit id="tokenNotValid">
 				<source>This token is not valid!</source>
 			</trans-unit>
