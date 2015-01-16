@@ -44,8 +44,9 @@ class LoginController extends AbstractAuthenticationController {
 	/**
 	 * This action is used to show the login form.
 	 * If a user is already authenticated it will be redirected to the signedIn action or a custom redirect
+	 * @param string $username
 	 */
-	public function loginAction() {
+	public function loginAction($username = '') {
 		if ($this->authenticationManager->isAuthenticated()) {
 			if (isset($this->settings['authenticatedRedirect'])) {
 				$redirect = $this->settings['authenticatedRedirect'];
@@ -53,6 +54,8 @@ class LoginController extends AbstractAuthenticationController {
 			}
 			$this->redirect('signedIn');
 		}
+
+		$this->view->assign('username', $username);
 	}
 
 	/**

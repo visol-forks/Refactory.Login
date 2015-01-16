@@ -122,6 +122,7 @@ class AccountManagementService {
 			$this->resetPasswordTokenRepository->update($resetPasswordToken);
 		}
 	}
+
 	/**
 	 * Method to find account by given party
 	 * @param $party

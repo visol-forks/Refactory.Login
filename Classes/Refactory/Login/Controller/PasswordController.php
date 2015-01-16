@@ -89,11 +89,13 @@ class PasswordController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 				}
 			}
 
-			$this->emitSendResetRequest(
-				array('configuration' => array('controllerContext' => $this->controllerContext),
-					'arguments' => array('resetPasswordToken' => $resetPasswordToken->getToken(), 'recipient' => $person),
-					'properties' => array('recipient' => $person))
-			);
+			if ($resetPasswordToken instanceof \Refactory\Login\Domain\Model\ResetPasswordToken) {
+				$this->emitSendResetRequest(
+					array('configuration' => array('controllerContext' => $this->controllerContext),
+						'arguments' => array('resetPasswordToken' => $resetPasswordToken->getToken(), 'recipient' => $person),
+						'properties' => array('recipient' => $person))
+				);
+			}
 			$this->request->setFormat('json');
 			$this->redirect('reset', NULL, NULL, array('identifier' => $identifier));
 		}
@@ -116,7 +118,7 @@ class PasswordController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 
 					if ($isPasswordChanged) {
 						$this->accountManagementService->deactivateToken($this->request->getArgument('token'));
-						$this->redirect('login', 'Login', NULL, array('user' => $account->getParty()));
+						$this->redirect('login', 'Login', NULL, array('username' => $account->getAccountIdentifier()));
 					} else {
 						$response = new Response();
 						$response->setType('error');
