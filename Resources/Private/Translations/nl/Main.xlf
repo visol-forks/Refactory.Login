@@ -81,7 +81,7 @@
 			</trans-unit>
 			<trans-unit id="tokenExpiredBefore">
 				<source>You are trying to reset your password, but:</source>
-				<target>Je probeert je wachtwoordt te resetten, maar:</target>
+				<target>Je probeert je wachtwoord te resetten, maar:</target>
 			</trans-unit>
 			<trans-unit id="tokenNotValid">
 				<source>This token is not valid!</source>
