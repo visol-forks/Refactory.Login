@@ -41,7 +41,7 @@
 						<f:then>
 							<f:if condition="{isPasswordChanged}">
 								<f:else>
-									<f:form id="reset-form" action="reset" controller="Password" package="Refactory.Login" class="form-horizontal form-block" format="json">
+									<f:form id="reset-form" action="reset" controller="Password" package="Refactory.Login" class="form-horizontal form-block">
 										<f:form.hidden name="token" value="{token}" />
 										<div class="form-group password-strength">
 											<f:form.textfield id="newPassword" name="newPassword" type="password" placeholder='<f:translate id="inputNewPassword">New Password</f:translate>' />

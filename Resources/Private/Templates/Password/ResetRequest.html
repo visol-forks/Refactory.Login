@@ -30,7 +30,7 @@
 			</div>
 		</div>
 		<div class="reset-body">
-			<f:form id="reset-form" class="form-horizontal" name="password" action="sendResetRequest" controller="Password" format="json">
+			<f:form id="reset-form" class="ajax-request form-horizontal" name="password" action="sendResetRequest" controller="Password" format="json">
 				<fieldset>
 					<div class="form-controls">
 						<f:form.textfield name="identifier" id="inputUsernameEmail" type="text" class="form-control" placeholder="Gebruikersnaam / e-mail adres" additionalAttributes="{autofocus: 'autofocus', tabindex: 1}"/>

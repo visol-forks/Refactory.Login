@@ -59,15 +59,6 @@
     '@controller': 'Password'
     '@action':     'reset'
     '@format':     'html'
--
-  name: 'Password reset'
-  uriPattern: 'password/reset'
-  appendExceedingArguments: true
-  defaults:
-    '@package':    'Refactory.Login'
-    '@controller': 'Password'
-    '@action':     'reset'
-    '@format':     'json'
 
 #
 # Logout route
