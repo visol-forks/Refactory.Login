@@ -23,7 +23,7 @@
 					} else if (jqXHR.status === 200 && typeof callback === 'object') {
 						$('fieldset').effect('shake', {times: 1}, 400);
 						$('.feedback').append('<div class="tooltip bottom in tooltip-'+ callback.type +'"><div class="tooltip-arrow"></div><div class="tooltip-inner">' + callback.message + '</div></div>');
-						$('.feedback .tooltip-error').delay(3000).fadeOut(300);
+						$('.feedback .tooltip-error').delay(5000).fadeOut(300);
 					}
 				}
 			}
