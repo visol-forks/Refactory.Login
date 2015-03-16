@@ -1,10 +1,9 @@
+
 resources:
   methods:
-    Refactory_LoginSignedInMethods: 'method(Refactory\Login\Controller\LoginController->signedInAction())'
-
+    Refactory_LoginSignedInMethods: method(Refactory\Login\Controller\LoginController->signedInAction())
 roles:
-  User: []
-
+  User: {  }
 acls:
   User:
     methods:
