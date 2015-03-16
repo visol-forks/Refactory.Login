@@ -1,10 +1,11 @@
+privilegeTargets:
+  'TYPO3\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
 
-resources:
-  methods:
-    Refactory_LoginSignedInMethods: method(Refactory\Login\Controller\LoginController->signedInAction())
+    'Refactory.Login:SignedInAction':
+      matcher: 'method(Refactory\Login\Controller\LoginController->signedInAction())'
 roles:
-  User: {  }
-acls:
-  User:
-    methods:
-      Refactory_LoginSignedInMethods: GRANT
+  'Refactory.Login:User':
+    privileges:
+      -
+        privilegeTarget: 'Refactory.Login:SignedInAction'
+        permission: GRANT
