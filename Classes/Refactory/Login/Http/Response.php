@@ -18,6 +18,12 @@ use TYPO3\Flow\Annotations as Flow;
  */
 class Response {
 
+    /**
+     * @Flow\InjectConfiguration(package="Refactory.Login")
+     * @var array
+     */
+    protected $settings;
+
 	const TYPE_SUCCESS = 'Success';
 	const TYPE_INFO = 'Info';
 	const TYPE_WARNING = 'Warning';
@@ -64,6 +70,6 @@ class Response {
 	 * @return string
 	 */
 	public function getMessage() {
-		return $this->translator->translateByOriginalLabel($this->message, array(), NULL, NULL, 'Main', 'Refactory.Login');
+		return $this->translator->translateByOriginalLabel($this->message, array(), NULL, NULL, $this->settings['translationSourceName'], $this->settings['translationPackageKey']);
 	}
 }

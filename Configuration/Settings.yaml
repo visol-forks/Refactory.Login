@@ -17,6 +17,10 @@ Refactory:
   Login:
     partyRepositoryClassName: 'TYPO3\Party\Domain\Repository\PartyRepository'
     tokenExpiration: 14400 # in seconds
+    translationPackageKey: 'Refactory.Login'
+    translationSourceName: 'Main'
+
+
 #    image: 'resource://Refactory.Login/Public/Images/ApplicationLogo.png'
 #    styles:
 #      - resource://Vendor.MyPackage/Public/Styles/Custom.css'
