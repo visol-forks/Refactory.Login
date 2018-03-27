@@ -11,8 +11,8 @@ namespace Refactory\Login\Service;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Security\Account;
+use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Security\Account;
 use TYPO3\Party\Domain\Model\AbstractParty;
 
 /**
@@ -23,7 +23,7 @@ class AccountManagementService {
 
 	/**
 	 * @Flow\Inject
-	 * @var \TYPO3\Flow\Security\AccountRepository
+	 * @var \Neos\Flow\Security\AccountRepository
 	 */
 	protected $accountRepository;
 
@@ -34,7 +34,7 @@ class AccountManagementService {
 	protected $resetPasswordTokenRepository;
 
 	/**
-	 * @var \TYPO3\Flow\Security\Cryptography\HashService
+	 * @var \Neos\Flow\Security\Cryptography\HashService
 	 * @Flow\Inject
 	 */
 	protected $hashService;
@@ -71,11 +71,11 @@ class AccountManagementService {
 
 	/**
 	 * @param Account $account
-	 * @param \TYPO3\Flow\Mvc\ActionRequest $request
+	 * @param \Neos\Flow\Mvc\ActionRequest $request
 	 * @return \Refactory\Login\Domain\Model\ResetPasswordToken
 	 */
-	public function generateResetPasswordToken(Account $account, \TYPO3\Flow\Mvc\ActionRequest $request = NULL) {
-		list($generatedToken, $salt) = explode(',', \TYPO3\Flow\Security\Cryptography\SaltedMd5HashingStrategy::generateSaltedMd5($account->getAccountIdentifier()));
+	public function generateResetPasswordToken(Account $account, \Neos\Flow\Mvc\ActionRequest $request = NULL) {
+		list($generatedToken, $salt) = explode(',', \Neos\Flow\Security\Cryptography\SaltedMd5HashingStrategy::generateSaltedMd5($account->getAccountIdentifier()));
 		$resetPasswordToken = new \Refactory\Login\Domain\Model\ResetPasswordToken();
 		$resetPasswordToken->setDate(new \DateTime());
 		$resetPasswordToken->setAccount($account);
@@ -88,12 +88,12 @@ class AccountManagementService {
 
 	/**
 	 * @param AbstractParty $party
-	 * @param \TYPO3\Flow\Mvc\ActionRequest $request
+	 * @param \Neos\Flow\Mvc\ActionRequest $request
 	 * @return \Refactory\Login\Domain\Model\ResetPasswordToken
 	 * @throws \Exception
-	 * @throws \TYPO3\Flow\Exception
+	 * @throws \Neos\Flow\Exception
 	 */
-	public function generateResetPasswordTokenForParty(AbstractParty $party, \TYPO3\Flow\Mvc\ActionRequest $request = NULL) {
+	public function generateResetPasswordTokenForParty(AbstractParty $party, \Neos\Flow\Mvc\ActionRequest $request = NULL) {
 		$account = $this->getAccountByParty($party);
 		$request->getHttpRequest()->getClientIpAddress();
 		return $this->generateResetPasswordToken($account, $request);
@@ -126,7 +126,7 @@ class AccountManagementService {
 	/**
 	 * Method to find account by given party
 	 * @param $party
-	 * @return \TYPO3\Flow\Security\Account
+	 * @return \Neos\Flow\Security\Account
 	 */
 	public function getAccountByParty($party) {
 		return $this->accountRepository->findOneByParty($party);
@@ -135,7 +135,7 @@ class AccountManagementService {
 	/**
 	 * Method to find account by given token
 	 * @param string $token
-	 * @return \TYPO3\Flow\Security\Account
+	 * @return \Neos\Flow\Security\Account
 	 */
 	public function getAccountByToken($token) {
 		return $this->resetPasswordTokenRepository->findOneByToken($token)->getAccount();

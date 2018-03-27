@@ -1,4 +1,11 @@
-TYPO3:
+
+Refactory:
+  Login:
+    partyRepositoryClassName: TYPO3\Party\Domain\Repository\PartyRepository
+    tokenExpiration: 14400
+    translationPackageKey: Refactory.Login
+    translationSourceName: Main
+Neos:
   Flow:
     security:
       authentication:
@@ -6,25 +13,9 @@ TYPO3:
         providers:
           DefaultProvider:
             provider: PersistedUsernamePasswordProvider
-            entryPoint: 'WebRedirect'
+            entryPoint: WebRedirect
             entryPointOptions:
-              routeValues:
-              '@package': 'Refactory.Login'
-              '@controller': 'Login'
-              '@action': 'index'
-
-Refactory:
-  Login:
-    partyRepositoryClassName: 'TYPO3\Party\Domain\Repository\PartyRepository'
-    tokenExpiration: 14400 # in seconds
-    translationPackageKey: 'Refactory.Login'
-    translationSourceName: 'Main'
-
-
-#    image: 'resource://Refactory.Login/Public/Images/ApplicationLogo.png'
-#    styles:
-#      - resource://Vendor.MyPackage/Public/Styles/Custom.css'
-#    authenticatedRedirect:
-#      packageKey: Vendor.MyPackage
-#      controller: SignedIn
-#      actionName: Authenticated
+              routeValues: null
+              '@package': Refactory.Login
+              '@controller': Login
+              '@action': index

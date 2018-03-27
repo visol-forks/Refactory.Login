@@ -10,7 +10,7 @@ namespace Refactory\Login\Http;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 
 /**
  * Represents a Custom Json HTTP Response
@@ -40,7 +40,7 @@ class Response {
 	protected $message;
 
 	/**
-	 * @var \TYPO3\Flow\I18n\Translator
+	 * @var \Neos\Flow\I18n\Translator
 	 * @Flow\Inject
 	 */
 	protected $translator;
