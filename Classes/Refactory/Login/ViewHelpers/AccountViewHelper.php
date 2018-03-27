@@ -32,7 +32,7 @@ class AccountViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper 
 
 	/**
 	 * @Flow\Inject
-	 * @var \TYPO3\Flow\Object\ObjectManagerInterface
+	 * @var \TYPO3\Flow\ObjectManagement\ObjectManagerInterface
 	 */
 	protected $objectManager;
 
