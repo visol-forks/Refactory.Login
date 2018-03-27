@@ -1,8 +1,8 @@
 privilegeTargets:
   'Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
-
     'Refactory.Login:SignedInAction':
       matcher: 'method(Refactory\Login\Controller\LoginController->signedInAction())'
+
 roles:
   'Refactory.Login:User':
     privileges:
