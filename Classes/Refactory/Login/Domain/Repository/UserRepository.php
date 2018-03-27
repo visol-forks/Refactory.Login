@@ -21,7 +21,7 @@ use Neos\Flow\Persistence\Repository;
  */
 class UserRepository extends Repository {
 
-	const ENTITY_CLASSNAME = '\TYPO3\Party\Domain\Model\Person';
+	const ENTITY_CLASSNAME = '\Neos\Party\Domain\Model\Person';
 
 	public function findByPrimaryElectronicAddress($electronicAddress) {
 		$query = $this->createQuery();

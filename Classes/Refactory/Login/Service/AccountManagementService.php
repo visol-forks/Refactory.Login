@@ -13,7 +13,7 @@ namespace Refactory\Login\Service;
 
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Security\Account;
-use TYPO3\Party\Domain\Model\AbstractParty;
+use Neos\Party\Domain\Model\AbstractParty;
 
 /**
  * An AccountManagementService service

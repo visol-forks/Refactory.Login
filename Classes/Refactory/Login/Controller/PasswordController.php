@@ -14,7 +14,7 @@ namespace Refactory\Login\Controller;
 use Refactory\Login\Http\Response;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Security\Authentication\Token\PasswordToken;
-use TYPO3\Party\Domain\Model\AbstractParty;
+use Neos\Party\Domain\Model\AbstractParty;
 
 /**
  * Password controller for the Refactory.Login package
@@ -91,7 +91,7 @@ class PasswordController extends \Neos\Flow\Mvc\Controller\ActionController {
 				$resetPasswordToken = $this->accountManagementService->generateResetPasswordTokenForParty($person, $this->request);
 			} else {
 				$person = $this->userRepository->findByPrimaryElectronicAddress($identifier)->getFirst();
-				if (is_subclass_of($person, '\TYPO3\Party\Domain\Model\AbstractParty')) {
+				if (is_subclass_of($person, '\Neos\Party\Domain\Model\AbstractParty')) {
 					$resetPasswordToken = $this->accountManagementService->generateResetPasswordTokenForParty($person, $this->request);
 				}
 			}
