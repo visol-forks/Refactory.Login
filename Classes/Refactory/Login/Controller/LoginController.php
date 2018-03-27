@@ -32,7 +32,7 @@ class LoginController extends AbstractAuthenticationController {
 	 * @var array
 	 */
 	protected $viewFormatToObjectNameMap = array(
-		'html'  => 'TYPO3\Fluid\View\TemplateView',
+		'html'  => 'Neos\FluidAdaptor\View\TemplateView',
 		'json'  => 'Neos\Flow\Mvc\View\JsonView');
 
     /**
