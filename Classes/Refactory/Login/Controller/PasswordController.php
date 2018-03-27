@@ -54,7 +54,7 @@ class PasswordController extends \Neos\Flow\Mvc\Controller\ActionController {
 
 	/**
 	 * @var string
-	 * @Flow\Inject(setting="partyRepositoryClassName", package="Refactory.Login")
+	 * @Flow\InjectConfiguration(path="partyRepositoryClassName", package="Refactory.Login")
 	 */
 	protected $partyRepositoryClassName;
 

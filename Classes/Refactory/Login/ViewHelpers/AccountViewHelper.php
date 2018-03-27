@@ -26,7 +26,7 @@ class AccountViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractViewH
 
 	/**
 	 * @var string
-	 * @Flow\Inject(setting="partyRepositoryClassName", package="Refactory.Login")
+     * @Flow\InjectConfiguration(path="partyRepositoryClassName", package="Refactory.Login")
 	 */
 	protected $partyRepositoryClassName;
 

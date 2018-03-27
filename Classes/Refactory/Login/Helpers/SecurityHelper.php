@@ -23,7 +23,7 @@ class SecurityHelper {
 
 	/**
 	 * @var string
-	 * @Flow\Inject(setting="partyRepositoryClassName", package="Refactory.Login")
+     * @Flow\InjectConfiguration(path="partyRepositoryClassName", package="Refactory.Login")
 	 */
 	protected $partyRepositoryClassName;
 
