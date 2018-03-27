@@ -14,7 +14,7 @@ namespace Refactory\Login\Controller;
 use Refactory\Login\Http\Response;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Security\Authentication\Controller\AbstractAuthenticationController;
-use Neos\Flow\Error\Message;
+use Neos\Error\Messages\Message;
 
 /**
  * A controller which allows for logging into an application

@@ -49,7 +49,7 @@ class AccountViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper 
 		foreach ($tokens as $token) {
 			if ($token->isAuthenticated()) {
 				$person = $partyRepository->findOneHavingAccount($token->getAccount());
-				return (string)\Neos\Flow\Reflection\ObjectAccess::getPropertyPath($person, $propertyPath);
+				return (string)\Neos\Utility\ObjectAccess::getPropertyPath($person, $propertyPath);
 			}
 		}
 

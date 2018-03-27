@@ -11,7 +11,7 @@ namespace Refactory\Login\Aop;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 use Neos\Flow\Annotations as Flow;
-use Neos\Flow\Reflection\ObjectAccess;
+use Neos\Utility\ObjectAccess;
 
 /**
  * @Flow\Aspect
