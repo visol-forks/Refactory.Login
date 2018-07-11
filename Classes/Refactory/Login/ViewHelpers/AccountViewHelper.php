@@ -49,7 +49,7 @@ class AccountViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractViewH
 		foreach ($tokens as $token) {
 			if ($token->isAuthenticated()) {
 				$person = $partyRepository->findOneHavingAccount($token->getAccount());
-				return (string)\Neos\Utility\ObjectAccess::getPropertyPath($person, $propertyPath);
+				return \Neos\Utility\ObjectAccess::getPropertyPath($person, $propertyPath);
 			}
 		}
 
