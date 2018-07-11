@@ -16,31 +16,32 @@ use Neos\Flow\Annotations as Flow;
 /**
  * Validator for accounts
  */
-class AccountExistsValidator extends \Neos\Flow\Validation\Validator\AbstractValidator {
+class AccountExistsValidator extends \Neos\Flow\Validation\Validator\AbstractValidator
+{
 
-	/**
-	 * @Flow\Inject
-	 * @var \Neos\Flow\Security\AccountRepository
-	 */
-	protected $accountRepository;
+    /**
+     * @Flow\Inject
+     * @var \Neos\Flow\Security\AccountRepository
+     */
+    protected $accountRepository;
 
-	/**
-	 * @param mixed $value The value that should be validated
-	 * @return void
-	 * @throws \Neos\Flow\Validation\Exception\InvalidSubjectException
-	 */
-	protected function isValid($value) {
-		if (!is_string($value)) {
-			throw new \Neos\Flow\Validation\Exception\InvalidSubjectException('The given value was not a string.', 1325155784);
-		}
+    /**
+     * @param mixed $value The value that should be validated
+     * @return void
+     * @throws \Neos\Flow\Validation\Exception\InvalidSubjectException
+     */
+    protected function isValid($value)
+    {
+        if (!is_string($value)) {
+            throw new \Neos\Flow\Validation\Exception\InvalidSubjectException('The given value was not a string.', 1325155784);
+        }
 
-		$authenticationProviderName = isset($this->options['authenticationProviderName']) ? $this->options['authenticationProviderName'] : 'DefaultProvider';
+        $authenticationProviderName = isset($this->options['authenticationProviderName']) ? $this->options['authenticationProviderName'] : 'DefaultProvider';
 
-		$account = $this->accountRepository->findByAccountIdentifierAndAuthenticationProviderName($value, $authenticationProviderName);
+        $account = $this->accountRepository->findByAccountIdentifierAndAuthenticationProviderName($value, $authenticationProviderName);
 
-		if ($account !== NULL) {
-			$this->addError('The username is already in use.', 1325156008);
-		}
-	}
-
+        if ($account !== null) {
+            $this->addError('The username is already in use.', 1325156008);
+        }
+    }
 }

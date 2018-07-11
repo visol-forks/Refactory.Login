@@ -1,5 +1,6 @@
 <?php
 namespace Refactory\Login\Http;
+
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "Refactory.Login".       *
  *                                                                        *
@@ -16,7 +17,8 @@ use Neos\Flow\Annotations as Flow;
  * Represents a Custom Json HTTP Response
  * @Flow\Scope("singleton")
  */
-class Response {
+class Response
+{
 
     /**
      * @Flow\InjectConfiguration(package="Refactory.Login")
@@ -24,52 +26,56 @@ class Response {
      */
     protected $settings;
 
-	const TYPE_SUCCESS = 'Success';
-	const TYPE_INFO = 'Info';
-	const TYPE_WARNING = 'Warning';
-	const TYPE_ERROR = 'Error';
+    const TYPE_SUCCESS = 'Success';
+    const TYPE_INFO = 'Info';
+    const TYPE_WARNING = 'Warning';
+    const TYPE_ERROR = 'Error';
 
-	/**
-	 * @var string
-	 */
-	protected $type;
+    /**
+     * @var string
+     */
+    protected $type;
 
-	/**
-	 * @var  string
-	 */
-	protected $message;
+    /**
+     * @var  string
+     */
+    protected $message;
 
-	/**
-	 * @var \Neos\Flow\I18n\Translator
-	 * @Flow\Inject
-	 */
-	protected $translator;
+    /**
+     * @var \Neos\Flow\I18n\Translator
+     * @Flow\Inject
+     */
+    protected $translator;
 
-	/**
-	 * @param string $type
-	 */
-	public function setType($type) {
-		$this->type = $type;
-	}
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getType() {
-		return $this->type;
-	}
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
 
-	/**
-	 * @param string $message
-	 */
-	public function setMessage($message) {
-		$this->message = $message;
-	}
+    /**
+     * @param string $message
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getMessage() {
-		return $this->translator->translateByOriginalLabel($this->message, [], NULL, NULL, $this->settings['translationSourceName'], $this->settings['translationPackageKey']);
-	}
+    /**
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->translator->translateByOriginalLabel($this->message, [], null, null, $this->settings['translationSourceName'], $this->settings['translationPackageKey']);
+    }
 }

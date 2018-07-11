@@ -19,15 +19,16 @@ use Neos\Flow\Persistence\Repository;
  *
  * @Flow\Scope("singleton")
  */
-class UserRepository extends Repository {
+class UserRepository extends Repository
+{
 
-	const ENTITY_CLASSNAME = '\Neos\Party\Domain\Model\Person';
+    const ENTITY_CLASSNAME = '\Neos\Party\Domain\Model\Person';
 
-	public function findByPrimaryElectronicAddress($electronicAddress) {
-		$query = $this->createQuery();
-		return $query->matching(
-			$query->equals('primaryElectronicAddress.identifier', $electronicAddress)
-		)->execute();
-	}
-
+    public function findByPrimaryElectronicAddress($electronicAddress)
+    {
+        $query = $this->createQuery();
+        return $query->matching(
+            $query->equals('primaryElectronicAddress.identifier', $electronicAddress)
+        )->execute();
+    }
 }

@@ -16,44 +16,45 @@ use Neos\Flow\Annotations as Flow;
 /**
  * Shows the name of the currently active user
  */
-class AccountViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractViewHelper {
+class AccountViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractViewHelper
+{
 
-	/**
-	 * @var \Neos\Flow\Security\Context
-	 * @Flow\Inject
-	 */
-	protected $securityContext;
+    /**
+     * @var \Neos\Flow\Security\Context
+     * @Flow\Inject
+     */
+    protected $securityContext;
 
-	/**
-	 * @var string
+    /**
+     * @var string
      * @Flow\InjectConfiguration(path="partyRepositoryClassName", package="Refactory.Login")
-	 */
-	protected $partyRepositoryClassName;
+     */
+    protected $partyRepositoryClassName;
 
-	/**
-	 * @Flow\Inject
-	 * @var \Neos\Flow\ObjectManagement\ObjectManagerInterface
-	 */
-	protected $objectManager;
+    /**
+     * @Flow\Inject
+     * @var \Neos\Flow\ObjectManagement\ObjectManagerInterface
+     */
+    protected $objectManager;
 
-	/**
-	 * @param string $propertyPath
-	 * @return string
-	 */
-	public function render($propertyPath = 'name') {
+    /**
+     * @param string $propertyPath
+     * @return string
+     */
+    public function render($propertyPath = 'name')
+    {
 
-		$partyRepository = $this->objectManager->get($this->partyRepositoryClassName);
+        $partyRepository = $this->objectManager->get($this->partyRepositoryClassName);
 
-		$tokens = $this->securityContext->getAuthenticationTokens();
+        $tokens = $this->securityContext->getAuthenticationTokens();
 
-		foreach ($tokens as $token) {
-			if ($token->isAuthenticated()) {
-				$person = $partyRepository->findOneHavingAccount($token->getAccount());
-				return \Neos\Utility\ObjectAccess::getPropertyPath($person, $propertyPath);
-			}
-		}
+        foreach ($tokens as $token) {
+            if ($token->isAuthenticated()) {
+                $person = $partyRepository->findOneHavingAccount($token->getAccount());
+                return \Neos\Utility\ObjectAccess::getPropertyPath($person, $propertyPath);
+            }
+        }
 
-		return '';
-	}
-
+        return '';
+    }
 }

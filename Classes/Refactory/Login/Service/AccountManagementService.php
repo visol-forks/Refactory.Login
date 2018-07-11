@@ -19,125 +19,134 @@ use Neos\Party\Domain\Model\AbstractParty;
  * An AccountManagementService service
  *
  */
-class AccountManagementService {
+class AccountManagementService
+{
 
-	/**
-	 * @Flow\Inject
-	 * @var \Neos\Flow\Security\AccountRepository
-	 */
-	protected $accountRepository;
+    /**
+     * @Flow\Inject
+     * @var \Neos\Flow\Security\AccountRepository
+     */
+    protected $accountRepository;
 
-	/**
-	 * @Flow\Inject
-	 * @var \Refactory\Login\Domain\Repository\ResetPasswordTokenRepository
-	 */
-	protected $resetPasswordTokenRepository;
+    /**
+     * @Flow\Inject
+     * @var \Refactory\Login\Domain\Repository\ResetPasswordTokenRepository
+     */
+    protected $resetPasswordTokenRepository;
 
-	/**
-	 * @var \Neos\Flow\Security\Cryptography\HashService
-	 * @Flow\Inject
-	 */
-	protected $hashService;
+    /**
+     * @var \Neos\Flow\Security\Cryptography\HashService
+     * @Flow\Inject
+     */
+    protected $hashService;
 
-	/**
-	 * @var array
-	 */
-	protected $settings;
+    /**
+     * @var array
+     */
+    protected $settings;
 
-	/**
-	 * @param array $settings
-	 * @return void
-	 */
-	public function injectSettings(array $settings) {
-		$this->settings = $settings;
-	}
+    /**
+     * @param array $settings
+     * @return void
+     */
+    public function injectSettings(array $settings)
+    {
+        $this->settings = $settings;
+    }
 
-	/**
-	 * Set a new password for the given account
-	 *
-	 * This allows for setting a new password for an existing user account.
-	 *
-	 * @param Account $account
-	 * @param $password
-	 * @param string $passwordHashingStrategy
-	 *
-	 * @return boolean
-	 */
-	public function resetPassword(Account $account, $password, $passwordHashingStrategy = 'default') {
-		$account->setCredentialsSource($this->hashService->hashPassword($password, $passwordHashingStrategy));
-		$this->accountRepository->update($account);
-		return TRUE;
-	}
+    /**
+     * Set a new password for the given account
+     *
+     * This allows for setting a new password for an existing user account.
+     *
+     * @param Account $account
+     * @param $password
+     * @param string $passwordHashingStrategy
+     *
+     * @return boolean
+     */
+    public function resetPassword(Account $account, $password, $passwordHashingStrategy = 'default')
+    {
+        $account->setCredentialsSource($this->hashService->hashPassword($password, $passwordHashingStrategy));
+        $this->accountRepository->update($account);
+        return true;
+    }
 
-	/**
-	 * @param Account $account
-	 * @param \Neos\Flow\Mvc\ActionRequest $request
-	 * @return \Refactory\Login\Domain\Model\ResetPasswordToken
-	 */
-	public function generateResetPasswordToken(Account $account, \Neos\Flow\Mvc\ActionRequest $request = NULL) {
-		list($generatedToken, $salt) = explode(',', \Neos\Flow\Security\Cryptography\SaltedMd5HashingStrategy::generateSaltedMd5($account->getAccountIdentifier()));
-		$resetPasswordToken = new \Refactory\Login\Domain\Model\ResetPasswordToken();
-		$resetPasswordToken->setDate(new \DateTime());
-		$resetPasswordToken->setAccount($account);
-		$resetPasswordToken->setToken($generatedToken);
-		$resetPasswordToken->setIp($request->getHttpRequest()->getClientIpAddress());
-		$resetPasswordToken->setActive(TRUE);
-		$this->resetPasswordTokenRepository->add($resetPasswordToken);
-		return $resetPasswordToken;
-	}
+    /**
+     * @param Account $account
+     * @param \Neos\Flow\Mvc\ActionRequest $request
+     * @return \Refactory\Login\Domain\Model\ResetPasswordToken
+     */
+    public function generateResetPasswordToken(Account $account, \Neos\Flow\Mvc\ActionRequest $request = null)
+    {
+        list($generatedToken, $salt) = explode(',', \Neos\Flow\Security\Cryptography\SaltedMd5HashingStrategy::generateSaltedMd5($account->getAccountIdentifier()));
+        $resetPasswordToken = new \Refactory\Login\Domain\Model\ResetPasswordToken();
+        $resetPasswordToken->setDate(new \DateTime());
+        $resetPasswordToken->setAccount($account);
+        $resetPasswordToken->setToken($generatedToken);
+        $resetPasswordToken->setIp($request->getHttpRequest()->getClientIpAddress());
+        $resetPasswordToken->setActive(true);
+        $this->resetPasswordTokenRepository->add($resetPasswordToken);
+        return $resetPasswordToken;
+    }
 
-	/**
-	 * @param AbstractParty $party
-	 * @param \Neos\Flow\Mvc\ActionRequest $request
-	 * @return \Refactory\Login\Domain\Model\ResetPasswordToken
-	 * @throws \Exception
-	 * @throws \Neos\Flow\Exception
-	 */
-	public function generateResetPasswordTokenForParty(AbstractParty $party, \Neos\Flow\Mvc\ActionRequest $request = NULL) {
-		$account = $this->getAccountByParty($party);
-		$request->getHttpRequest()->getClientIpAddress();
-		return $this->generateResetPasswordToken($account, $request);
-	}
+    /**
+     * @param AbstractParty $party
+     * @param \Neos\Flow\Mvc\ActionRequest $request
+     * @return \Refactory\Login\Domain\Model\ResetPasswordToken
+     * @throws \Exception
+     * @throws \Neos\Flow\Exception
+     */
+    public function generateResetPasswordTokenForParty(AbstractParty $party, \Neos\Flow\Mvc\ActionRequest $request = null)
+    {
+        $account = $this->getAccountByParty($party);
+        $request->getHttpRequest()->getClientIpAddress();
+        return $this->generateResetPasswordToken($account, $request);
+    }
 
-	/**
-	 * @param $token
-	 * @return bool
-	 */
-	public function isTokenActive($token) {
-		$isTokenActive = FALSE;
-		$resetPasswordToken = $this->resetPasswordTokenRepository->findOneByToken($token);
-		if ($resetPasswordToken) {
-			$isTokenActive = $resetPasswordToken->isActive($this->settings['tokenExpiration']);
-		}
-		return $isTokenActive;
-	}
+    /**
+     * @param $token
+     * @return bool
+     */
+    public function isTokenActive($token)
+    {
+        $isTokenActive = false;
+        $resetPasswordToken = $this->resetPasswordTokenRepository->findOneByToken($token);
+        if ($resetPasswordToken) {
+            $isTokenActive = $resetPasswordToken->isActive($this->settings['tokenExpiration']);
+        }
+        return $isTokenActive;
+    }
 
-	/**
-	 * @param string $token
-	 */
-	public function deactivateToken($token) {
-		$resetPasswordToken = $this->resetPasswordTokenRepository->findOneByToken($token);
-		if ($resetPasswordToken) {
-			$resetPasswordToken->setActive(FALSE);
-			$this->resetPasswordTokenRepository->update($resetPasswordToken);
-		}
-	}
+    /**
+     * @param string $token
+     */
+    public function deactivateToken($token)
+    {
+        $resetPasswordToken = $this->resetPasswordTokenRepository->findOneByToken($token);
+        if ($resetPasswordToken) {
+            $resetPasswordToken->setActive(false);
+            $this->resetPasswordTokenRepository->update($resetPasswordToken);
+        }
+    }
 
-	/**
-	 * Method to find account by given party
-	 * @param $party
-	 * @return \Neos\Flow\Security\Account
-	 */
-	public function getAccountByParty($party) {
-		return $this->accountRepository->findOneByParty($party);
-	}
+    /**
+     * Method to find account by given party
+     * @param $party
+     * @return \Neos\Flow\Security\Account
+     */
+    public function getAccountByParty($party)
+    {
+        return $this->accountRepository->findOneByParty($party);
+    }
 
-	/**
-	 * Method to find account by given token
-	 * @param string $token
-	 * @return \Neos\Flow\Security\Account
-	 */
-	public function getAccountByToken($token) {
-		return $this->resetPasswordTokenRepository->findOneByToken($token)->getAccount();
-	}
+    /**
+     * Method to find account by given token
+     * @param string $token
+     * @return \Neos\Flow\Security\Account
+     */
+    public function getAccountByToken($token)
+    {
+        return $this->resetPasswordTokenRepository->findOneByToken($token)->getAccount();
+    }
 }

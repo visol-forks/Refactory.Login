@@ -13,63 +13,66 @@ namespace Refactory\Login\Helpers;
 
 use Neos\Flow\Annotations as Flow;
 
-class SecurityHelper {
+class SecurityHelper
+{
 
-	/**
-	 * @var \Neos\Flow\Security\Context
-	 * @Flow\Inject
-	 */
-	protected $securityContext;
+    /**
+     * @var \Neos\Flow\Security\Context
+     * @Flow\Inject
+     */
+    protected $securityContext;
 
-	/**
-	 * @var string
+    /**
+     * @var string
      * @Flow\InjectConfiguration(path="partyRepositoryClassName", package="Refactory.Login")
-	 */
-	protected $partyRepositoryClassName;
+     */
+    protected $partyRepositoryClassName;
 
-	/**
-	 * @Flow\Inject
-	 * @var \Neos\Flow\ObjectManagement\ObjectManagerInterface
-	 */
-	protected $objectManager;
+    /**
+     * @Flow\Inject
+     * @var \Neos\Flow\ObjectManagement\ObjectManagerInterface
+     */
+    protected $objectManager;
 
-	/**
-	 * @return null
-	 */
-	public function getCurrentUser() {
-		$currentAccount = $this->getCurrentAccount();
-		if ($currentAccount != NULL) {
+    /**
+     * @return null
+     */
+    public function getCurrentUser()
+    {
+        $currentAccount = $this->getCurrentAccount();
+        if ($currentAccount != null) {
 
-			$partyRepository = $this->objectManager->get($this->partyRepositoryClassName);
-			return $partyRepository->findOneHavingAccount($currentAccount);
-		}
-		return NULL;
-	}
+            $partyRepository = $this->objectManager->get($this->partyRepositoryClassName);
+            return $partyRepository->findOneHavingAccount($currentAccount);
+        }
+        return null;
+    }
 
-	/**
-	 * @return null
-	 */
-	public function getCurrentAccount() {
-		$tokens = $this->securityContext->getAuthenticationTokens();
-		$currentUser = NULL;
-		foreach ($tokens as $token) {
-			if ($token->isAuthenticated()) {
-				$currentUser = $token->getAccount();
-				break;
-			}
-		}
-		return $currentUser;
-	}
+    /**
+     * @return null
+     */
+    public function getCurrentAccount()
+    {
+        $tokens = $this->securityContext->getAuthenticationTokens();
+        $currentUser = null;
+        foreach ($tokens as $token) {
+            if ($token->isAuthenticated()) {
+                $currentUser = $token->getAccount();
+                break;
+            }
+        }
+        return $currentUser;
+    }
 
-	/**
-	 * \Neos\Flow\Security\Account $account The account
-	 */
-	public function autoAuthenticate($account) {
-		$authenticationTokens = $this->securityContext->getAuthenticationTokensOfType('Neos\Flow\Security\Authentication\Token\UsernamePassword');
-		if (count($authenticationTokens) === 1) {
-			$authenticationTokens[0]->setAccount($account);
-			$authenticationTokens[0]->setAuthenticationStatus(\Neos\Flow\Security\Authentication\TokenInterface::AUTHENTICATION_SUCCESSFUL);
-		}
-	}
-
+    /**
+     * \Neos\Flow\Security\Account $account The account
+     */
+    public function autoAuthenticate($account)
+    {
+        $authenticationTokens = $this->securityContext->getAuthenticationTokensOfType('Neos\Flow\Security\Authentication\Token\UsernamePassword');
+        if (count($authenticationTokens) === 1) {
+            $authenticationTokens[0]->setAccount($account);
+            $authenticationTokens[0]->setAuthenticationStatus(\Neos\Flow\Security\Authentication\TokenInterface::AUTHENTICATION_SUCCESSFUL);
+        }
+    }
 }

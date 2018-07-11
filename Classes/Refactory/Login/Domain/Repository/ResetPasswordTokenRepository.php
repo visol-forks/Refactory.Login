@@ -17,6 +17,7 @@ use Neos\Flow\Persistence\Repository;
 /**
  * @Flow\Scope("singleton")
  */
-class ResetPasswordTokenRepository extends Repository {
+class ResetPasswordTokenRepository extends Repository
+{
 
 }

@@ -17,137 +17,149 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @Flow\Entity
  */
-class ResetPasswordToken {
+class ResetPasswordToken
+{
 
-	/**
-	 * @ORM\ManyToOne
-	 * @var \Neos\Flow\Security\Account
-	 */
-	protected $account;
+    /**
+     * @ORM\ManyToOne
+     * @var \Neos\Flow\Security\Account
+     */
+    protected $account;
 
-	/**
-	 * @var \DateTime
-	 */
-	protected $date;
+    /**
+     * @var \DateTime
+     */
+    protected $date;
 
-	/**
-	 * @var string
-	 */
-	protected $token;
+    /**
+     * @var string
+     */
+    protected $token;
 
-	/**
-	 * @var string
-	 */
-	protected $ip;
+    /**
+     * @var string
+     */
+    protected $ip;
 
-	/**
-	 * @var boolean
-	 */
-	protected $active;
+    /**
+     * @var boolean
+     */
+    protected $active;
 
-	/**
-	 * Set account
-	 *
-	 * @param \Neos\Flow\Security\Account $account
-	 */
-	public function setAccount($account) {
-		$this->account = $account;
-	}
+    /**
+     * Set account
+     *
+     * @param \Neos\Flow\Security\Account $account
+     */
+    public function setAccount($account)
+    {
+        $this->account = $account;
+    }
 
-	/**
-	 * Get account
-	 *
-	 * @return \Neos\Flow\Security\Account
-	 */
-	public function getAccount() {
-		return $this->account;
-	}
+    /**
+     * Get account
+     *
+     * @return \Neos\Flow\Security\Account
+     */
+    public function getAccount()
+    {
+        return $this->account;
+    }
 
-	/**
-	 * Set date
-	 *
-	 * @param \DateTime $date
-	 */
-	public function setDate($date) {
-		$this->date = $date;
-	}
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
 
-	/**
-	 * Get date
-	 *
-	 * @return \DateTime
-	 */
-	public function getDate() {
-		return $this->date;
-	}
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
 
-	/**
-	 * Set ip
-	 *
-	 * @param string $ip
-	 */
-	public function setIp($ip) {
-		$this->ip = $ip;
-	}
+    /**
+     * Set ip
+     *
+     * @param string $ip
+     */
+    public function setIp($ip)
+    {
+        $this->ip = $ip;
+    }
 
-	/**
-	 * Get ip
-	 *
-	 * @return string
-	 */
-	public function getIp() {
-		return $this->ip;
-	}
+    /**
+     * Get ip
+     *
+     * @return string
+     */
+    public function getIp()
+    {
+        return $this->ip;
+    }
 
-	/**
-	 * Set token
-	 *
-	 * @param string $token
-	 */
-	public function setToken($token) {
-		$this->token = $token;
-	}
+    /**
+     * Set token
+     *
+     * @param string $token
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+    }
 
-	/**
-	 * Get token
-	 *
-	 * @return string
-	 */
-	public function getToken() {
-		return $this->token;
-	}
+    /**
+     * Get token
+     *
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
 
-	/**
-	 * Set active
-	 *
-	 * @param boolean $active
-	 */
-	public function setActive($active) {
-		$this->active = $active;
-	}
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+    }
 
-	/**
-	 * Get active
-	 *
-	 * @return boolean
-	 */
-	public function getActive() {
-		return $this->active;
-	}
+    /**
+     * Get active
+     *
+     * @return boolean
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
 
-	/**
-	 * @param $expirationDate
-	 * @return bool
-	 */
-	public function isActive($expirationDate) {
-		$isActive = FALSE;
-		if ($this->getActive()) {
-			$tokenCreateDate = $this->getDate();
-			$now = new \DateTime();
-			if ($now->getTimestamp() - $tokenCreateDate->getTimestamp() <= $expirationDate) {
-				$isActive = TRUE;
-			}
-		}
-		return $isActive;
-	}
+    /**
+     * @param $expirationDate
+     * @return bool
+     */
+    public function isActive($expirationDate)
+    {
+        $isActive = false;
+        if ($this->getActive()) {
+            $tokenCreateDate = $this->getDate();
+            $now = new \DateTime();
+            if ($now->getTimestamp() - $tokenCreateDate->getTimestamp() <= $expirationDate) {
+                $isActive = true;
+            }
+        }
+        return $isActive;
+    }
 }

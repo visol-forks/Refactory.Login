@@ -16,37 +16,39 @@ use Neos\Utility\ObjectAccess;
 /**
  * @Flow\Aspect
  */
-class RedirectAspect {
+class RedirectAspect
+{
 
-	/**
-	 * @Flow\Around("method(Neos\Flow\Mvc\Controller\AbstractController->redirect())")
-	 * @param \Neos\Flow\Aop\JoinPointInterface $joinPoint The current join point
-	 * @return void
-	 */
-	public function redirectAspect(\Neos\Flow\Aop\JoinPointInterface $joinPoint) {
-		$proxy = $joinPoint->getProxy();
+    /**
+     * @Flow\Around("method(Neos\Flow\Mvc\Controller\AbstractController->redirect())")
+     * @param \Neos\Flow\Aop\JoinPointInterface $joinPoint The current join point
+     * @return void
+     */
+    public function redirectAspect(\Neos\Flow\Aop\JoinPointInterface $joinPoint)
+    {
+        $proxy = $joinPoint->getProxy();
 
-		$request = ObjectAccess::getProperty($proxy, 'request', TRUE);
-		if ($request->getFormat() === 'json') {
-			$view = ObjectAccess::getProperty($proxy, 'view', TRUE);
-			$uriBuilder = ObjectAccess::getProperty($proxy, 'uriBuilder', TRUE);
+        $request = ObjectAccess::getProperty($proxy, 'request', true);
+        if ($request->getFormat() === 'json') {
+            $view = ObjectAccess::getProperty($proxy, 'view', true);
+            $uriBuilder = ObjectAccess::getProperty($proxy, 'uriBuilder', true);
 
-			$actionName = $joinPoint->getMethodArgument('actionName');
-			$arguments = $joinPoint->getMethodArgument('arguments');
-			$controllerName = $joinPoint->getMethodArgument('controllerName');
-			$packageKey = $joinPoint->getMethodArgument('packageKey');
+            $actionName = $joinPoint->getMethodArgument('actionName');
+            $arguments = $joinPoint->getMethodArgument('arguments');
+            $controllerName = $joinPoint->getMethodArgument('controllerName');
+            $packageKey = $joinPoint->getMethodArgument('packageKey');
 
-			if ($packageKey !== NULL && strpos($packageKey, '\\') !== FALSE) {
-				list($packageKey, $subpackageKey) = explode('\\', $packageKey, 2);
-			} else {
-				$subpackageKey = NULL;
-			}
+            if ($packageKey !== null && strpos($packageKey, '\\') !== false) {
+                list($packageKey, $subpackageKey) = explode('\\', $packageKey, 2);
+            } else {
+                $subpackageKey = null;
+            }
 
-			$view->assign('value', ['redirect' => $uriBuilder->setCreateAbsoluteUri(TRUE)->uriFor($actionName, $arguments, $controllerName, $packageKey, $subpackageKey)]);
+            $view->assign('value', ['redirect' => $uriBuilder->setCreateAbsoluteUri(true)->uriFor($actionName, $arguments, $controllerName, $packageKey, $subpackageKey)]);
 
-			ObjectAccess::setProperty($proxy, 'view', $view, TRUE);
-		} else {
-			$joinPoint->getAdviceChain()->proceed($joinPoint);
-		}
-	}
+            ObjectAccess::setProperty($proxy, 'view', $view, true);
+        } else {
+            $joinPoint->getAdviceChain()->proceed($joinPoint);
+        }
+    }
 }
