@@ -1,14 +1,14 @@
-Refactory.Login [![Build Status](https://travis-ci.org/refactoryit/Flow.Login.png?branch=master)](https://travis-ci.org/refactoryit/Flow.Login)
+Refactory.Login
 ==================================================================================================================================================================
 
 This package is a lightweight authentication wrapper around a given package.
-A TYPO3 Flow package with the following features:
+A Flow Framework package with the following features:
 
  - Login and Logout a account
  - Reset a password for a given account.
 
 These features have their own workflows, based on some research the idea was to make the registration as basic as possible.
-The package is built on the features that are provided in the security framework of TYPO3.Flow and require only a little configuration.
+The package is built on the features that are provided in the security framework of the Flow Framework and require only a little configuration.
 
 Usage:
 - Security layer for any application
@@ -17,7 +17,7 @@ Usage:
 Quickstart
 ----------
 
-To incluse this package into your TYPO3 Flow application just run:
+To incluse this package into your Flow Framework application just run:
 
 	composer require refactory/login
 
@@ -25,7 +25,7 @@ Then you need to run migrations to include the tables.
 
 	./flow doctrine:migrate
 
-To Enable routing to package
+To enable routing to package
 
 	-
 	  name: 'Login'
@@ -59,7 +59,7 @@ The Signed In view will show you with what "account.identifier" you have been au
 
 Through *Configuration/Settings.yaml* you will be able to configure options like redirects to a package, registration and so on.
 
-#####Routing
+##### Routing
 
 To be able to address the login feature you will need to add these routes in the general Configuration/Routes.yaml
 
@@ -73,18 +73,18 @@ To be able to address the login feature you will need to add these routes in the
 Account ViewHelper
 ------------------
 
-Add the viewhelper to fluid and call the viewhelper function.
+Add the viewhelper to Fluid and call the viewhelper function.
 
 	{namespace secure=Refactory\Login\ViewHelpers}
 
-	<secure:account propertyPath="party.name" />
+	<secure:account propertyPath="name" />
 
 Redirect to Login page
 ----------------------
 
-When the action is unauthorized the TYPO3.Flow framework will redirect the package to a location set with the Settings.yaml configuration.
+When the action is unauthorized the Flow Framework will redirect the package to a location set with the Settings.yaml configuration.
 
-	TYPO3:
+	Neos:
 	  Flow:
 	    security:
 	      authentication:
@@ -97,9 +97,11 @@ When the action is unauthorized the TYPO3.Flow framework will redirect the packa
 	                '@controller': 'Login'
 	                '@action': 'login'
 
-See for reference: http://flow.typo3.org/documentation/guide/partiii/security.html
+See for reference: https://flowframework.readthedocs.io/en/stable/TheDefinitiveGuide/PartIII/Security.html
 
 
 # Authors:
 
 Author: Sebastiaan van Parijs (<svparijs@refactory.it>) 
+
+Maintainer of this fork: visol digitale Dienstleistungen GmbH, www.visol.ch
