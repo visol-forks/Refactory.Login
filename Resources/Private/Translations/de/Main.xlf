@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<xliff version="1.2"
+	   xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file original="" source-language="en" datatype="plaintext" target-language="nl">
+		<body>
+			<trans-unit id="login">
+				<source>Login</source>
+				<target>Anmelden</target>
+			</trans-unit>
+			<trans-unit id="username">
+				<source>Username</source>
+				<target>Benutzername</target>
+			</trans-unit>
+			<trans-unit id="password">
+				<source>Password</source>
+				<target>Kennwort</target>
+			</trans-unit>
+			<trans-unit id="authentication.username.placeholder">
+				<source>Username</source>
+				<target>Benutzername</target>
+			</trans-unit>
+			<trans-unit id="authentication.password.placeholder">
+				<source>Password</source>
+				<target>Kennwort</target>
+			</trans-unit>
+			<trans-unit id="authentication.failed">
+				<source>The entered username or password was wrong!</source>
+				<target>Benutzername oder Kennwort falsch</target>
+			</trans-unit>
+			<trans-unit id="rememberMe">
+				<source>Remember me</source>
+				<target>Angemeldet bleiben</target>
+			</trans-unit>
+			<transunit id="loginPanel">
+				<source>Login</source>
+				<target>Anmelden</target>
+			</transunit>
+			<trans-unit id="resetLink">
+				<source>Use the this link to reset your password.</source>
+				<target>Kennwort zurücksetzen.</target>
+			</trans-unit>
+			<trans-unit id="resetPasswordRequest">
+				<source>Reset password request</source>
+				<target>Kennwort zurücksetzen</target>
+			</trans-unit>
+			<trans-unit id="userNameEmailForInstructions">
+				<source>Type username / email to get reset instructions</source>
+				<target>Benutzername oder E-Mail-Adresse angeben, um Kennwort zurücksetzen</target>
+			</trans-unit>
+			<trans-unit id="usernameEmail">
+				<source>Username/Email</source>
+				<target>Benutzername/E-Mail</target>
+			</trans-unit>
+			<trans-unit id="requestNewPassword">
+				<source>Request new password</source>
+				<target>Kennwort zurücksetzen</target>
+			</trans-unit>
+			<trans-unit id="resetMailSend">
+				<source>Reset password mail has been sent</source>
+				<target>Sie haben eine E-Mail mit Anweisungen erhalten.</target>
+			</trans-unit>
+			<trans-unit id="back">
+				<source>Back</source>
+				<target>zurück</target>
+			</trans-unit>
+			<trans-unit id="mail.subject.passwordResetRequest">
+				<source>Reset password request</source>
+				<target>Ihre Anfrage: Kennwort zurücksetzen</target>
+			</trans-unit>
+			<trans-unit id="resetPassword">
+				<source>Reset password</source>
+				<target>Kennwort zurücksetzen</target>
+			</trans-unit>
+			<trans-unit id="inputNewPassword">
+				<source>New password</source>
+				<target>Neues Kennwort</target>
+			</trans-unit>
+			<trans-unit id="inputNewPasswordRepeat">
+				<source>Repeat new password</source>
+				<target>Neues Kennwort bestätigen</target>
+			</trans-unit>
+			<trans-unit id="tokenExpiredBefore">
+				<source>You are trying to reset your password, but:</source>
+				<target>Sie wollen Ihr Kennwort zurücksetzen, aber:</target>
+			</trans-unit>
+			<trans-unit id="tokenNotValid">
+				<source>This token is not valid!</source>
+				<target>Das Token ist ungültig!</target>
+			</trans-unit>
+			<trans-unit id="resetProcedure">
+				<source>Reset procedure</source>
+				<target>Prozedur zum Zurücksetzen</target>
+			</trans-unit>
+			<trans-unit id="passwordChanged">
+				<source>Your password has changed</source>
+				<target>Das Kennwort wurde geändert.</target>
+			</trans-unit>
+			<trans-unit id="link.resetPassword">
+				<source>Forgot my password?</source>
+				<target>Kennwort vergessen?</target>
+			</trans-unit>
+			<trans-unit id="link.login">
+				<source>Back to login?</source>
+				<target>Anmelden?</target>
+			</trans-unit>
+			<trans-unit id="sentence.reset1">
+				<source>We've sent a mail to your e-mail address please:</source>
+				<target>Wir haben Ihnen eine E-Mail gesendet:</target>
+			</trans-unit>
+			<trans-unit id="sentence.reset2">
+				<source>Check your inbox!</source>
+				<target>Überprüfen Sie Ihren Posteingang.</target>
+			</trans-unit>
+			<trans-unit id="sentence.reset3">
+				<source>To proceed resetting your password please click on the link inside the email.</source>
+				<target>Bitte klicken Sie den Link in Ihrer Mail an, um das Kennwort zurückzusetzen.</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
