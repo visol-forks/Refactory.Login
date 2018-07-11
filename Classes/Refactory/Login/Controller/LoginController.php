@@ -121,7 +121,7 @@ class LoginController extends AbstractAuthenticationController
 
         switch ($this->request->getFormat()) {
             default:
-                $this->addFlashMessage('Successfully signed out.', 'Logged Out', Message::SEVERITY_WARNING);
+                $this->addFlashMessage($this->translator->translateById('loginController.logout.successful.message', [], null, null, $this->settings['translationSourceName'], $this->settings['translationPackageKey']), $this->translator->translateById('loginController.logout.successful.title', [], null, null, $this->settings['translationSourceName'], $this->settings['translationPackageKey']), Message::SEVERITY_WARNING);
                 $this->redirect('login');
                 break;
         }

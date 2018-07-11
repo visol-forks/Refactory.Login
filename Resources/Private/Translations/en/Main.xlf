@@ -87,6 +87,21 @@
 			<trans-unit id="sentence.reset3">
 				<source>To proceed resetting your password please click on the link inside the email.</source>
 			</trans-unit>
+			<trans-unit id="passwordController.sendResetRequest.noUsernameGiven">
+				<source>No username or e-mail address was given!</source>
+			</trans-unit>
+			<trans-unit id="passwordController.reset.changePasswordFailed">
+				<source>Attempt to change password failed!</source>
+			</trans-unit>
+			<trans-unit id="passwordController.reset.passwordAndConfirmationNotIdentical">
+				<source>Password and password confirmation are not identical!</source>
+			</trans-unit>
+			<trans-unit id="loginController.logout.successful.title">
+				<source>Logout</source>
+			</trans-unit>
+			<trans-unit id="loginController.logout.successful.message">
+				<source>Successfully signed out.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

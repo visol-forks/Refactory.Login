@@ -11,6 +11,7 @@ namespace Refactory\Login\Controller;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
+use Refactory\Login\Domain\Model\ResetPasswordToken;
 use Refactory\Login\Http\Response;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Security\Authentication\Token\PasswordToken;
@@ -97,12 +98,12 @@ class PasswordController extends \Neos\Flow\Mvc\Controller\ActionController
                 $resetPasswordToken = $this->accountManagementService->generateResetPasswordTokenForParty($person, $this->request);
             } else {
                 $person = $this->userRepository->findByPrimaryElectronicAddress($identifier)->getFirst();
-                if (is_subclass_of($person, '\Neos\Party\Domain\Model\AbstractParty')) {
+                if (is_subclass_of($person, AbstractParty::class)) {
                     $resetPasswordToken = $this->accountManagementService->generateResetPasswordTokenForParty($person, $this->request);
                 }
             }
 
-            if ($resetPasswordToken instanceof \Refactory\Login\Domain\Model\ResetPasswordToken) {
+            if ($resetPasswordToken instanceof ResetPasswordToken) {
                 $this->emitSendResetRequest(
                     [
                         'controllerContext' => $this->controllerContext,
@@ -145,7 +146,7 @@ class PasswordController extends \Neos\Flow\Mvc\Controller\ActionController
                 } else {
                     $response = new Response();
                     $response->setType('error');
-                    $response->setMessage('Password and repeat are not the same!');
+                    $response->setMessage('Password and password confirmation are not identical!');
 
                     $this->view->assign('value', $response);
                 }
