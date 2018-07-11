@@ -132,12 +132,12 @@ class AccountManagementService
 
     /**
      * Method to find account by given party
-     * @param $party
+     * @param AbstractParty $party
      * @return \Neos\Flow\Security\Account
      */
-    public function getAccountByParty($party)
+    public function getAccountByParty(AbstractParty $party)
     {
-        return $this->accountRepository->findOneByParty($party);
+        return $party->getAccounts()->first();
     }
 
     /**
