@@ -107,8 +107,8 @@ class PasswordController extends \Neos\Flow\Mvc\Controller\ActionController
                 $this->emitSendResetRequest(
                     [
                         'controllerContext' => $this->controllerContext,
-                        'resetPasswordToken' => $resetPasswordToken->getToken(), 'recipient' => $person,
-                        'properties' => ['recipient' => $person]
+                        'resetPasswordToken' => $resetPasswordToken->getToken(),
+                        'recipient' => $person
                     ]
                 );
             }
