@@ -70,6 +70,6 @@ class Response {
 	 * @return string
 	 */
 	public function getMessage() {
-		return $this->translator->translateByOriginalLabel($this->message, array(), NULL, NULL, $this->settings['translationSourceName'], $this->settings['translationPackageKey']);
+		return $this->translator->translateByOriginalLabel($this->message, [], NULL, NULL, $this->settings['translationSourceName'], $this->settings['translationPackageKey']);
 	}
 }

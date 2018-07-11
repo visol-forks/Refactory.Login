@@ -26,14 +26,15 @@ class LoginController extends AbstractAuthenticationController {
 	/**
 	 * @var array
 	 */
-	protected $supportedMediaTypes = array('text/html', 'application/json');
+	protected $supportedMediaTypes = ['text/html', 'application/json'];
 
 	/**
 	 * @var array
 	 */
-	protected $viewFormatToObjectNameMap = array(
+	protected $viewFormatToObjectNameMap = [
 		'html'  => 'Neos\FluidAdaptor\View\TemplateView',
-		'json'  => 'Neos\Flow\Mvc\View\JsonView');
+		'json'  => 'Neos\Flow\Mvc\View\JsonView'
+    ];
 
     /**
      * @Flow\Inject

@@ -25,14 +25,15 @@ class PasswordController extends \Neos\Flow\Mvc\Controller\ActionController {
 	/**
 	 * @var array
 	 */
-	protected $supportedMediaTypes = array('text/html', 'application/json');
+	protected $supportedMediaTypes = ['text/html', 'application/json'];
 
 	/**
 	 * @var array
 	 */
-	protected $viewFormatToObjectNameMap = array(
+	protected $viewFormatToObjectNameMap = [
 		'html'  => 'Neos\FluidAdaptor\View\TemplateView',
-		'json'  => 'Neos\Flow\Mvc\View\JsonView');
+		'json'  => 'Neos\Flow\Mvc\View\JsonView'
+    ];
 
 	/**
 	 * @Flow\Inject
@@ -98,15 +99,16 @@ class PasswordController extends \Neos\Flow\Mvc\Controller\ActionController {
 
 			if ($resetPasswordToken instanceof \Refactory\Login\Domain\Model\ResetPasswordToken) {
 				$this->emitSendResetRequest(
-					array('controllerContext' => $this->controllerContext,
+					[
+                        'controllerContext' => $this->controllerContext,
 						'resetPasswordToken' => $resetPasswordToken->getToken(), 'recipient' => $person,
-						'properties' => array('recipient' => $person)
-					)
+						'properties' => ['recipient' => $person]
+                    ]
 				);
 			}
 
 			$this->request->setFormat('json');
-			$this->redirect('reset', NULL, NULL, array('identifier' => $identifier));
+			$this->redirect('reset', NULL, NULL, ['identifier' => $identifier]);
 		}
 	}
 
@@ -127,7 +129,7 @@ class PasswordController extends \Neos\Flow\Mvc\Controller\ActionController {
 
 					if ($isPasswordChanged) {
 						$this->accountManagementService->deactivateToken($this->request->getArgument('token'));
-						$this->redirect('login', 'Login', NULL, array('username' => $account->getAccountIdentifier()));
+						$this->redirect('login', 'Login', NULL, ['username' => $account->getAccountIdentifier()]);
 					} else {
 						$response = new Response();
 						$response->setType('error');

@@ -42,7 +42,7 @@ class RedirectAspect {
 				$subpackageKey = NULL;
 			}
 
-			$view->assign('value', array('redirect' => $uriBuilder->setCreateAbsoluteUri(TRUE)->uriFor($actionName, $arguments, $controllerName, $packageKey, $subpackageKey)));
+			$view->assign('value', ['redirect' => $uriBuilder->setCreateAbsoluteUri(TRUE)->uriFor($actionName, $arguments, $controllerName, $packageKey, $subpackageKey)]);
 
 			ObjectAccess::setProperty($proxy, 'view', $view, TRUE);
 		} else {
