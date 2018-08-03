@@ -70,7 +70,7 @@ class SecurityHelper
      */
     public function autoAuthenticate($account)
     {
-        $authenticationTokens = $this->securityContext->getAuthenticationTokensOfType('Neos\Flow\Security\Authentication\Token\UsernamePassword');
+        $authenticationTokens = $this->securityContext->getAuthenticationTokensOfType('TYPO3\Flow\Security\Authentication\Token\UsernamePassword');
         if (count($authenticationTokens) === 1) {
             $authenticationTokens[0]->setAccount($account);
             $authenticationTokens[0]->setAuthenticationStatus(\TYPO3\Flow\Security\Authentication\TokenInterface::AUTHENTICATION_SUCCESSFUL);
