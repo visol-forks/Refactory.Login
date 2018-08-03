@@ -1,5 +1,5 @@
 privilegeTargets:
-  'Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
+  'TYPO3\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
     'Refactory.Login:SignedInAction':
       matcher: 'method(Refactory\Login\Controller\LoginController->signedInAction())'
 

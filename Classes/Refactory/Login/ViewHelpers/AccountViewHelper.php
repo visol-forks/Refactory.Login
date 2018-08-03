@@ -11,16 +11,18 @@ namespace Refactory\Login\ViewHelpers;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use Neos\Flow\Annotations as Flow;
+use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Reflection\ObjectAccess;
+use TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * Shows the name of the currently active user
  */
-class AccountViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractViewHelper
+class AccountViewHelper extends AbstractViewHelper
 {
 
     /**
-     * @var \Neos\Flow\Security\Context
+     * @var \TYPO3\Flow\Security\Context
      * @Flow\Inject
      */
     protected $securityContext;
@@ -33,7 +35,7 @@ class AccountViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractViewH
 
     /**
      * @Flow\Inject
-     * @var \Neos\Flow\ObjectManagement\ObjectManagerInterface
+     * @var \TYPO3\Flow\ObjectManagement\ObjectManagerInterface
      */
     protected $objectManager;
 
@@ -51,7 +53,7 @@ class AccountViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractViewH
         foreach ($tokens as $token) {
             if ($token->isAuthenticated()) {
                 $person = $partyRepository->findOneHavingAccount($token->getAccount());
-                return \Neos\Utility\ObjectAccess::getPropertyPath($person, $propertyPath);
+                return ObjectAccess::getPropertyPath($person, $propertyPath);
             }
         }
 

@@ -11,13 +11,14 @@ namespace Refactory\Login\Helpers;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use Neos\Flow\Annotations as Flow;
+use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Object\ObjectManagerInterface;
 
 class SecurityHelper
 {
 
     /**
-     * @var \Neos\Flow\Security\Context
+     * @var \TYPO3\Flow\Security\Context
      * @Flow\Inject
      */
     protected $securityContext;
@@ -30,7 +31,7 @@ class SecurityHelper
 
     /**
      * @Flow\Inject
-     * @var \Neos\Flow\ObjectManagement\ObjectManagerInterface
+     * @var ObjectManagerInterface
      */
     protected $objectManager;
 
@@ -65,14 +66,14 @@ class SecurityHelper
     }
 
     /**
-     * \Neos\Flow\Security\Account $account The account
+     * \TYPO3\Flow\Security\Account $account The account
      */
     public function autoAuthenticate($account)
     {
         $authenticationTokens = $this->securityContext->getAuthenticationTokensOfType('Neos\Flow\Security\Authentication\Token\UsernamePassword');
         if (count($authenticationTokens) === 1) {
             $authenticationTokens[0]->setAccount($account);
-            $authenticationTokens[0]->setAuthenticationStatus(\Neos\Flow\Security\Authentication\TokenInterface::AUTHENTICATION_SUCCESSFUL);
+            $authenticationTokens[0]->setAuthenticationStatus(\TYPO3\Flow\Security\Authentication\TokenInterface::AUTHENTICATION_SUCCESSFUL);
         }
     }
 }

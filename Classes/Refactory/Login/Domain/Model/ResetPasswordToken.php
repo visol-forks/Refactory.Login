@@ -11,7 +11,7 @@ namespace Refactory\Login\Domain\Model;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use Neos\Flow\Annotations as Flow;
+use TYPO3\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,7 +22,7 @@ class ResetPasswordToken
 
     /**
      * @ORM\ManyToOne
-     * @var \Neos\Flow\Security\Account
+     * @var \TYPO3\Flow\Security\Account
      */
     protected $account;
 
@@ -49,7 +49,7 @@ class ResetPasswordToken
     /**
      * Set account
      *
-     * @param \Neos\Flow\Security\Account $account
+     * @param \TYPO3\Flow\Security\Account $account
      */
     public function setAccount($account)
     {
@@ -59,7 +59,7 @@ class ResetPasswordToken
     /**
      * Get account
      *
-     * @return \Neos\Flow\Security\Account
+     * @return \TYPO3\Flow\Security\Account
      */
     public function getAccount()
     {

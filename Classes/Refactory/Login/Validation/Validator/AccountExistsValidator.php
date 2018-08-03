@@ -11,29 +11,29 @@ namespace Refactory\Login\Validation\Validator;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use Neos\Flow\Annotations as Flow;
+use TYPO3\Flow\Annotations as Flow;
 
 /**
  * Validator for accounts
  */
-class AccountExistsValidator extends \Neos\Flow\Validation\Validator\AbstractValidator
+class AccountExistsValidator extends \TYPO3\Flow\Validation\Validator\AbstractValidator
 {
 
     /**
      * @Flow\Inject
-     * @var \Neos\Flow\Security\AccountRepository
+     * @var \TYPO3\Flow\Security\AccountRepository
      */
     protected $accountRepository;
 
     /**
      * @param mixed $value The value that should be validated
      * @return void
-     * @throws \Neos\Flow\Validation\Exception\InvalidSubjectException
+     * @throws \TYPO3\Flow\Validation\Exception\InvalidSubjectException
      */
     protected function isValid($value)
     {
         if (!is_string($value)) {
-            throw new \Neos\Flow\Validation\Exception\InvalidSubjectException('The given value was not a string.', 1325155784);
+            throw new \TYPO3\Flow\Validation\Exception\InvalidSubjectException('The given value was not a string.', 1325155784);
         }
 
         $authenticationProviderName = isset($this->options['authenticationProviderName']) ? $this->options['authenticationProviderName'] : 'DefaultProvider';

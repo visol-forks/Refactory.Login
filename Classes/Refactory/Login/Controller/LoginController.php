@@ -12,9 +12,11 @@ namespace Refactory\Login\Controller;
  *                                                                        */
 
 use Refactory\Login\Http\Response;
-use Neos\Flow\Annotations as Flow;
-use Neos\Flow\Security\Authentication\Controller\AbstractAuthenticationController;
-use Neos\Error\Messages\Message;
+use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Error\Message;
+use TYPO3\Flow\Mvc\View\JsonView;
+use TYPO3\Flow\Security\Authentication\Controller\AbstractAuthenticationController;
+use TYPO3\Fluid\View\TemplateView;
 
 /**
  * A controller which allows for logging into an application
@@ -33,18 +35,18 @@ class LoginController extends AbstractAuthenticationController
      * @var array
      */
     protected $viewFormatToObjectNameMap = [
-        'html'  => 'Neos\FluidAdaptor\View\TemplateView',
-        'json'  => 'Neos\Flow\Mvc\View\JsonView'
+        'html'  => TemplateView::class,
+        'json'  => JsonView::class
     ];
 
     /**
      * @Flow\Inject
-     * @var  \Neos\Flow\I18n\Service
+     * @var  \TYPO3\Flow\I18n\Service
      */
     protected $i18nService;
 
     /**
-     * @var \Neos\Flow\I18n\Translator
+     * @var \TYPO3\Flow\I18n\Translator
      * @Flow\Inject
      */
     protected $translator;
@@ -52,7 +54,7 @@ class LoginController extends AbstractAuthenticationController
     protected function initializeAction()
     {
         # Set locale based on Accept-Language
-        $detector = new \Neos\Flow\I18n\Detector();
+        $detector = new \TYPO3\Flow\I18n\Detector();
         $acceptLanguageHeader = $this->request->getHttpRequest()->getHeaders()->get('Accept-Language');
         $language = $detector->detectLocaleFromHttpHeader($acceptLanguageHeader);
         $this->i18nService->getConfiguration()->setCurrentLocale($language);
@@ -83,14 +85,14 @@ class LoginController extends AbstractAuthenticationController
      * to the login screen.
      *
      * @return void
-     * @throws \Neos\Flow\Security\Exception\AuthenticationRequiredException
+     * @throws \TYPO3\Flow\Security\Exception\AuthenticationRequiredException
      */
     public function authenticateAction()
     {
         $authenticationException = null;
         try {
             $this->authenticationManager->authenticate();
-        } catch (\Neos\Flow\Security\Exception\AuthenticationRequiredException $exception) {
+        } catch (\TYPO3\Flow\Security\Exception\AuthenticationRequiredException $exception) {
             $authenticationException = $exception;
 
             $response = new Response();
@@ -140,10 +142,10 @@ class LoginController extends AbstractAuthenticationController
     /**
      * Is called if authentication was successful.
      *
-     * @param \Neos\Flow\Mvc\ActionRequest $originalRequest The request that was intercepted by the security framework, NULL if there was none
+     * @param \TYPO3\Flow\Mvc\ActionRequest $originalRequest The request that was intercepted by the security framework, NULL if there was none
      * @return string
      */
-    public function onAuthenticationSuccess(\Neos\Flow\Mvc\ActionRequest $originalRequest = null)
+    public function onAuthenticationSuccess(\TYPO3\Flow\Mvc\ActionRequest $originalRequest = null)
     {
         if ($originalRequest !== null) {
             $this->redirectToRequest($originalRequest);
@@ -166,10 +168,10 @@ class LoginController extends AbstractAuthenticationController
      * custom action for this event. Most likely you would want
      * to redirect to some action showing the login form again.
      *
-     * @param \Neos\Flow\Security\Exception\AuthenticationRequiredException $exception The exception thrown while the authentication process
+     * @param \TYPO3\Flow\Security\Exception\AuthenticationRequiredException $exception The exception thrown while the authentication process
      * @return void
      */
-    protected function onAuthenticationFailure(\Neos\Flow\Security\Exception\AuthenticationRequiredException $exception = null)
+    protected function onAuthenticationFailure(\TYPO3\Flow\Security\Exception\AuthenticationRequiredException $exception = null)
     {
     }
 }

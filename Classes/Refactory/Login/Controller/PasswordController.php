@@ -13,15 +13,17 @@ namespace Refactory\Login\Controller;
 
 use Refactory\Login\Domain\Model\ResetPasswordToken;
 use Refactory\Login\Http\Response;
-use Neos\Flow\Annotations as Flow;
-use Neos\Flow\Security\Authentication\Token\PasswordToken;
-use Neos\Party\Domain\Model\AbstractParty;
+use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Security\Authentication\Token\PasswordToken;
+use TYPO3\Party\Domain\Model\AbstractParty;
+use TYPO3\Flow\Mvc\View\JsonView;
+use TYPO3\Fluid\View\TemplateView;
 
 /**
  * Password controller for the Refactory.Login package
 
  */
-class PasswordController extends \Neos\Flow\Mvc\Controller\ActionController
+class PasswordController extends \TYPO3\Flow\Mvc\Controller\ActionController
 {
 
     /**
@@ -33,8 +35,8 @@ class PasswordController extends \Neos\Flow\Mvc\Controller\ActionController
      * @var array
      */
     protected $viewFormatToObjectNameMap = [
-        'html'  => 'Neos\FluidAdaptor\View\TemplateView',
-        'json'  => 'Neos\Flow\Mvc\View\JsonView'
+        'html'  => TemplateView::class,
+        'json'  => JsonView::class
     ];
 
     /**
@@ -44,7 +46,7 @@ class PasswordController extends \Neos\Flow\Mvc\Controller\ActionController
     protected $accountManagementService;
 
     /**
-     * @var \Neos\Flow\Security\AccountRepository
+     * @var \TYPO3\Flow\Security\AccountRepository
      * @Flow\Inject
      */
     protected $accountRepository;

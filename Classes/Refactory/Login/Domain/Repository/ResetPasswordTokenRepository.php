@@ -11,8 +11,8 @@ namespace Refactory\Login\Domain\Repository;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use Neos\Flow\Annotations as Flow;
-use Neos\Flow\Persistence\Repository;
+use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Persistence\Repository;
 
 /**
  * @Flow\Scope("singleton")

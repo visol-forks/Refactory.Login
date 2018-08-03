@@ -10,8 +10,8 @@ namespace Refactory\Login\Aop;
  *                                                                        *
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
-use Neos\Flow\Annotations as Flow;
-use Neos\Utility\ObjectAccess;
+use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Reflection\ObjectAccess;
 
 /**
  * @Flow\Aspect
@@ -20,11 +20,11 @@ class RedirectAspect
 {
 
     /**
-     * @Flow\Around("method(Neos\Flow\Mvc\Controller\AbstractController->redirect())")
-     * @param \Neos\Flow\Aop\JoinPointInterface $joinPoint The current join point
+     * @Flow\Around("method(TYPO3\Flow\Mvc\Controller\AbstractController->redirect())")
+     * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint The current join point
      * @return void
      */
-    public function redirectAspect(\Neos\Flow\Aop\JoinPointInterface $joinPoint)
+    public function redirectAspect(\TYPO3\Flow\Aop\JoinPointInterface $joinPoint)
     {
         $proxy = $joinPoint->getProxy();
 

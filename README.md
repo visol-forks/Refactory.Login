@@ -84,7 +84,7 @@ Redirect to Login page
 
 When the action is unauthorized the Flow Framework will redirect the package to a location set with the Settings.yaml configuration.
 
-	Neos:
+	TYPO3:
 	  Flow:
 	    security:
 	      authentication:

@@ -1,10 +1,10 @@
 Refactory:
   Login:
-    partyRepositoryClassName: 'Neos\Party\Domain\Repository\PartyRepository'
+    partyRepositoryClassName: 'TYPO3\Party\Domain\Repository\PartyRepository'
     tokenExpiration: 14400
     translationPackageKey: Refactory.Login
     translationSourceName: Main
-Neos:
+TYPO3:
   Flow:
     security:
       authentication:
