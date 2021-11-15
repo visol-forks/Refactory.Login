@@ -53,7 +53,7 @@ class LoginController extends AbstractAuthenticationController
     {
         # Set locale based on Accept-Language
         $detector = new \Neos\Flow\I18n\Detector();
-        $acceptLanguageHeader = $this->request->getHttpRequest()->getHeaders()->get('Accept-Language');
+        $acceptLanguageHeader = $this->request->getHttpRequest()->getHeaderLine('Accept-Language');
         $language = $detector->detectLocaleFromHttpHeader($acceptLanguageHeader);
         $this->i18nService->getConfiguration()->setCurrentLocale($language);
     }

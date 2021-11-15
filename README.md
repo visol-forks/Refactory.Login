@@ -1,25 +1,37 @@
 Refactory.Login
-==================================================================================================================================================================
+===============
 
 This package is a lightweight authentication wrapper around a given package.
 A Flow Framework package with the following features:
 
- - Login and Logout a account
+ - Login and logout an account
  - Reset a password for a given account.
 
 These features have their own workflows, based on some research the idea was to make the registration as basic as possible.
-The package is built on the features that are provided in the security framework of the Flow Framework and require only a little configuration.
+The package has been built on top of the features that are provided in the security framework of the Flow Framework and require only a little configuration.
 
 Usage:
 - Security layer for any application
 - Inspiration
 
-Quickstart
-----------
+## Quickstart
 
-To incluse this package into your Flow Framework application just run:
+This fork currently is not published on packagist. You must require it in the repositories section of your `composer.json`:
 
-	composer require refactory/login
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/visol/Refactory.Login.git"
+        }
+    ],
+
+Then you can require it in the `require` section of your `composer.json`:
+
+    "require": {
+        "refactory/login": "^3.0",
+    },
+
+Then run `composer update` to actually install the package.
 
 Then you need to run migrations to include the tables.
 
@@ -34,23 +46,20 @@ To enable routing to package
 	    LoginSubroutes:
 	      package: Refactory.Login
 
-Profit!
+## Overview
 
-Overview
---------
+### Login screen
 
-#Login screen:
 ![Login Screen](Documentation/Images/LoginScreen.png)
 
-#Reset steps:
-
-##Step 1:
+### Reset password
 
 ![Reset Password Screen](Documentation/Images/ResetPassword.png)
 
 
-Authentication setup
---------------------
+## Configuration
+
+### Authentication setup
 
 The initial view will show a login panel.
 
@@ -59,7 +68,7 @@ The Signed In view will show you with what "account.identifier" you have been au
 
 Through *Configuration/Settings.yaml* you will be able to configure options like redirects to a package, registration and so on.
 
-##### Routing
+### Routing
 
 To be able to address the login feature you will need to add these routes in the general Configuration/Routes.yaml
 
@@ -70,19 +79,17 @@ To be able to address the login feature you will need to add these routes in the
 	    LoginSubroutes:
 	      package: Refactory.Login
 
-Account ViewHelper
-------------------
+### Account ViewHelper
 
-Add the viewhelper to Fluid and call the viewhelper function.
+Add the ViewHelper to Fluid and call the ViewHelper function.
 
 	{namespace secure=Refactory\Login\ViewHelpers}
 
 	<secure:account propertyPath="name" />
 
-Redirect to Login page
-----------------------
+### Redirect to Login page
 
-When the action is unauthorized the Flow Framework will redirect the package to a location set with the Settings.yaml configuration.
+If the action is unauthorized, the Flow Framework will redirect the package to a location set with the Settings.yaml configuration.
 
 	Neos:
 	  Flow:
@@ -99,8 +106,17 @@ When the action is unauthorized the Flow Framework will redirect the package to 
 
 See for reference: https://flowframework.readthedocs.io/en/stable/TheDefinitiveGuide/PartIII/Security.html
 
+## Compatibility and Maintenance
 
-# Authors:
+This package is currently being maintained for the following versions:
+
+| Neos Version        | Version | Maintained |
+|----------------------------|----------------------------------|------------|
+| Flow 3.x         | 1.x  | No |
+| Flow 4.x/5.x         | 2.x | Yes |
+| Flow 6.x and above | 3.x  | Yes    |
+
+## Credits
 
 Author: Sebastiaan van Parijs (<svparijs@refactory.it>) 
 
