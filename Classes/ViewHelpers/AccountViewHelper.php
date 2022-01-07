@@ -38,10 +38,9 @@ class AccountViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractViewH
     protected $objectManager;
 
     /**
-     * @param string $propertyPath
      * @return string
      */
-    public function render($propertyPath = 'name')
+    public function render()
     {
 
         $partyRepository = $this->objectManager->get($this->partyRepositoryClassName);
@@ -51,10 +50,18 @@ class AccountViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractViewH
         foreach ($tokens as $token) {
             if ($token->isAuthenticated()) {
                 $person = $partyRepository->findOneHavingAccount($token->getAccount());
-                return \Neos\Utility\ObjectAccess::getPropertyPath($person, $propertyPath);
+                return \Neos\Utility\ObjectAccess::getPropertyPath($person, $this->arguments['propertyPath']);
             }
         }
 
         return '';
+    }
+
+    /**
+     * @throws \Neos\FluidAdaptor\Core\ViewHelper\Exception
+     */
+    public function initializeArguments()
+    {
+        $this->registerArgument('propertyPath', 'string', 'propertyPath', true, 'name');
     }
 }
