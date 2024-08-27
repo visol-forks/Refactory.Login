@@ -1,8 +1,9 @@
 <?php
 namespace Neos\Flow\Persistence\Doctrine\Migrations;
 
-use Doctrine\DBAL\Migrations\AbstractMigration;
+use Doctrine\DBAL\Exception;
 use Doctrine\DBAL\Schema\Schema;
+use Doctrine\Migrations\AbstractMigration;
 
 /**
  * Migration:
@@ -12,9 +13,10 @@ class Version20140205224948 extends AbstractMigration
 
     /**
      * @param Schema $schema
+     * @throws Exception
      * @return void
      */
-    public function up(Schema $schema)
+    public function up(Schema $schema): void
     {
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != "mysql");
 
@@ -24,9 +26,10 @@ class Version20140205224948 extends AbstractMigration
 
     /**
      * @param Schema $schema
+     * @throws Exception
      * @return void
      */
-    public function down(Schema $schema)
+    public function down(Schema $schema): void
     {
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != "mysql");
 
