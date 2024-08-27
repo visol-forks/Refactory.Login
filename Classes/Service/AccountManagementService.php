@@ -80,11 +80,19 @@ class AccountManagementService
      */
     public function generateResetPasswordToken(Account $account, \Neos\Flow\Mvc\ActionRequest $request = null)
     {
-        list($generatedToken, $salt) = explode(',', \Neos\Flow\Security\Cryptography\SaltedMd5HashingStrategy::generateSaltedMd5($account->getAccountIdentifier()));
+        // SaltedMd5HashingStrategy was removed in Flow 7.0
+        // list($generatedToken, $salt) = explode(',', \Neos\Flow\Security\Cryptography\SaltedMd5HashingStrategy::generateSaltedMd5($account->getAccountIdentifier()));
+
+        // Source: GitHub Copilot
+        // Generate a random salt
+        $salt = bin2hex(random_bytes(22));
+        // Append the salt to the account identifier before hashing
+        $hashedIdentifier = hash('sha256', $account->getAccountIdentifier() . $salt);
+
         $resetPasswordToken = new \Refactory\Login\Domain\Model\ResetPasswordToken();
         $resetPasswordToken->setDate(new \DateTime());
         $resetPasswordToken->setAccount($account);
-        $resetPasswordToken->setToken($generatedToken);
+        $resetPasswordToken->setToken($hashedIdentifier);
         // There is no more getClientIpAddress() method in ActionRequest
         // $resetPasswordToken->setIp($request->getHttpRequest()->getClientIpAddress());
         $resetPasswordToken->setIp($request->getHttpRequest()->getAttribute(ServerRequestAttributes::CLIENT_IP));
