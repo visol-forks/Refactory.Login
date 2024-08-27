@@ -12,6 +12,7 @@ namespace Refactory\Login\Service;
  *                                                                        */
 
 use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Http\ServerRequestAttributes;
 use Neos\Flow\Security\Account;
 use Neos\Party\Domain\Model\AbstractParty;
 
@@ -84,7 +85,9 @@ class AccountManagementService
         $resetPasswordToken->setDate(new \DateTime());
         $resetPasswordToken->setAccount($account);
         $resetPasswordToken->setToken($generatedToken);
-        $resetPasswordToken->setIp($request->getHttpRequest()->getClientIpAddress());
+        // There is no more getClientIpAddress() method in ActionRequest
+        // $resetPasswordToken->setIp($request->getHttpRequest()->getClientIpAddress());
+        $resetPasswordToken->setIp($request->getHttpRequest()->getAttribute(ServerRequestAttributes::CLIENT_IP));
         $resetPasswordToken->setActive(true);
         $this->resetPasswordTokenRepository->add($resetPasswordToken);
         return $resetPasswordToken;
@@ -100,7 +103,9 @@ class AccountManagementService
     public function generateResetPasswordTokenForParty(AbstractParty $party, \Neos\Flow\Mvc\ActionRequest $request = null)
     {
         $account = $this->getAccountByParty($party);
-        $request->getHttpRequest()->getClientIpAddress();
+        // There is no more getClientIpAddress() method in ActionRequest
+        // $request->getHttpRequest()->getClientIpAddress();
+        $request->getHttpRequest()->getAttribute(ServerRequestAttributes::CLIENT_IP);
         return $this->generateResetPasswordToken($account, $request);
     }
 
