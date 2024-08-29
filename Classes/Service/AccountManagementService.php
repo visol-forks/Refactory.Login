@@ -12,8 +12,15 @@ namespace Refactory\Login\Service;
  *                                                                        */
 
 use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Exception;
+use Neos\Flow\Http\ServerRequestAttributes;
+use Neos\Flow\Mvc\ActionRequest;
 use Neos\Flow\Security\Account;
+use Neos\Flow\Security\AccountRepository;
+use Neos\Flow\Security\Cryptography\HashService;
 use Neos\Party\Domain\Model\AbstractParty;
+use Refactory\Login\Domain\Model\ResetPasswordToken;
+use Refactory\Login\Domain\Repository\ResetPasswordTokenRepository;
 
 /**
  * An AccountManagementService service
@@ -24,18 +31,18 @@ class AccountManagementService
 
     /**
      * @Flow\Inject
-     * @var \Neos\Flow\Security\AccountRepository
+     * @var AccountRepository
      */
     protected $accountRepository;
 
     /**
      * @Flow\Inject
-     * @var \Refactory\Login\Domain\Repository\ResetPasswordTokenRepository
+     * @var ResetPasswordTokenRepository
      */
     protected $resetPasswordTokenRepository;
 
     /**
-     * @var \Neos\Flow\Security\Cryptography\HashService
+     * @var HashService
      * @Flow\Inject
      */
     protected $hashService;
@@ -74,17 +81,19 @@ class AccountManagementService
 
     /**
      * @param Account $account
-     * @param \Neos\Flow\Mvc\ActionRequest $request
-     * @return \Refactory\Login\Domain\Model\ResetPasswordToken
+     * @param ActionRequest $request
+     * @return ResetPasswordToken
      */
-    public function generateResetPasswordToken(Account $account, \Neos\Flow\Mvc\ActionRequest $request = null)
+    public function generateResetPasswordToken(Account $account, ActionRequest $request = null)
     {
-        list($generatedToken, $salt) = explode(',', \Neos\Flow\Security\Cryptography\SaltedMd5HashingStrategy::generateSaltedMd5($account->getAccountIdentifier()));
-        $resetPasswordToken = new \Refactory\Login\Domain\Model\ResetPasswordToken();
+        $salt = bin2hex(random_bytes(22));
+        $hashedIdentifier = hash('sha1', $account->getAccountIdentifier() . $salt);
+
+        $resetPasswordToken = new ResetPasswordToken();
         $resetPasswordToken->setDate(new \DateTime());
         $resetPasswordToken->setAccount($account);
-        $resetPasswordToken->setToken($generatedToken);
-        $resetPasswordToken->setIp($request->getHttpRequest()->getClientIpAddress());
+        $resetPasswordToken->setToken($hashedIdentifier);
+        $resetPasswordToken->setIp($request->getHttpRequest()->getAttribute(ServerRequestAttributes::CLIENT_IP));
         $resetPasswordToken->setActive(true);
         $this->resetPasswordTokenRepository->add($resetPasswordToken);
         return $resetPasswordToken;
@@ -92,15 +101,15 @@ class AccountManagementService
 
     /**
      * @param AbstractParty $party
-     * @param \Neos\Flow\Mvc\ActionRequest $request
-     * @return \Refactory\Login\Domain\Model\ResetPasswordToken
+     * @param ActionRequest $request
+     * @return ResetPasswordToken
      * @throws \Exception
-     * @throws \Neos\Flow\Exception
+     * @throws Exception
      */
-    public function generateResetPasswordTokenForParty(AbstractParty $party, \Neos\Flow\Mvc\ActionRequest $request = null)
+    public function generateResetPasswordTokenForParty(AbstractParty $party, ActionRequest $request = null)
     {
         $account = $this->getAccountByParty($party);
-        $request->getHttpRequest()->getClientIpAddress();
+        $request->getHttpRequest()->getAttribute(ServerRequestAttributes::CLIENT_IP);
         return $this->generateResetPasswordToken($account, $request);
     }
 
@@ -133,7 +142,7 @@ class AccountManagementService
     /**
      * Method to find account by given party
      * @param AbstractParty $party
-     * @return \Neos\Flow\Security\Account
+     * @return Account
      */
     public function getAccountByParty(AbstractParty $party)
     {
@@ -143,7 +152,7 @@ class AccountManagementService
     /**
      * Method to find account by given token
      * @param string $token
-     * @return \Neos\Flow\Security\Account
+     * @return Account
      */
     public function getAccountByToken($token)
     {

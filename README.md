@@ -110,11 +110,12 @@ See for reference: https://flowframework.readthedocs.io/en/stable/TheDefinitiveG
 
 This package is currently being maintained for the following versions:
 
-| Neos Version        | Version | Maintained |
-|----------------------------|----------------------------------|------------|
-| Flow 3.x         | 1.x  | No |
-| Flow 4.x/5.x         | 2.x | Yes |
-| Flow 6.x and above | 3.x  | Yes    |
+| Neos Version       | Version | Maintained |
+|--------------------|---------|------------|
+| Flow 3.x           | 1.x     | No         |
+| Flow 4.x/5.x       | 2.x     | No         |
+| Flow 6.x/7.x       | 3.x     | No         |
+| Flow 8.x and above | 4.x     | Yes        |
 
 ## Credits
 
