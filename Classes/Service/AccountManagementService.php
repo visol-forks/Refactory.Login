@@ -87,7 +87,7 @@ class AccountManagementService
     public function generateResetPasswordToken(Account $account, ActionRequest $request = null)
     {
         $salt = bin2hex(random_bytes(22));
-        $hashedIdentifier = hash('sha256', $account->getAccountIdentifier() . $salt);
+        $hashedIdentifier = hash('sha1', $account->getAccountIdentifier() . $salt);
 
         $resetPasswordToken = new ResetPasswordToken();
         $resetPasswordToken->setDate(new \DateTime());
